@@ -1,10 +1,12 @@
-import re
-import io
 import csv
-import tweepy
-import pandas as pd
-from tweepy import OAuthHandler
+import io
 import json
+import re
+
+import pandas as pd
+import tweepy
+from tweepy import OAuthHandler
+
 #TextBlob perform simple natural language processing tasks.
 #from textblob import TextBlob
 
@@ -20,17 +22,18 @@ auth.set_access_token(access_token, access_token_secret)
 # create tweepy API object to fetch tweets
 api = tweepy.API(auth)
 
+call = input('What keywords do you wish to search for? ')
 
 
 
-def get_tweets(query, count = 300):
+def get_tweets(query, count = 1):
 
     # empty list to store parsed tweets
     tweets = []
     target = io.open("mytweets.txt", 'w', encoding='utf-8')
     # call twitter api to fetch tweets
     q=str(query)
-    a=str(q+" sarcasm")
+    a=str(q+ call)
     b=str(q+" sarcastic")
     c=str(q+" irony")
     fetched_tweets = api.search(a, count = count)+ api.search(b, count = count)+ api.search(c, count = count)
@@ -53,7 +56,7 @@ def get_tweets(query, count = 300):
 
     # creating object of TwitterClient Class
     # calling function to get tweets
-tweeting = get_tweets("", 20000)
+tweeting = get_tweets("", 1000)
 
 print(tweeting)
 df = tweeting
@@ -63,6 +66,6 @@ df = tweeting
 # df = json_string['entities']
 # print(df)
 ##Writing to csv
-pd.DataFrame.from_dict(data=df, orient='columns').to_csv("C:\\Users\\jiajie25\\get_tweets\\Tweeting.csv", header = True)
+pd.DataFrame.from_dict(data=df, orient='columns').to_csv("C:/Users/charmaine/Desktop/YEAR3/FYP/FYP/Social Media/Tweeting.csv", header = True)
 # pd.DataFrame.from_records(tweeting , columns = tweeting).to_csv("C:\\Users\\jiajie25\\get_tweets\\Tweeting.csv", header = True, sep = ",")
 # print("Written") 
