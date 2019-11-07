@@ -34,9 +34,7 @@ def get_tweets(query, count = 1):
     # call twitter api to fetch tweets
     q=str(query)
     a=str(q+ call)
-    b=str(q+" sarcastic")
-    c=str(q+" irony")
-    fetched_tweets = api.search(a, count = count)+ api.search(b, count = count)+ api.search(c, count = count)
+    fetched_tweets = api.search(a, count = count)
     # parsing tweets one by one
     print(len(fetched_tweets))
 

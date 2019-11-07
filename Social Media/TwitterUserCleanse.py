@@ -11,11 +11,11 @@ df = pd.read_csv("C:/Users/User/Desktop/FYP/Hoaxy/Hoaxy/ChannelNewsAsia.csv", na
 df.drop(columns=['ID'], inplace = True)
 
 # remove https links
-# df['Tweets'] = df['Tweets'].apply(lambda x : re.sub(r'https?://\S+', '', df['Tweets'], flags=re.MULTILINE))
+df['Tweets'] = df['Tweets'].apply(lambda x : re.sub(r'https?://\S+', '', df['Tweets'], flags=re.MULTILINE))
 
-# df['Tweets'] = df['Tweets'].str.replace('http\S+|www.\S+', '', case=False)
+df['Tweets'] = df['Tweets'].str.replace('http\S+|www.\S+', '', case=False)
 
-# print(df['Tweets'].head(10))
+print(df['Tweets'].head(10))
 
 # tokenize
 
