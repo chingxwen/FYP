@@ -9,6 +9,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
+<<<<<<< HEAD
 def get_tweets(query, count=300):
     q1 = str(input("Enter your keywords: "))
     a=str(q1)
@@ -22,6 +23,44 @@ def get_tweets(query, count=300):
     for tweets in status:
         print(df)
         df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/TweeterByKeyword.csv', sep=',', index = False, header = True)
+=======
+call = input('what keywords do you want to search? ')
+
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+def get_tweets(query, count = 1):
+
+    # empty list to store parsed tweets
+    tweets = []
+    target = io.open("mytweets.txt", 'w', encoding='utf-8')
+    # call twitter api to fetch tweets
+    q=str(query)
+    a=str(q+ call)
+<<<<<<< Updated upstream
+    fetched_tweets = api.search(a, count = count)
+=======
+    b=str(q+" sarcastic")
+    c=str(q+" irony")
+    fetched_tweets = api.search(a, count = count)+ api.search(b, count = count)+ api.search(c, count = count)
+>>>>>>> Stashed changes
+    # parsing tweets one by one
+    print(len(fetched_tweets))
+
+    for tweet in fetched_tweets:
+
+        # empty dictionary to store required params of a tweet
+        parsed_tweet = {}
+        # saving text of tweet
+        parsed_tweet['text'] = tweet.text
+        if "http" not in tweet.text:
+            line = re.sub("[^A-Za-z]", " ", tweet.text)
+            target.write(line+"\n")
+
+        tweets.append(tweet)
+
+>>>>>>> 5fbbbc94cea837bbc72addebeda8529d10c1f359
     return tweets
 
 tweeting = get_tweets("", 20000)
