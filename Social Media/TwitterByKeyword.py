@@ -24,8 +24,12 @@ api = tweepy.API(auth)
 
 call = input('What keywords do you wish to search for? ')
 
+call = input('what keywords do you want to search? ')
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 def get_tweets(query, count = 1):
 
     # empty list to store parsed tweets
@@ -34,7 +38,13 @@ def get_tweets(query, count = 1):
     # call twitter api to fetch tweets
     q=str(query)
     a=str(q+ call)
+<<<<<<< Updated upstream
     fetched_tweets = api.search(a, count = count)
+=======
+    b=str(q+" sarcastic")
+    c=str(q+" irony")
+    fetched_tweets = api.search(a, count = count)+ api.search(b, count = count)+ api.search(c, count = count)
+>>>>>>> Stashed changes
     # parsing tweets one by one
     print(len(fetched_tweets))
 
