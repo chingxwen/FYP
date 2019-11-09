@@ -4,15 +4,29 @@ number = int(input("Enter the number of data you want: "))
 
 tweetCriteria = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
                                            .setSince("2018-07-01")\
-                                           .setUntil("2018-12-31")\
+                                           .setUntil("2018-08-31")\
+                                           .setMaxTweets(number)
+
+tweetCriteria2 = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
+                                           .setSince("2018-09-01")\
+                                           .setUntil("2018-10-31")\
                                            .setMaxTweets(number)
                                         
+tweetCriteria3 = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
+                                           .setSince("2018-11-01")\
+                                           .setUntil("2018-12-31")\
+                                           .setMaxTweets(number)
 
+pull = [tweetCriteria, tweetCriteria2, tweetCriteria3]
 get_tweets = []
-for i in range (number):                                           
-    tweet = got.manager.TweetManager.getTweets(tweetCriteria)[i]
+
+i = 0 
+
+for x in range (number):            
+    tweet = got.manager.TweetManager.getTweets(pull[i])[x]
     get_tweets.append(tweet.text + str(tweet.date) + str(tweet.retweets))
-    print('Searched ', (i+1))
+    print('Searched ', (x+1))
+            
     # for object in get_tweets:
     #     textlist = []
     #     text = object.text

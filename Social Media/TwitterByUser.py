@@ -9,17 +9,17 @@ import tweepy
 
 
 #Get your Twitter API credentials and enter them here
-consumer_key = "RHY3tK3sUrhfte8hXDmGdeOHX"
-consumer_secret = "69YmZjbJgJXRrqob1h8aV6Jj3xG0XIVobKV5U2f0wCIno6VHqe"
-access_key = "3149688854-oMHlxOstbWBy4SP5pOm2bYlOsmMnH0MtypdqBKL"
-access_secret = "7HIEe2J6Tl1zucFa4uLps3NXR1fS009CNTPvs2w49KVuT"
+consumer_key = "DdzX4hSW7Dth3CQb71MsTR8e2"
+consumer_secret = "5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j"
+access_key = "3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r"
+access_secret = "6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO"
 
 #method to get a user's last tweets
 def get_tweets():
 	username = input("Enter the username without the '@' sign: ")
 	#http://tweepy.readthedocs.org/en/v3.1.0/getting_started.html#api
-	auth = tweepy.OAuthHandler('RHY3tK3sUrhfte8hXDmGdeOHX', "69YmZjbJgJXRrqob1h8aV6Jj3xG0XIVobKV5U2f0wCIno6VHqe")
-	auth.set_access_token("3149688854-oMHlxOstbWBy4SP5pOm2bYlOsmMnH0MtypdqBKL", "7HIEe2J6Tl1zucFa4uLps3NXR1fS009CNTPvs2w49KVuT")
+	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+	auth.set_access_token(access_key, access_secret)
 	api = tweepy.API(auth)
 	
 	#set count to however many tweets you want
@@ -36,8 +36,7 @@ def get_tweets():
 
 
 	#write to a new csv file from the array of tweets
-	dir = os.getcwd()
-	outfile = dir +  "\\" + username + ".csv"
+	outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/' + username + ".csv"
 	print(outfile)
 	print ("writing to " + outfile)
 	with open(outfile, 'w+') as file:
