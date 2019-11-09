@@ -17,6 +17,29 @@ df['Tweets'] = df['Tweets'].str.replace('http\S+|www.\S+', '', case=False)
 
 print(df['Tweets'].head(10))
 
+#Translate to english
+dftextlist = df['Tweets'].tolist()
+
+print('Text Read!\n')
+
+print('Data type is: ' ,type(dftextlist))
+
+print(len(dftextlist))
+
+
+i = 0
+
+for i in range (100):
+    translated = []
+    print(dftextlist[i])
+
+    for value in translated:
+
+        print(value.origin) 
+        print('hehe')
+
+        df = pd.DataFrame(value.origin)
+
 # tokenize
 
 tokenizer = RegexpTokenizer(r'\w+')
