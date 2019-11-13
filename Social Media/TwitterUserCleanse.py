@@ -7,9 +7,10 @@ import csv
 import re
 import ast
 
-df = pd.read_csv("C:/Users/User/Desktop/FYP/Hoaxy/Hoaxy/ChannelNewsAsia.csv", names=["User", "ID", "Date", "Tweets"])
+df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SamsungMobile.csv', names = ['User','ID','Date','Tweets'])
 
 df.drop(columns=['ID'], inplace = True)
+print(type(df))
 
 # remove 'b' flags
 
@@ -21,6 +22,22 @@ df['Tweets'] = df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
 df['Tweets'] = df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
 
 print(df['Tweets'].head(10))
+
+#Remove Empty Rows
+df['Tweets'].replace('',np.nan,inplace=True)
+df.dropna(axis = 0, how = 'any', inplace = True)
+print(df)
+
+print(df['Tweets'].head(10))
+
+#remove username in Tweets
+
+df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
+
+# Remove Special Characters 
+
+df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
+
 
 #Translate to english
 dftextlist = df['Tweets'].tolist()
@@ -47,19 +64,19 @@ for i in range (100):
 
 # tokenize
 
-tokenizer = RegexpTokenizer(r'\w+')
+# tokenizer = RegexpTokenizer(r'\w+')
 
-df['Tweets'] = df['Tweets'].apply(lambda x : tokenizer.tokenize(x))
-print(df['Tweets'].head(10))
+# df['Text'] = df['Text'].apply(lambda x : tokenizer.tokenize(x))
+# print(df['Text'].head(10))
 
 # remove stopwords
-def remove_stopwords(text):
-    words = [x for x in text if x not in stopwords.words('english')]
-    return words
+# def remove_stopwords(text):
+#     words = [x for x in text if x not in stopwords.words('english')]
+#     return words
 
-df['Tweets'] = df['Tweets'].apply(lambda x: remove_stopwords(x))
+# df['Text'] = df['Text'].apply(lambda x: remove_stopwords(x))
 
-final = pd.concat(df['User'], df['ID'], df['Date'], df['Tweets'])
+final = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1)
 
 
-pd.DataFrame.from_dict(data = final , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/Hoaxy/Hoaxy/ChannelNewsAsia.csv')
+pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SamsungMobileCleanse.csv')
