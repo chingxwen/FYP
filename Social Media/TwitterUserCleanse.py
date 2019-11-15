@@ -6,19 +6,19 @@ from nltk.tokenize import RegexpTokenizer
 import csv
 import re
 import ast
+from googletrans import Translator
 
-<<<<<<< HEAD
-df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SamsungMobile.csv', names = ['User','ID','Date','Tweets'])
-
-df.drop(columns=['ID'], inplace = True)
-print(type(df))
-
-=======
-df = pd.read_csv("C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/ChannelNewsAsia.csv", names=["User", "ID", "Date", "Tweets"])
+df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/thenextweb.csv', names = ['User','ID','Date','Tweets'])
 
 df.drop(columns=['ID'], inplace = True)
 print(type(df))
->>>>>>> f285115803fab0cca4fa4e215994fdc356d47a3b
+
+# df = pd.read_csv("C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/ChannelNewsAsia.csv", names=["User", "ID", "Date", "Tweets"])
+
+# df.drop(columns=['ID'], inplace = True)
+# print(type(df))
+
+
 # remove 'b' flags
 
 df['Tweets'] = df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
@@ -61,38 +61,48 @@ df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 
 
-#Translate to english
-dftextlist = df['Tweets'].tolist()
+# #Translate to english
 
-print('Text Read!\n')
+# dftextlist = df['Tweets'].tolist()
 
-print('Data type is: ' ,type(dftextlist))
+# print('Text Read!\n')
 
-print(len(dftextlist))
+# print(len(dftextlist))
+
+# i = 0
+# translateEng = []
+
+# for i in range (100):
+
+#     translator = Translator()
+
+#     # translated.append(dftextlist[i])
+#     # print(translated)
+
+#     for value in dftextlist:
+
+#         translator = Translator()
+#         trans = translator.translate(value)
+#         print(trans.text)
+
+#         translateEng.append(trans.text)
 
 
-i = 0
+#         print('hehe')
 
-for i in range (100):
-    translated = []
-    print(dftextlist[i])
+#         print(value)
 
-    for value in translated:
+#         # df = pd.DataFrame(value)
 
-        print(value.origin) 
-        print('hehe')
+# print(translateEng)
 
-        df = pd.DataFrame(value.origin)
-
-
-<<<<<<< HEAD
 # tokenizer = RegexpTokenizer(r'\w+')
 
 # df['Text'] = df['Text'].apply(lambda x : tokenizer.tokenize(x))
 # print(df['Text'].head(10))
 
 # remove stopwords
-# def remove_stopwords(text):
+# def remove_stopwords(text): 
 #     words = [x for x in text if x not in stopwords.words('english')]
 #     return words
 
@@ -101,24 +111,20 @@ for i in range (100):
 final = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1)
 
 
-pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SamsungMobileCleanse.csv')
-=======
+pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/ThenextwebCleanse.csv')
 
-# tokenize
+# # tokenize
+ 
+# # tokenizer = RegexpTokenizer(r'\w+')   
+# # print(df['Tweets'].head(10))
 
-# tokenizer = RegexpTokenizer(r'\w+')
-
-# df['Tweets'] = df['Tweets'].apply(lambda x : tokenizer.tokenize(x))
-# print(df['Tweets'].head(10))
-
-# # remove stopwords
-# def remove_stopwords(text):
-#     words = [x for x in text if x not in stopwords.words('english')]
-#     return words
+# # # remove stopwords
+# # def remove_stopwords(text):
+# #     words = [x for x in text if x not in stopwords.words('english')]
+# #     return words
     
 
-final = pd.concat([df['User'], df['Date'], df['Tweets'] ],axis = 1)
+# final = pd.concat([df['User'], df['Date'], df['Tweets'] ],axis = 1)
 
 
-pd.DataFrame.from_dict(data = final , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/ChannelNewsAsiaCleanse.csv')
->>>>>>> f285115803fab0cca4fa4e215994fdc356d47a3b
+# pd.DataFrame.from_dict(data = final , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/ChannelNewsAsiaCleanse.csv')
