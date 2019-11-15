@@ -36,7 +36,7 @@ def get_tweets():
 
 
 	#write to a new csv file from the array of tweets
-	outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/' + username + ".csv"
+	outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + username + ".csv"
 	print(outfile)
 	print ("writing to " + outfile)
 	with open(outfile, 'w+') as file:
