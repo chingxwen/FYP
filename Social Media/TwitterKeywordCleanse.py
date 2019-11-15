@@ -28,6 +28,31 @@ df['text'] = df['text'].str.replace(r'http\S+|www.\S+', '', case=False)
 print('---------------------\n')
 print('Links Removed\n')
 
+# Removal of Null Values
+df['Tweets'].replace('',np.nan,inplace=True)
+df['Tweets'].replace(' ',np.nan,inplace=True)
+df['Tweets'].replace('  ',np.nan,inplace=True)
+df['Tweets'].replace('   ',np.nan,inplace=True)
+df['Tweets'].replace('    ',np.nan,inplace=True)
+df.dropna(axis = 0, how = 'any', inplace = True)
+print(df.head(10))
+
+dfframe = df['Tweets'].to_frame()
+dflist = df['Tweets'].tolist()
+
+clean = []
+i = 0
+for i in range (len(dflist)):
+    clean.append(str(dflist[i]).strip())
+    print(i+1)
+print('done')
+
+print(dflist[5])
+print(clean[5])
+
+df = pd.DataFrame(clean)
+print(df.head(20))
+
 #tokenize
 tokenizer = RegexpTokenizer(r'\w+')
 df['text'] = df['text'].apply(lambda x : tokenizer.tokenize(x))
