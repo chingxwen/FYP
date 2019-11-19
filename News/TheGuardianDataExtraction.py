@@ -8,16 +8,18 @@ api_key = '9c31513f-beb6-4aac-86ee-0b1320f2860b'
 url = 'https://content.guardianapis.com/search?'
 
 query = str(input("Query: "))
-# page = str(input("Page Number: "))
+fromdate = input("From Date: ")
+page = str(input("Page Number: "))
 
 # if len(query) == 0:
 #     query = "samsung"
 #     print(query)
 parameters = {
     'q': query,
-    # 'page': page,
+    'from-date': fromdate
     'order-by': 'newest',
     'page-size': 200, #200 max
+    'page': page,
     'api-key': api_key
 }
 
@@ -44,7 +46,6 @@ for article in response_json:
 export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
 
 if export_csv.upper() =="YES":
-    df.to_csv(r"C:\Users\charmaine\Desktop\YEAR3\FYP\API Test\TheGuardian\TheGuardian.csv", index=False)
+    df.to_csv("TheGuardianData.csv", index=False)
 else: 
     print(df['Title'])
-
