@@ -2,28 +2,19 @@ import GetOldTweets3 as got
 import pandas as pd
 number = int(input("Enter the number of data you want: "))
 
-tweetCriteria = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
-                                           .setSince("2018-07-01")\
-                                           .setUntil("2018-08-31")\
-                                           .setMaxTweets(number)
 
-tweetCriteria2 = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
-                                           .setSince("2018-09-01")\
-                                           .setUntil("2018-10-31")\
+tweetCriteria = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
+                                           .setSince("2019-10-01")\
+                                           .setUntil("2019-10-31")\
                                            .setMaxTweets(number)
                                         
-tweetCriteria3 = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
-                                           .setSince("2018-11-01")\
-                                           .setUntil("2018-12-31")\
-                                           .setMaxTweets(number)
 
-pull = [tweetCriteria, tweetCriteria2, tweetCriteria3]
 get_tweets = []
 
 i = 0 
 
 for x in range (number):            
-    tweet = got.manager.TweetManager.getTweets(pull[i])[x]
+    tweet = got.manager.TweetManager.getTweets(tweetCriteria)[i]
     get_tweets.append(tweet.text + str(tweet.date) + str(tweet.retweets))
     print('Searched ', (x+1))
             

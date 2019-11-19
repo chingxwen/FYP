@@ -8,15 +8,25 @@ import re
 import ast
 from googletrans import Translator
 
-df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/thenextweb.csv', names = ['User','ID','Date','Tweets'])
+datefile = input('Which data file do you want to cleanse ?')
 
+df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + datefile + '.csv', names = ['User','ID','Date','Tweets'])
+
+#Extra rows by date 
+df['Date'] = pd.to_datetime(df['Date'])
+
+startdate = '01-07-2018'
+enddate = '31-10-2019'
+
+filterrows = (df['Date'] > startdate) & (df['Date'] <= enddate)
+
+df = df.loc[filterrows]
+
+print(df)
+
+#Drop columns 
 df.drop(columns=['ID'], inplace = True)
 print(type(df))
-
-# df = pd.read_csv("C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/ChannelNewsAsia.csv", names=["User", "ID", "Date", "Tweets"])
-
-# df.drop(columns=['ID'], inplace = True)
-# print(type(df))
 
 
 # remove 'b' flags
@@ -52,6 +62,24 @@ print(df)
 
 print(df['Tweets'].head(10))
 
+# Remove space bars
+
+# Removal of Null Values
+df['Tweets'].replace('',np.nan,inplace=True)
+df['Tweets'].replace(' ',np.nan,inplace=True)
+df['Tweets'].replace('  ',np.nan,inplace=True)
+df['Tweets'].replace('   ',np.nan,inplace=True)
+df['Tweets'].replace('    ',np.nan,inplace=True)
+df.dropna(axis = 0, how = 'any', inplace = True)
+print(df.head(10))
+
+#Removal of Trailing White Spaces
+dfframe = df['Tweets'].to_frame()
+dflist = df['Tweets'].tolist()
+
+dftweet2 = df['Tweets'].str.strip()
+df2 = dftweet2.to_frame()
+
 #remove username in Tweets
 
 df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
@@ -61,40 +89,6 @@ df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 
 
-# #Translate to english
-
-# dftextlist = df['Tweets'].tolist()
-
-# print('Text Read!\n')
-
-# print(len(dftextlist))
-
-# i = 0
-# translateEng = []
-
-# for i in range (100):
-
-#     translator = Translator()
-
-#     # translated.append(dftextlist[i])
-#     # print(translated)
-
-#     for value in dftextlist:
-
-#         translator = Translator()
-#         trans = translator.translate(value)
-#         print(trans.text)
-
-#         translateEng.append(trans.text)
-
-
-#         print('hehe')
-
-#         print(value)
-
-#         # df = pd.DataFrame(value)
-
-# print(translateEng)
 
 # tokenizer = RegexpTokenizer(r'\w+')
 
@@ -111,7 +105,7 @@ df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 final = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1)
 
 
-pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/ThenextwebCleanse.csv')
+pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datefile + 'Cleanse.csv')
 
 # # tokenize
  
