@@ -2,7 +2,7 @@ import pandas as pd
 
 def keywordsearch():
 
-    samsunglist =["samsung","galaxy", "samsung galaxy", "samsung group", 
+    samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group", 
         "samsung technologies","galaxy s10", "galaxy note10", "galaxy fold", 
         "galaxy s10+", "galaxy s10e", "galaxy buds", "galaxy watch", "watch active 2",
         "galaxy tab", "tab S6", "galaxy book S", "samsung electronics", "samsung x IFA 2019", 
@@ -10,10 +10,16 @@ def keywordsearch():
         " Samsung Semiconductor Institute of Technology", "galaxy A30", "galaxy S11", 
         "a70 waterproof", "a70 wireless charging", "s10 plus", "s7 edge", "galaxy m30", "galaxy j7", 
        "galaxy j2", "galaxy a10", "space zoom", "samsung support", "the serif", "#dowhatyoucant", "spacemax", 
-       "galaxy A", "galaxy note", "QLED", "quickdrive", "s series"]
+       "galaxy A", "galaxy note", "QLED", "quickdrive", "s series", "galaxyAs", "samsung mobile", "SamsungMobileSA",
+       "#DontFumbleTheBag", "galaxy a30s", "#FillUpRoyalBafokeng", "#SDC19", "galaxy buds", "samsungUS", "samsungsupport",
+       "chromebook", "samsung J4", "samsung J4 core", "galaxy J4", "galaxy J2", "galaxy J4 core", "galaxy tab",
+       "samsung health", "SamsungKids", "SamsungKidsUS", "samsung galacy", "TeamGalaxy", "#TeamGalaxy", "withgalaxy",
+       "galaxy FIT E", "samsung T5", "galaxy T5", "Samsung Catalyst Fund", "samsungcatalyst", "SamsungCEOSummit",
+       "Samsung 5G Exynos 980", "SamMobile"]
 
 
-    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/ThenextwebCleanse.csv', names = ['User','Date','Tweets'])
+    datafile = input('Which data set do you want to cleanse?')
+    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
     
     
     # for words in samsunglist:
@@ -41,28 +47,36 @@ def keywordsearch():
                 relevanttext.append(content.iloc[i])
 
                 # df = pd.DataFrame(columns=['Tweets'])
-    print(count)
+        print(count)
     print(relevantuser)
     print(relevantdate)
     print(relevanttext)
 
-    df['User'] = pd.DataFrame(relevantuser)
-    df['Date'] = pd.DataFrame(relevantdate)
-    df['Tweets'] = pd.DataFrame(relevanttext)
+    dfUser = pd.DataFrame(relevantuser, columns = ['User'])
+    dfDate = pd.DataFrame(relevantdate, columns = ['Date'])
+    dfTweets = pd.DataFrame(relevanttext, columns = ['Tweets'])
 
-    print(df['User'].head(10))
-    print(df['Date'].head(10))
-    print(df['Tweets'].head(10))
+    print(dfUser.head(10))
+
+    # print(df['User'].head(10))
+    # print(df['Date'].head(10))
+    # print(df['Tweets'].head(10))
 
     # df = pd.DataFrame(relevanttext)
 
-    final = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1)
 
-    #remove duplicate rows
+    final = pd.concat([dfUser,dfDate,dfTweets], axis = 1)
+
+    print(final.head())
+
+    # final.sort_values('Tweets', inplace = True)
+
+    # remove duplicate rows
 
     final.drop_duplicates(subset = 'Tweets' ,keep = 'first', inplace = True)
 
-    pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/thenextwewbRelevant.csv')
+
+    pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile + 'Relevant.csv')
  
     # df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/vergeRelevant.csv')
  
