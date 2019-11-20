@@ -13,27 +13,45 @@ import asyncio
 loop = asyncio.get_event_loop()
 
 
-df = pd.read_csv("C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/CNEWS.csv", names = ['User', 'id', 'date', 'Tweets'])
+df = pd.read_csv("C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/TweeterByKeyword.csv")
 translator = Translator()
 
 #drop extra columns
-# df.drop(columns=['id', 'id_str','truncated','entities','metadata', 'source', 'in_reply_to_status_id', 'in_reply_to_status_id_str', 'in_reply_to_user_id', 'in_reply_to_user_id_str', 'in_reply_to_screen_name', 'user','geo', 'coordinates', 'place', 'contributors', 'retweeted_status', 'is_quote_status','favorited', 'retweeted', 'extended_entities', 'possibly_sensitive', 'quoted_status_id', 'quoted_status_id_str'], inplace = True)
+df.drop(columns=['id', 'id_str','truncated','entities','metadata', 'source', 'in_reply_to_status_id', 'in_reply_to_status_id_str', 'in_reply_to_user_id', 'in_reply_to_user_id_str', 'in_reply_to_screen_name', 'user','geo', 'coordinates', 'place', 'contributors', 'retweeted_status', 'is_quote_status','favorited', 'retweeted', 'extended_entities', 'possibly_sensitive', 'quoted_status_id', 'quoted_status_id_str'], inplace = True)
 # print(df)
+print('---------------------\n')
+print('Dropped\n')
 
 #remove links
-df['Tweets'] = df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
+df['text'] = df['text'].str.replace(r'http\S+|www.\S+', '', case=False)
 # print(df['text'])
 print('---------------------\n')
 print('Links Removed\n')
 
+# Removal of Null Values
+df['Tweets'].replace('',np.nan,inplace=True)
+df['Tweets'].replace(' ',np.nan,inplace=True)
+df['Tweets'].replace('  ',np.nan,inplace=True)
+df['Tweets'].replace('   ',np.nan,inplace=True)
+df['Tweets'].replace('    ',np.nan,inplace=True)
+df.dropna(axis = 0, how = 'any', inplace = True)
+print(df.head(10))
+
+#Removal of Trailing White Spaces
+dfframe = df['Tweets'].to_frame()
+dflist = df['Tweets'].tolist()
+
+dftweet2 = df['Tweets'].str.strip()
+df2 = dftweet2.to_frame()
+
 #tokenize
-# tokenizer = RegexpTokenizer(r'\w+')
-# df['Tweets'] = df['Tweets'].apply(lambda x : tokenizer.tokenize(x))
-# print(df['Tweets'])
-# print('Tokenized\n')
+tokenizer = RegexpTokenizer(r'\w+')
+df['text'] = df['text'].apply(lambda x : tokenizer.tokenize(x))
+print(df['text'])
+print('Tokenized\n')
 
 #Translate to english
-dftextlist = df['Tweets'].tolist()
+dftextlist = df['text'].tolist()
 print('---------------------\n')
 print('Text Read!\n')
 print('---------------------\n')
@@ -43,24 +61,17 @@ print(len(dftextlist))
 print('---------------------\n')
 
 i = 0
-translateEng = []
 
 for i in range (100):
     translated = []
     print(dftextlist[i])
 
-    for value in dftextlist:
+    for value in translated:
 
-        translator = Translator()
-        trans = translator.translate(value)
-        print(trans.text)
-
-        translateEng.append(trans.text)
+        print(value.origin) 
         print('hehe')
 
-        df = pd.DataFrame(translateEng)
-
-        print(df)
+        df = pd.DataFrame(value.origin)
 
 df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Translate.csv', sep=',', index = False, header = True)
 
