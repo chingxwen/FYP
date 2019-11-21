@@ -6,7 +6,7 @@ pd.options.display.max_rows = 999999
 
 datafile = input('What CSV do you want to conduct analysis one? ')
 
-df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datafile +'Cleanse.csv', names=["User", "Date", "Tweets"])
+df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile +'Relevant.csv', names=["User", "Date", "Tweets"])
 
 df = df['Tweets']
 print(type(df))
@@ -58,9 +58,10 @@ print(len(df5))
 
 df = pd.concat([df1, df2], axis=1)
 
-df.drop(columns=['compound'], inplace = True)
+df.drop(index= 0,columns=['compound'], inplace = True)
 
-print(len(df))
+print(df.head(10))
+
 pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/'+ datafile +'SentimentAll.csv')
 pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentPositive.csv')
 pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentNegative.csv')
