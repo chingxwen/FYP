@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as numpy
+import numpy as np
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from googletrans import Translator
@@ -13,17 +13,17 @@ import asyncio
 loop = asyncio.get_event_loop()
 
 
-df = pd.read_csv("C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/TweeterByKeyword.csv")
+df = pd.read_csv("C:/Users/jiajie25/get_tweets/CSV/New/NewSeptember2019.csv", names=['Tweets','Date'])
 translator = Translator()
 
-#drop extra columns
-df.drop(columns=['id', 'id_str','truncated','entities','metadata', 'source', 'in_reply_to_status_id', 'in_reply_to_status_id_str', 'in_reply_to_user_id', 'in_reply_to_user_id_str', 'in_reply_to_screen_name', 'user','geo', 'coordinates', 'place', 'contributors', 'retweeted_status', 'is_quote_status','favorited', 'retweeted', 'extended_entities', 'possibly_sensitive', 'quoted_status_id', 'quoted_status_id_str'], inplace = True)
-# print(df)
-print('---------------------\n')
-print('Dropped\n')
+# #drop extra columns
+# df.drop(columns=['id', 'id_str','truncated','entities','metadata', 'source', 'in_reply_to_status_id', 'in_reply_to_status_id_str', 'in_reply_to_user_id', 'in_reply_to_user_id_str', 'in_reply_to_screen_name', 'user','geo', 'coordinates', 'place', 'contributors', 'retweeted_status', 'is_quote_status','favorited', 'retweeted', 'extended_entities', 'possibly_sensitive', 'quoted_status_id', 'quoted_status_id_str'], inplace = True)
+# # print(df)
+# print('---------------------\n')
+# print('Dropped\n')
 
 #remove links
-df['text'] = df['text'].str.replace(r'http\S+|www.\S+', '', case=False)
+df['Tweets'] = df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
 # print(df['text'])
 print('---------------------\n')
 print('Links Removed\n')
@@ -37,6 +37,11 @@ df['Tweets'].replace('    ',np.nan,inplace=True)
 df.dropna(axis = 0, how = 'any', inplace = True)
 print(df.head(10))
 
+# Remove Special Characters 
+
+df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
+print('Special Characters Removed')
+
 #Removal of Trailing White Spaces
 dfframe = df['Tweets'].to_frame()
 dflist = df['Tweets'].tolist()
@@ -44,82 +49,14 @@ dflist = df['Tweets'].tolist()
 dftweet2 = df['Tweets'].str.strip()
 df2 = dftweet2.to_frame()
 
-#tokenize
-tokenizer = RegexpTokenizer(r'\w+')
-df['text'] = df['text'].apply(lambda x : tokenizer.tokenize(x))
-print(df['text'])
-print('Tokenized\n')
 
-#Translate to english
-dftextlist = df['text'].tolist()
-print('---------------------\n')
-print('Text Read!\n')
-print('---------------------\n')
-print('Data type is: ' ,type(dftextlist))
-print('---------------------\n')
-print(len(dftextlist))
-print('---------------------\n')
-
-i = 0
-
-for i in range (100):
-    translated = []
-    print(dftextlist[i])
-
-    for value in translated:
-
-        print(value.origin) 
-        print('hehe')
-
-        df = pd.DataFrame(value.origin)
-
-df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Translate.csv', sep=',', index = False, header = True)
+# #tokenize
+# tokenizer = RegexpTokenizer(r'\w+')
+# df['Tweets'] = df['Tweets'].apply(lambda x : tokenizer.tokenize(x))
+# print(df['Tweets'])
+# print('Tokenized\n')
 
 
-    # translated.append(translator.translate(dftextlist[i], dest='en'))
-    
+df.to_csv('C:/Users/jiajie25/get_tweets/CSV/New/Cleanse/September2019Cleanse.csv', sep=',', index = False, header = True)
 
 
-# print(len(text))
-
-# translated = (translator.translate(text[0]))
-
-# for object in translated:
-#     print(object.text)
-#     print('Translated\n')
-
-
-# print(loop.run_until_complete(translator.translate(text)))
-
-
-
-
-
-# #remove stopwords
-# def remove_stopwords(text):
-#     words = [x for x in text if x not in stopwords.words('english')]
-#     return words
-
-# df['text'] = df['text'].apply(lambda x: remove_stopwords(x))
-# print(df['text'])
-# print('Stopwords Removed\n')
-
-# #write back to csv file
-# pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:\\Users\\jiajie25\\get_tweets\\TwitterKeywordCleansed.csv')
-# print('Cleansed\nWritten')
-
-
-#Translate data
-# dftext = df['text']
-# print(type(dftext))
-# trans = df.values.tolist()
-# print(trans)
-
-# translations = translator.translate(trans, dest='en')
-
-# print(translations)
-
-
-# df['English'] = dftext.apply(translator.translate, src='ko', dest='en').apply(getattr, args=('text',))
-# translations = translator.translate(trans, dest='en')
-# print(translations)
