@@ -6,7 +6,8 @@ pd.options.display.max_rows = 999999
 
 datafile = input('What CSV do you want to conduct analysis one? ')
 
-df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datafile +'Cleanse.csv', names=["User", "Date", "Tweets"])
+# df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Format/Cleanse/' + datafile +'Cleanse.csv', names=["Tweets", "Date"])
+df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Relevant/' + datafile + 'Relevant.csv')
 
 df = df['Tweets']
 print(type(df))
@@ -61,10 +62,10 @@ df = pd.concat([df1, df2], axis=1)
 df.drop(columns=['compound'], inplace = True)
 
 print(len(df))
-pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/'+ datafile +'SentimentAll.csv')
-pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentPositive.csv')
-pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentNegative.csv')
-pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/' + datafile + 'SentimentNeutral.csv')
+pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/'+ datafile +'SentimentAll.csv')
+# pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/2019/' + datafile + '/'+ datafile + 'SentimentPositive.csv')
+# pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/2019/' + datafile + '/'+ datafile + 'SentimentNegative.csv')
+# pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/2019/'+ datafile + '/' + datafile + 'SentimentNeutral.csv')
 print('Wrote!')
 
 # positive = []
