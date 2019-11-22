@@ -5,7 +5,8 @@ from dateutil.tz import tzutc
 import datefinder
 from datetime import datetime
 
-df = pd.read_csv('C:/Users/jiajie25/get_tweets/CSV/October2019.csv')
+datafile = input('Which DataSet do you want to Format ? ')
+df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Keywords/' + datafile + '.csv')
 
 # print(type(df))
 
@@ -26,5 +27,5 @@ print(dfdate)
 final = pd.concat([df,dfdate],axis=1)
 print(final)
 
-final.to_csv('C:/Users/jiajie25/get_tweets/CSV/New/NewOctober2019.csv')
+final.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Keywords/Format/New' + datafile + '.csv')
 print('Written')
