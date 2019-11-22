@@ -11,642 +11,6 @@
     <preference name='ui.shelf.height' value='26' />
   </preferences>
   <datasources>
-    <datasource caption='techradar' inline='true' name='federated.0nv2k530nk6z9j19j2zh91qoq8ty' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='techradarSentimentAll' name='textscan.1wfuo9a1gjz3vc1c1ieh81il9lkf'>
-            <connection class='textscan' directory='C:/Users/jiajie25/Desktop/Tableau Data/CSV/SentimentAnalysis/techradar' filename='techradarSentimentAll.csv' password='' server='' />
-          </named-connection>
-          <named-connection caption='techradarRelevant' name='textscan.1im68aw0fuw1zx1bdodmm15k5zn8'>
-            <connection class='textscan' directory='C:/Users/jiajie25/Desktop/Tableau Data/CSV/Relevant' filename='techradarRelevant.csv' password='' server='' />
-          </named-connection>
-        </named-connections>
-        <relation join='inner' type='join'>
-          <clause type='join'>
-            <expression op='='>
-              <expression op='[techradarRelevant.csv].[F1]' />
-              <expression op='[techradarSentimentAll.csv].[F1]' />
-            </expression>
-          </clause>
-          <relation connection='textscan.1im68aw0fuw1zx1bdodmm15k5zn8' name='techradarRelevant.csv' table='[techradarRelevant#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
-              <column datatype='integer' name='F1' ordinal='0' />
-              <column datatype='string' name='User' ordinal='1' />
-              <column datatype='datetime' name='Date' ordinal='2' />
-              <column datatype='string' name='Tweets' ordinal='3' />
-            </columns>
-          </relation>
-          <relation connection='textscan.1wfuo9a1gjz3vc1c1ieh81il9lkf' name='techradarSentimentAll.csv' table='[techradarSentimentAll#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
-              <column datatype='integer' name='F1' ordinal='0' />
-              <column datatype='string' name='0' ordinal='1' />
-              <column datatype='real' name='neg' ordinal='2' />
-              <column datatype='real' name='neu' ordinal='3' />
-              <column datatype='real' name='pos' ordinal='4' />
-            </columns>
-          </relation>
-        </relation>
-        <cols>
-          <map key='[0]' value='[techradarSentimentAll.csv].[0]' />
-          <map key='[Date]' value='[techradarRelevant.csv].[Date]' />
-          <map key='[F1 (techradarSentimentAll.csv)]' value='[techradarSentimentAll.csv].[F1]' />
-          <map key='[F1]' value='[techradarRelevant.csv].[F1]' />
-          <map key='[Tweets]' value='[techradarRelevant.csv].[Tweets]' />
-          <map key='[User]' value='[techradarRelevant.csv].[User]' />
-          <map key='[neg]' value='[techradarSentimentAll.csv].[neg]' />
-          <map key='[neu]' value='[techradarSentimentAll.csv].[neu]' />
-          <map key='[pos]' value='[techradarSentimentAll.csv].[pos]' />
-        </cols>
-        <metadata-records>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[techradarRelevant.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>F1</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[F1]</local-name>
-            <parent-name>[techradarRelevant.csv]</parent-name>
-            <remote-alias>F1</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>User</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[User]</local-name>
-            <parent-name>[techradarRelevant.csv]</parent-name>
-            <remote-alias>User</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Date</remote-name>
-            <remote-type>135</remote-type>
-            <local-name>[Date]</local-name>
-            <parent-name>[techradarRelevant.csv]</parent-name>
-            <remote-alias>Date</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>datetime</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Tweets</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[Tweets]</local-name>
-            <parent-name>[techradarRelevant.csv]</parent-name>
-            <remote-alias>Tweets</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[techradarSentimentAll.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>F1</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[F1 (techradarSentimentAll.csv)]</local-name>
-            <parent-name>[techradarSentimentAll.csv]</parent-name>
-            <remote-alias>F1</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>0</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[0]</local-name>
-            <parent-name>[techradarSentimentAll.csv]</parent-name>
-            <remote-alias>0</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>neg</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[neg]</local-name>
-            <parent-name>[techradarSentimentAll.csv]</parent-name>
-            <remote-alias>neg</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>neu</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[neu]</local-name>
-            <parent-name>[techradarSentimentAll.csv]</parent-name>
-            <remote-alias>neu</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>pos</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[pos]</local-name>
-            <parent-name>[techradarSentimentAll.csv]</parent-name>
-            <remote-alias>pos</remote-alias>
-            <ordinal>8</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-        <calculation class='tableau' formula='1' />
-      </column>
-      <layout dim-ordering='alphabetic' dim-percentage='0.453362' measure-ordering='alphabetic' measure-percentage='0.546638' show-structure='true' />
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
-      </semantic-values>
-    </datasource>
-    <datasource caption='vergeRelevant.csv+ (Multiple Connections)' inline='true' name='federated.0ozc5kc0ieqmtt13jftvp0yxf9sj' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='vergeRelevant' name='textscan.05060w40dv6ae0195tut10sqt4fs'>
-            <connection class='textscan' directory='C:/Users/jiajie25/Desktop/Tableau Data/CSV/Relevant' filename='vergeRelevant.csv' password='' server='' />
-          </named-connection>
-          <named-connection caption='vergeSentimentAll' name='textscan.10g15nq1d0ji24132qxpn0ym5d9o'>
-            <connection class='textscan' directory='C:/Users/jiajie25/Desktop/Tableau Data/CSV/SentimentAnalysis/verge' filename='vergeSentimentAll.csv' password='' server='' />
-          </named-connection>
-        </named-connections>
-        <relation join='inner' type='join'>
-          <clause type='join'>
-            <expression op='='>
-              <expression op='[vergeRelevant.csv].[F1]' />
-              <expression op='[vergeSentimentAll.csv].[F1]' />
-            </expression>
-          </clause>
-          <relation connection='textscan.05060w40dv6ae0195tut10sqt4fs' name='vergeRelevant.csv' table='[vergeRelevant#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
-              <column datatype='integer' name='F1' ordinal='0' />
-              <column datatype='string' name='User' ordinal='1' />
-              <column datatype='datetime' name='Date' ordinal='2' />
-              <column datatype='string' name='Tweets' ordinal='3' />
-            </columns>
-          </relation>
-          <relation connection='textscan.10g15nq1d0ji24132qxpn0ym5d9o' name='vergeSentimentAll.csv' table='[vergeSentimentAll#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
-              <column datatype='integer' name='F1' ordinal='0' />
-              <column datatype='string' name='0' ordinal='1' />
-              <column datatype='real' name='neg' ordinal='2' />
-              <column datatype='real' name='neu' ordinal='3' />
-              <column datatype='real' name='pos' ordinal='4' />
-            </columns>
-          </relation>
-        </relation>
-        <cols>
-          <map key='[0]' value='[vergeSentimentAll.csv].[0]' />
-          <map key='[Date]' value='[vergeRelevant.csv].[Date]' />
-          <map key='[F1 (vergeSentimentAll.csv)]' value='[vergeSentimentAll.csv].[F1]' />
-          <map key='[F1]' value='[vergeRelevant.csv].[F1]' />
-          <map key='[Tweets]' value='[vergeRelevant.csv].[Tweets]' />
-          <map key='[User]' value='[vergeRelevant.csv].[User]' />
-          <map key='[neg]' value='[vergeSentimentAll.csv].[neg]' />
-          <map key='[neu]' value='[vergeSentimentAll.csv].[neu]' />
-          <map key='[pos]' value='[vergeSentimentAll.csv].[pos]' />
-        </cols>
-        <metadata-records>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[vergeRelevant.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>F1</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[F1]</local-name>
-            <parent-name>[vergeRelevant.csv]</parent-name>
-            <remote-alias>F1</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>User</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[User]</local-name>
-            <parent-name>[vergeRelevant.csv]</parent-name>
-            <remote-alias>User</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Date</remote-name>
-            <remote-type>135</remote-type>
-            <local-name>[Date]</local-name>
-            <parent-name>[vergeRelevant.csv]</parent-name>
-            <remote-alias>Date</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>datetime</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Tweets</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[Tweets]</local-name>
-            <parent-name>[vergeRelevant.csv]</parent-name>
-            <remote-alias>Tweets</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[vergeSentimentAll.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>F1</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[F1 (vergeSentimentAll.csv)]</local-name>
-            <parent-name>[vergeSentimentAll.csv]</parent-name>
-            <remote-alias>F1</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>0</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[0]</local-name>
-            <parent-name>[vergeSentimentAll.csv]</parent-name>
-            <remote-alias>0</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>neg</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[neg]</local-name>
-            <parent-name>[vergeSentimentAll.csv]</parent-name>
-            <remote-alias>neg</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>neu</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[neu]</local-name>
-            <parent-name>[vergeSentimentAll.csv]</parent-name>
-            <remote-alias>neu</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>pos</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[pos]</local-name>
-            <parent-name>[vergeSentimentAll.csv]</parent-name>
-            <remote-alias>pos</remote-alias>
-            <ordinal>8</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-        <calculation class='tableau' formula='1' />
-      </column>
-      <layout dim-ordering='alphabetic' dim-percentage='0.455531' measure-ordering='alphabetic' measure-percentage='0.544469' show-structure='true' />
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
-      </semantic-values>
-    </datasource>
-    <datasource caption='BBCTech' inline='true' name='federated.1y5l8sf10jzgrp1dpkm921pc9rxl' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='BBCTechRelevant' name='textscan.0m0td7905y6jvv11pz6jh1wjyx26'>
-            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/Relevant' filename='BBCTechRelevant.csv' password='' server='' />
-          </named-connection>
-          <named-connection caption='BBCTechSentimentAll' name='textscan.11af1uo14hmfv516a9yuq1vgl4ud'>
-            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/SentimentAnalysis/BBCTech' filename='BBCTechSentimentAll.csv' password='' server='' />
-          </named-connection>
-        </named-connections>
-        <relation join='inner' type='join'>
-          <clause type='join'>
-            <expression op='='>
-              <expression op='[BBCTechSentimentAll.csv].[F1]' />
-              <expression op='[BBCTechRelevant.csv].[F1]' />
-            </expression>
-          </clause>
-          <relation connection='textscan.11af1uo14hmfv516a9yuq1vgl4ud' name='BBCTechSentimentAll.csv' table='[BBCTechSentimentAll#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
-              <column datatype='integer' name='F1' ordinal='0' />
-              <column datatype='string' name='0' ordinal='1' />
-              <column datatype='real' name='neg' ordinal='2' />
-              <column datatype='real' name='neu' ordinal='3' />
-              <column datatype='real' name='pos' ordinal='4' />
-            </columns>
-          </relation>
-          <relation connection='textscan.0m0td7905y6jvv11pz6jh1wjyx26' name='BBCTechRelevant.csv' table='[BBCTechRelevant#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
-              <column datatype='integer' name='F1' ordinal='0' />
-              <column datatype='string' name='User' ordinal='1' />
-              <column datatype='datetime' name='Date' ordinal='2' />
-              <column datatype='string' name='Tweets' ordinal='3' />
-            </columns>
-          </relation>
-        </relation>
-        <cols>
-          <map key='[0]' value='[BBCTechSentimentAll.csv].[0]' />
-          <map key='[Date]' value='[BBCTechRelevant.csv].[Date]' />
-          <map key='[F1 (BBCTechRelevant.csv)]' value='[BBCTechRelevant.csv].[F1]' />
-          <map key='[F1]' value='[BBCTechSentimentAll.csv].[F1]' />
-          <map key='[Tweets]' value='[BBCTechRelevant.csv].[Tweets]' />
-          <map key='[User]' value='[BBCTechRelevant.csv].[User]' />
-          <map key='[neg]' value='[BBCTechSentimentAll.csv].[neg]' />
-          <map key='[neu]' value='[BBCTechSentimentAll.csv].[neu]' />
-          <map key='[pos]' value='[BBCTechSentimentAll.csv].[pos]' />
-        </cols>
-        <metadata-records>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>F1</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[F1]</local-name>
-            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
-            <remote-alias>F1</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>0</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[0]</local-name>
-            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
-            <remote-alias>0</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>neg</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[neg]</local-name>
-            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
-            <remote-alias>neg</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>neu</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[neu]</local-name>
-            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
-            <remote-alias>neu</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>pos</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[pos]</local-name>
-            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
-            <remote-alias>pos</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[BBCTechRelevant.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>F1</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[F1 (BBCTechRelevant.csv)]</local-name>
-            <parent-name>[BBCTechRelevant.csv]</parent-name>
-            <remote-alias>F1</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>User</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[User]</local-name>
-            <parent-name>[BBCTechRelevant.csv]</parent-name>
-            <remote-alias>User</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Date</remote-name>
-            <remote-type>135</remote-type>
-            <local-name>[Date]</local-name>
-            <parent-name>[BBCTechRelevant.csv]</parent-name>
-            <remote-alias>Date</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>datetime</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Tweets</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[Tweets]</local-name>
-            <parent-name>[BBCTechRelevant.csv]</parent-name>
-            <remote-alias>Tweets</remote-alias>
-            <ordinal>8</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <aliases enabled='yes' />
-      <column aggregation='None' caption='Number of Records (bin)' datatype='integer' name='[Number of Records (bin)]' role='dimension' type='ordinal'>
-        <calculation class='bin' decimals='0' formula='[Number of Records]' peg='0' size='1' />
-      </column>
-      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-        <calculation class='tableau' formula='1' />
-      </column>
-      <column aggregation='None' caption='neg (bin)' datatype='integer' name='[neg (bin)]' role='dimension' type='ordinal'>
-        <calculation class='bin' decimals='-4' formula='[neg]' peg='0' size='0.0517' />
-      </column>
-      <column datatype='real' name='[neg]' role='measure' type='quantitative' />
-      <column aggregation='None' caption='neu (bin)' datatype='integer' name='[neu (bin)]' role='dimension' type='ordinal'>
-        <calculation class='bin' decimals='-4' formula='[neu]' peg='0' size='0.0586' />
-      </column>
-      <column datatype='real' name='[neu]' role='measure' type='quantitative' />
-      <column aggregation='None' caption='pos (bin)' datatype='integer' name='[pos (bin)]' role='dimension' type='ordinal'>
-        <calculation class='bin' decimals='-3' formula='[pos]' peg='0' size='0.041' />
-      </column>
-      <column datatype='real' name='[pos]' role='measure' type='quantitative' />
-      <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
-      <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.546961' measure-ordering='alphabetic' measure-percentage='0.453039' show-hidden-fields='true' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[:Measure Names]' type='palette'>
-            <map to='#4e79a7'>
-              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[sum:neg:qk]&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;[federated.1fmkf7v1bol5zh16til2g11giz42].[sum:pos:qk]&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;[federated.1fmkf7v1bol5zh16til2g11giz42].[sum:neg:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[sum:pos:qk]&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
-      </semantic-values>
-      <datasource-dependencies datasource='federated.1fmkf7v1bol5zh16til2g11giz42'>
-        <column datatype='real' name='[neg]' role='measure' type='quantitative' />
-        <column datatype='real' name='[pos]' role='measure' type='quantitative' />
-        <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
-        <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
-      </datasource-dependencies>
-    </datasource>
     <datasource caption='droid_life' inline='true' name='federated.1fmkf7v1bol5zh16til2g11giz42' version='18.1'>
       <connection class='federated'>
         <named-connections>
@@ -1043,7 +407,7 @@
       <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
       <column-instance column='[neu]' derivation='Sum' name='[sum:neu:qk]' pivot='key' type='quantitative' />
       <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.443831' measure-ordering='alphabetic' measure-percentage='0.556169' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.445205' measure-ordering='alphabetic' measure-percentage='0.554795' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
@@ -1258,7 +622,7 @@
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
-      <layout dim-ordering='alphabetic' dim-percentage='0.443831' measure-ordering='alphabetic' measure-percentage='0.556169' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.445205' measure-ordering='alphabetic' measure-percentage='0.554795' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
       </semantic-values>
@@ -1481,6 +845,1432 @@
         <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
       </semantic-values>
     </datasource>
+    <datasource caption='techradar' inline='true' name='federated.0nv2k530nk6z9j19j2zh91qoq8ty' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='techradarSentimentAll' name='textscan.1wfuo9a1gjz3vc1c1ieh81il9lkf'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/SentimentAnalysis/techradar' filename='techradarSentimentAll.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='techradarRelevant' name='textscan.1im68aw0fuw1zx1bdodmm15k5zn8'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/Relevant' filename='techradarRelevant.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[techradarRelevant.csv].[F1]' />
+              <expression op='[techradarSentimentAll.csv].[F1]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1im68aw0fuw1zx1bdodmm15k5zn8' name='techradarRelevant.csv' table='[techradarRelevant#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='User' ordinal='1' />
+              <column datatype='datetime' name='Date' ordinal='2' />
+              <column datatype='string' name='Tweets' ordinal='3' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1wfuo9a1gjz3vc1c1ieh81il9lkf' name='techradarSentimentAll.csv' table='[techradarSentimentAll#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='0' ordinal='1' />
+              <column datatype='real' name='neg' ordinal='2' />
+              <column datatype='real' name='neu' ordinal='3' />
+              <column datatype='real' name='pos' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[0]' value='[techradarSentimentAll.csv].[0]' />
+          <map key='[Date]' value='[techradarRelevant.csv].[Date]' />
+          <map key='[F1 (techradarSentimentAll.csv)]' value='[techradarSentimentAll.csv].[F1]' />
+          <map key='[F1]' value='[techradarRelevant.csv].[F1]' />
+          <map key='[Tweets]' value='[techradarRelevant.csv].[Tweets]' />
+          <map key='[User]' value='[techradarRelevant.csv].[User]' />
+          <map key='[neg]' value='[techradarSentimentAll.csv].[neg]' />
+          <map key='[neu]' value='[techradarSentimentAll.csv].[neu]' />
+          <map key='[pos]' value='[techradarSentimentAll.csv].[pos]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[techradarRelevant.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[techradarRelevant.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>User</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[User]</local-name>
+            <parent-name>[techradarRelevant.csv]</parent-name>
+            <remote-alias>User</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[techradarRelevant.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tweets</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Tweets]</local-name>
+            <parent-name>[techradarRelevant.csv]</parent-name>
+            <remote-alias>Tweets</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[techradarSentimentAll.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (techradarSentimentAll.csv)]</local-name>
+            <parent-name>[techradarSentimentAll.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>0</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[0]</local-name>
+            <parent-name>[techradarSentimentAll.csv]</parent-name>
+            <remote-alias>0</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neg]</local-name>
+            <parent-name>[techradarSentimentAll.csv]</parent-name>
+            <remote-alias>neg</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neu</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neu]</local-name>
+            <parent-name>[techradarSentimentAll.csv]</parent-name>
+            <remote-alias>neu</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pos</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pos]</local-name>
+            <parent-name>[techradarSentimentAll.csv]</parent-name>
+            <remote-alias>pos</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.441989' measure-ordering='alphabetic' measure-percentage='0.558011' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='vergeRelevant.csv+ (Multiple Connections)' inline='true' name='federated.0ozc5kc0ieqmtt13jftvp0yxf9sj' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='vergeRelevant' name='textscan.05060w40dv6ae0195tut10sqt4fs'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/Relevant' filename='vergeRelevant.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='vergeSentimentAll' name='textscan.10g15nq1d0ji24132qxpn0ym5d9o'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/SentimentAnalysis/verge' filename='vergeSentimentAll.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[vergeRelevant.csv].[F1]' />
+              <expression op='[vergeSentimentAll.csv].[F1]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.05060w40dv6ae0195tut10sqt4fs' name='vergeRelevant.csv' table='[vergeRelevant#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='User' ordinal='1' />
+              <column datatype='datetime' name='Date' ordinal='2' />
+              <column datatype='string' name='Tweets' ordinal='3' />
+            </columns>
+          </relation>
+          <relation connection='textscan.10g15nq1d0ji24132qxpn0ym5d9o' name='vergeSentimentAll.csv' table='[vergeSentimentAll#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='0' ordinal='1' />
+              <column datatype='real' name='neg' ordinal='2' />
+              <column datatype='real' name='neu' ordinal='3' />
+              <column datatype='real' name='pos' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[0]' value='[vergeSentimentAll.csv].[0]' />
+          <map key='[Date]' value='[vergeRelevant.csv].[Date]' />
+          <map key='[F1 (vergeSentimentAll.csv)]' value='[vergeSentimentAll.csv].[F1]' />
+          <map key='[F1]' value='[vergeRelevant.csv].[F1]' />
+          <map key='[Tweets]' value='[vergeRelevant.csv].[Tweets]' />
+          <map key='[User]' value='[vergeRelevant.csv].[User]' />
+          <map key='[neg]' value='[vergeSentimentAll.csv].[neg]' />
+          <map key='[neu]' value='[vergeSentimentAll.csv].[neu]' />
+          <map key='[pos]' value='[vergeSentimentAll.csv].[pos]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[vergeRelevant.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[vergeRelevant.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>User</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[User]</local-name>
+            <parent-name>[vergeRelevant.csv]</parent-name>
+            <remote-alias>User</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[vergeRelevant.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tweets</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Tweets]</local-name>
+            <parent-name>[vergeRelevant.csv]</parent-name>
+            <remote-alias>Tweets</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[vergeSentimentAll.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (vergeSentimentAll.csv)]</local-name>
+            <parent-name>[vergeSentimentAll.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>0</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[0]</local-name>
+            <parent-name>[vergeSentimentAll.csv]</parent-name>
+            <remote-alias>0</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neg]</local-name>
+            <parent-name>[vergeSentimentAll.csv]</parent-name>
+            <remote-alias>neg</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neu</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neu]</local-name>
+            <parent-name>[vergeSentimentAll.csv]</parent-name>
+            <remote-alias>neu</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pos</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pos]</local-name>
+            <parent-name>[vergeSentimentAll.csv]</parent-name>
+            <remote-alias>pos</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.441989' measure-ordering='alphabetic' measure-percentage='0.558011' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='BBCTech' inline='true' name='federated.1y5l8sf10jzgrp1dpkm921pc9rxl' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='BBCTechRelevant' name='textscan.0m0td7905y6jvv11pz6jh1wjyx26'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/Relevant' filename='BBCTechRelevant.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='BBCTechSentimentAll' name='textscan.11af1uo14hmfv516a9yuq1vgl4ud'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/SentimentAnalysis/BBCTech' filename='BBCTechSentimentAll.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[BBCTechSentimentAll.csv].[F1]' />
+              <expression op='[BBCTechSentimentNegative.csv].[F1]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[BBCTechSentimentAll.csv].[F1]' />
+                <expression op='[BBCTechSentimentNeutral.csv].[F1]' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[BBCTechSentimentAll.csv].[F1]' />
+                  <expression op='[BBCTechSentimentPositive.csv].[F1]' />
+                </expression>
+              </clause>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[BBCTechSentimentAll.csv].[F1]' />
+                    <expression op='[BBCTechRelevant.csv].[F1]' />
+                  </expression>
+                </clause>
+                <relation connection='textscan.11af1uo14hmfv516a9yuq1vgl4ud' name='BBCTechSentimentAll.csv' table='[BBCTechSentimentAll#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+                    <column datatype='integer' name='F1' ordinal='0' />
+                    <column datatype='string' name='0' ordinal='1' />
+                    <column datatype='real' name='neg' ordinal='2' />
+                    <column datatype='real' name='neu' ordinal='3' />
+                    <column datatype='real' name='pos' ordinal='4' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.0m0td7905y6jvv11pz6jh1wjyx26' name='BBCTechRelevant.csv' table='[BBCTechRelevant#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+                    <column datatype='integer' name='F1' ordinal='0' />
+                    <column datatype='string' name='User' ordinal='1' />
+                    <column datatype='datetime' name='Date' ordinal='2' />
+                    <column datatype='string' name='Tweets' ordinal='3' />
+                  </columns>
+                </relation>
+              </relation>
+              <relation connection='textscan.11af1uo14hmfv516a9yuq1vgl4ud' name='BBCTechSentimentPositive.csv' table='[BBCTechSentimentPositive#csv]' type='table'>
+                <columns character-set='UTF-8' header='no' locale='en_US' separator=','>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='string' name='F2' ordinal='1' />
+                  <column datatype='string' name='F3' ordinal='2' />
+                </columns>
+              </relation>
+            </relation>
+            <relation connection='textscan.11af1uo14hmfv516a9yuq1vgl4ud' name='BBCTechSentimentNeutral.csv' table='[BBCTechSentimentNeutral#csv]' type='table'>
+              <columns character-set='UTF-8' header='no' locale='en_US' separator=','>
+                <column datatype='integer' name='F1' ordinal='0' />
+                <column datatype='string' name='F2' ordinal='1' />
+                <column datatype='string' name='F3' ordinal='2' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.11af1uo14hmfv516a9yuq1vgl4ud' name='BBCTechSentimentNegative.csv' table='[BBCTechSentimentNegative#csv]' type='table'>
+            <columns character-set='UTF-8' header='no' locale='en_US' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='F2' ordinal='1' />
+              <column datatype='string' name='F3' ordinal='2' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[0]' value='[BBCTechSentimentAll.csv].[0]' />
+          <map key='[Date]' value='[BBCTechRelevant.csv].[Date]' />
+          <map key='[F1 (BBCTechRelevant.csv)]' value='[BBCTechRelevant.csv].[F1]' />
+          <map key='[F1 (BBCTechSentimentNegative.csv)]' value='[BBCTechSentimentNegative.csv].[F1]' />
+          <map key='[F1 (BBCTechSentimentNeutral.csv)]' value='[BBCTechSentimentNeutral.csv].[F1]' />
+          <map key='[F1 (BBCTechSentimentPositive.csv)]' value='[BBCTechSentimentPositive.csv].[F1]' />
+          <map key='[F1]' value='[BBCTechSentimentAll.csv].[F1]' />
+          <map key='[F2 (BBCTechSentimentNegative.csv)]' value='[BBCTechSentimentNegative.csv].[F2]' />
+          <map key='[F2 (BBCTechSentimentNeutral.csv)]' value='[BBCTechSentimentNeutral.csv].[F2]' />
+          <map key='[F2]' value='[BBCTechSentimentPositive.csv].[F2]' />
+          <map key='[F3 (BBCTechSentimentNegative.csv)]' value='[BBCTechSentimentNegative.csv].[F3]' />
+          <map key='[F3 (BBCTechSentimentNeutral.csv)]' value='[BBCTechSentimentNeutral.csv].[F3]' />
+          <map key='[F3]' value='[BBCTechSentimentPositive.csv].[F3]' />
+          <map key='[Tweets]' value='[BBCTechRelevant.csv].[Tweets]' />
+          <map key='[User]' value='[BBCTechRelevant.csv].[User]' />
+          <map key='[neg]' value='[BBCTechSentimentAll.csv].[neg]' />
+          <map key='[neu]' value='[BBCTechSentimentAll.csv].[neu]' />
+          <map key='[pos]' value='[BBCTechSentimentAll.csv].[pos]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>0</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[0]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>0</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neg]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>neg</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neu</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neu]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>neu</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pos</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pos]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>pos</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechRelevant.csv)]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>User</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[User]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>User</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tweets</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Tweets]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>Tweets</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;false&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentPositive.csv)]</local-name>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F2]</local-name>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F3]</local-name>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias>F3</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;false&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentNeutral.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F2 (BBCTechSentimentNeutral.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F3 (BBCTechSentimentNeutral.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias>F3</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;false&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentNegative.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F2 (BBCTechSentimentNegative.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F3 (BBCTechSentimentNegative.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias>F3</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column aggregation='None' caption='Number of Records (bin)' datatype='integer' name='[Number of Records (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='0' formula='[Number of Records]' peg='0' size='1' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='None' caption='neg (bin)' datatype='integer' name='[neg (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-4' formula='[neg]' peg='0' size='0.0517' />
+      </column>
+      <column datatype='real' name='[neg]' role='measure' type='quantitative' />
+      <column aggregation='None' caption='neu (bin)' datatype='integer' name='[neu (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-4' formula='[neu]' peg='0' size='0.0586' />
+      </column>
+      <column datatype='real' name='[neu]' role='measure' type='quantitative' />
+      <column aggregation='None' caption='pos (bin)' datatype='integer' name='[pos (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-3' formula='[pos]' peg='0' size='0.041' />
+      </column>
+      <column datatype='real' name='[pos]' role='measure' type='quantitative' />
+      <column-instance column='[neg]' derivation='Avg' name='[avg:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='Avg' name='[avg:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='Avg' name='[avg:pos:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neg]' derivation='Count' name='[cnt:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='Count' name='[cnt:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='Count' name='[cnt:pos:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neg]' derivation='CountD' name='[ctd:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='CountD' name='[ctd:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='CountD' name='[ctd:pos:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='Sum' name='[sum:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.548957' measure-ordering='alphabetic' measure-percentage='0.451043' show-hidden-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[avg:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[cnt:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[ctd:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[sum:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1fmkf7v1bol5zh16til2g11giz42].[sum:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1fmkf7v1bol5zh16til2g11giz42].[sum:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[sum:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[avg:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[cnt:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[ctd:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[sum:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[avg:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[cnt:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[ctd:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1y5l8sf10jzgrp1dpkm921pc9rxl].[sum:pos:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='federated.1fmkf7v1bol5zh16til2g11giz42'>
+        <column datatype='real' name='[neg]' role='measure' type='quantitative' />
+        <column datatype='real' name='[pos]' role='measure' type='quantitative' />
+        <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+    </datasource>
+    <datasource caption='hehexd' inline='true' name='federated.07hdgas14r9d6r11k39411noyrvx' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='BBCTechSentimentAll' name='textscan.0zzmq7p0lsplqh1dhsxzp0fbqi32'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/SentimentAnalysis/BBCTech' filename='BBCTechSentimentAll.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='BBCTechRelevant' name='textscan.0g72j2b1ykrxs712ihx7x1df8t0y'>
+            <connection class='textscan' directory='C:/Users/User/Desktop/FYP/FYP/Social Media/Graphs/Dataset/CSV/Relevant' filename='BBCTechRelevant.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[BBCTechRelevant.csv].[F1]' />
+              <expression op='[BBCTechSentimentNeutral.csv].[F1]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[BBCTechRelevant.csv].[F1]' />
+                <expression op='[BBCTechSentimentPositive.csv].[F1]' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[BBCTechRelevant.csv].[F1]' />
+                  <expression op='[BBCTechSentimentNegative.csv].[F1]' />
+                </expression>
+              </clause>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[BBCTechRelevant.csv].[F1]' />
+                    <expression op='[BBCTechSentimentAll.csv].[F1]' />
+                  </expression>
+                </clause>
+                <relation connection='textscan.0g72j2b1ykrxs712ihx7x1df8t0y' name='BBCTechRelevant.csv' table='[BBCTechRelevant#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='integer' name='F1' ordinal='0' />
+                    <column datatype='string' name='User' ordinal='1' />
+                    <column datatype='datetime' name='Date' ordinal='2' />
+                    <column datatype='string' name='Tweets' ordinal='3' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.0zzmq7p0lsplqh1dhsxzp0fbqi32' name='BBCTechSentimentAll.csv' table='[BBCTechSentimentAll#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='integer' name='F1' ordinal='0' />
+                    <column datatype='string' name='0' ordinal='1' />
+                    <column datatype='real' name='neg' ordinal='2' />
+                    <column datatype='real' name='neu' ordinal='3' />
+                    <column datatype='real' name='pos' ordinal='4' />
+                  </columns>
+                </relation>
+              </relation>
+              <relation connection='textscan.0zzmq7p0lsplqh1dhsxzp0fbqi32' name='BBCTechSentimentNegative.csv' table='[BBCTechSentimentNegative#csv]' type='table'>
+                <columns character-set='UTF-8' header='no' locale='en_US' separator=','>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='string' name='F2' ordinal='1' />
+                  <column datatype='string' name='F3' ordinal='2' />
+                </columns>
+              </relation>
+            </relation>
+            <relation connection='textscan.0zzmq7p0lsplqh1dhsxzp0fbqi32' name='BBCTechSentimentPositive.csv' table='[BBCTechSentimentPositive#csv]' type='table'>
+              <columns character-set='UTF-8' header='no' locale='en_US' separator=','>
+                <column datatype='integer' name='F1' ordinal='0' />
+                <column datatype='string' name='F2' ordinal='1' />
+                <column datatype='string' name='F3' ordinal='2' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.0zzmq7p0lsplqh1dhsxzp0fbqi32' name='BBCTechSentimentNeutral.csv' table='[BBCTechSentimentNeutral#csv]' type='table'>
+            <columns character-set='UTF-8' header='no' locale='en_US' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='F2' ordinal='1' />
+              <column datatype='string' name='F3' ordinal='2' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[0]' value='[BBCTechSentimentAll.csv].[0]' />
+          <map key='[Date]' value='[BBCTechRelevant.csv].[Date]' />
+          <map key='[F1 (BBCTechSentimentAll.csv)]' value='[BBCTechSentimentAll.csv].[F1]' />
+          <map key='[F1 (BBCTechSentimentNegative.csv)]' value='[BBCTechSentimentNegative.csv].[F1]' />
+          <map key='[F1 (BBCTechSentimentNeutral.csv)]' value='[BBCTechSentimentNeutral.csv].[F1]' />
+          <map key='[F1 (BBCTechSentimentPositive.csv)]' value='[BBCTechSentimentPositive.csv].[F1]' />
+          <map key='[F1]' value='[BBCTechRelevant.csv].[F1]' />
+          <map key='[F2 (BBCTechSentimentNeutral.csv)]' value='[BBCTechSentimentNeutral.csv].[F2]' />
+          <map key='[F2 (BBCTechSentimentPositive.csv)]' value='[BBCTechSentimentPositive.csv].[F2]' />
+          <map key='[F2]' value='[BBCTechSentimentNegative.csv].[F2]' />
+          <map key='[F3 (BBCTechSentimentNeutral.csv)]' value='[BBCTechSentimentNeutral.csv].[F3]' />
+          <map key='[F3 (BBCTechSentimentPositive.csv)]' value='[BBCTechSentimentPositive.csv].[F3]' />
+          <map key='[F3]' value='[BBCTechSentimentNegative.csv].[F3]' />
+          <map key='[Tweets]' value='[BBCTechRelevant.csv].[Tweets]' />
+          <map key='[User]' value='[BBCTechRelevant.csv].[User]' />
+          <map key='[neg]' value='[BBCTechSentimentAll.csv].[neg]' />
+          <map key='[neu]' value='[BBCTechSentimentAll.csv].[neu]' />
+          <map key='[pos]' value='[BBCTechSentimentAll.csv].[pos]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>User</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[User]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>User</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tweets</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Tweets]</local-name>
+            <parent-name>[BBCTechRelevant.csv]</parent-name>
+            <remote-alias>Tweets</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentAll.csv)]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>0</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[0]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>0</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neg]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>neg</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>neu</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[neu]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>neu</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pos</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pos]</local-name>
+            <parent-name>[BBCTechSentimentAll.csv]</parent-name>
+            <remote-alias>pos</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;false&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentNegative.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F2]</local-name>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F3]</local-name>
+            <parent-name>[BBCTechSentimentNegative.csv]</parent-name>
+            <remote-alias>F3</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;false&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentPositive.csv)]</local-name>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F2 (BBCTechSentimentPositive.csv)]</local-name>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F3 (BBCTechSentimentPositive.csv)]</local-name>
+            <parent-name>[BBCTechSentimentPositive.csv]</parent-name>
+            <remote-alias>F3</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;false&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (BBCTechSentimentNeutral.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F2 (BBCTechSentimentNeutral.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F3 (BBCTechSentimentNeutral.csv)]</local-name>
+            <parent-name>[BBCTechSentimentNeutral.csv]</parent-name>
+            <remote-alias>F3</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[F1 (BBCTechSentimentAll.csv)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[F1 (BBCTechSentimentNegative.csv)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[F1 (BBCTechSentimentNeutral.csv)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[F1 (BBCTechSentimentPositive.csv)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[F1]' role='measure' type='quantitative' />
+      <column aggregation='None' caption='Number of Records (bin)' datatype='integer' name='[Number of Records (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='0' formula='[Number of Records]' peg='0' size='1' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='real' name='[neg]' role='measure' type='quantitative' />
+      <column caption='Neu' datatype='real' name='[neu]' role='measure' type='quantitative' />
+      <column caption='Pos' datatype='real' name='[pos]' role='measure' type='quantitative' />
+      <column-instance column='[F1 (BBCTechSentimentAll.csv)]' derivation='Attribute' name='[attr:F1 (BBCTechSentimentAll.csv):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1]' derivation='Attribute' name='[attr:F1:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='Attribute' name='[attr:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neg]' derivation='Attribute' name='[attr:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='Attribute' name='[attr:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='Attribute' name='[attr:pos:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1 (BBCTechSentimentNegative.csv)]' derivation='Count' name='[cnt:F1 (BBCTechSentimentNegative.csv):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='Count' name='[cnt:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neg]' derivation='Count' name='[cnt:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='Count' name='[cnt:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='Count' name='[cnt:pos:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='CountD' name='[ctd:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1 (BBCTechSentimentAll.csv)]' derivation='Sum' name='[sum:F1 (BBCTechSentimentAll.csv):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1 (BBCTechSentimentNegative.csv)]' derivation='Sum' name='[sum:F1 (BBCTechSentimentNegative.csv):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1 (BBCTechSentimentNeutral.csv)]' derivation='Sum' name='[sum:F1 (BBCTechSentimentNeutral.csv):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1 (BBCTechSentimentPositive.csv)]' derivation='Sum' name='[sum:F1 (BBCTechSentimentPositive.csv):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[F1]' derivation='Sum' name='[sum:F1:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[neu]' derivation='Sum' name='[sum:neu:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.253612' measure-ordering='alphabetic' measure-percentage='0.746388' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:F1 (BBCTechSentimentNegative.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:F1 (BBCTechSentimentNegative.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[attr:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[attr:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:neg:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[attr:F1:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:F1:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[attr:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:neu:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:F1 (BBCTechSentimentPositive.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:F1 (BBCTechSentimentPositive.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[attr:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[ctd:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:pos:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[cnt:F1 (BBCTechSentimentNeutral.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:F1 (BBCTechSentimentNeutral.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[attr:F1 (BBCTechSentimentAll.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:F1 (BBCTechSentimentAll.csv):qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
   </datasources>
   <worksheets>
     <worksheet name='BBtech Sentiment Line'>
@@ -1681,6 +2471,41 @@
         <cols>[federated.07abjrc1vealdi1d1hod81lqjx84].[mn:Date:qk]</cols>
       </table>
       <simple-id uuid='{69F5B7F5-36B9-4914-ADEC-1F86770142B7}' />
+    </worksheet>
+    <worksheet name='Sheet 8'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='hehexd' name='federated.07hdgas14r9d6r11k39411noyrvx' />
+          </datasources>
+          <datasource-dependencies datasource='federated.07hdgas14r9d6r11k39411noyrvx'>
+            <column datatype='datetime' name='[Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column datatype='real' name='[neg]' role='measure' type='quantitative' />
+            <column caption='Neu' datatype='real' name='[neu]' role='measure' type='quantitative' />
+            <column caption='Pos' datatype='real' name='[pos]' role='measure' type='quantitative' />
+            <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[neu]' derivation='Sum' name='[sum:neu:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.07hdgas14r9d6r11k39411noyrvx].[sum:pos:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.07hdgas14r9d6r11k39411noyrvx].[sum:neg:qk]</rows>
+        <cols>([federated.07hdgas14r9d6r11k39411noyrvx].[mn:Date:ok] * [federated.07hdgas14r9d6r11k39411noyrvx].[sum:neu:qk])</cols>
+      </table>
+      <simple-id uuid='{AF5DED11-B92F-47C2-A990-9E0233A4EC9E}' />
     </worksheet>
     <worksheet name='Tech2eets Sentiment Line'>
       <table>
@@ -1915,7 +2740,7 @@
       <simple-id uuid='{64ABA5C0-2A7D-4DE9-B7FA-A08565B28930}' />
     </worksheet>
   </worksheets>
-  <windows source-height='156'>
+  <windows saved-dpi-scale-factor='1.5' source-height='76'>
     <window class='worksheet' name='BBtech Sentiment Line'>
       <cards>
         <edge name='left'>
@@ -1943,6 +2768,34 @@
         </edge>
       </cards>
       <simple-id uuid='{C235BF31-B998-4507-9D16-1B3814619A46}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 8'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='0'>
+            <card pane-specification-id='0' param='[federated.07hdgas14r9d6r11k39411noyrvx].[sum:pos:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B15B2AC3-CA9E-442E-8B39-AFA2734DABA6}' />
     </window>
     <window class='worksheet' name='Droid_Life Sentiment Line'>
       <cards>
@@ -2028,7 +2881,7 @@
       </cards>
       <simple-id uuid='{E645E7DB-63B3-49F2-9231-E737030ECBC7}' />
     </window>
-    <window class='worksheet' maximized='true' name='Techcrunch Sentiment Line'>
+    <window class='worksheet' name='Techcrunch Sentiment Line'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -2072,7 +2925,7 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='30'>
             <card type='title' />
           </strip>
         </edge>
@@ -2100,7 +2953,7 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='30'>
             <card type='title' />
           </strip>
         </edge>
