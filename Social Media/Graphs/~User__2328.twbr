@@ -2472,41 +2472,6 @@
       </table>
       <simple-id uuid='{69F5B7F5-36B9-4914-ADEC-1F86770142B7}' />
     </worksheet>
-    <worksheet name='Sheet 8'>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='hehexd' name='federated.07hdgas14r9d6r11k39411noyrvx' />
-          </datasources>
-          <datasource-dependencies datasource='federated.07hdgas14r9d6r11k39411noyrvx'>
-            <column datatype='datetime' name='[Date]' role='dimension' type='ordinal' />
-            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
-            <column datatype='real' name='[neg]' role='measure' type='quantitative' />
-            <column caption='Neu' datatype='real' name='[neu]' role='measure' type='quantitative' />
-            <column caption='Pos' datatype='real' name='[pos]' role='measure' type='quantitative' />
-            <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[neu]' derivation='Sum' name='[sum:neu:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-            <encodings>
-              <size column='[federated.07hdgas14r9d6r11k39411noyrvx].[sum:pos:qk]' />
-            </encodings>
-          </pane>
-        </panes>
-        <rows>[federated.07hdgas14r9d6r11k39411noyrvx].[sum:neg:qk]</rows>
-        <cols>([federated.07hdgas14r9d6r11k39411noyrvx].[mn:Date:ok] * [federated.07hdgas14r9d6r11k39411noyrvx].[sum:neu:qk])</cols>
-      </table>
-      <simple-id uuid='{AF5DED11-B92F-47C2-A990-9E0233A4EC9E}' />
-    </worksheet>
     <worksheet name='Tech2eets Sentiment Line'>
       <table>
         <view>
@@ -2681,6 +2646,48 @@
       </table>
       <simple-id uuid='{57188226-1510-4EA1-9A2F-199F7C526AF1}' />
     </worksheet>
+    <worksheet name='scatter BBCTech'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='hehexd' name='federated.07hdgas14r9d6r11k39411noyrvx' />
+          </datasources>
+          <datasource-dependencies datasource='federated.07hdgas14r9d6r11k39411noyrvx'>
+            <column datatype='datetime' name='[Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column datatype='real' name='[neg]' role='measure' type='quantitative' />
+            <column caption='Pos' datatype='real' name='[pos]' role='measure' type='quantitative' />
+            <column-instance column='[neg]' derivation='Sum' name='[sum:neg:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[pos]' derivation='Sum' name='[sum:pos:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.07hdgas14r9d6r11k39411noyrvx].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:pos:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07hdgas14r9d6r11k39411noyrvx].[sum:neg:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.07hdgas14r9d6r11k39411noyrvx].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[federated.07hdgas14r9d6r11k39411noyrvx].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.07hdgas14r9d6r11k39411noyrvx].[Multiple Values]</rows>
+        <cols>([federated.07hdgas14r9d6r11k39411noyrvx].[mn:Date:ok] / [federated.07hdgas14r9d6r11k39411noyrvx].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{AF5DED11-B92F-47C2-A990-9E0233A4EC9E}' />
+    </worksheet>
     <worksheet name='verge SentimemtLine'>
       <table>
         <view>
@@ -2769,13 +2776,14 @@
       </cards>
       <simple-id uuid='{C235BF31-B998-4507-9D16-1B3814619A46}' />
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 8'>
+    <window class='worksheet' maximized='true' name='scatter BBCTech'>
       <cards>
         <edge name='left'>
           <strip size='160'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
+            <card type='measures' />
           </strip>
         </edge>
         <edge name='top'>
@@ -2790,8 +2798,8 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='0'>
-            <card pane-specification-id='0' param='[federated.07hdgas14r9d6r11k39411noyrvx].[sum:pos:qk]' type='size' />
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.07hdgas14r9d6r11k39411noyrvx].[:Measure Names]' type='color' />
           </strip>
         </edge>
       </cards>

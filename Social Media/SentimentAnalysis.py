@@ -50,14 +50,23 @@ df2 = pd.DataFrame(score)
 df3 = pd.DataFrame(positive)
 df4 = pd.DataFrame(negative)
 df5 = pd.DataFrame(neutral)
+
+
 print(len(df3))
-print(len(df4))
-print(len(df5))
+print(df1)
+print(df2)
+
+net = df2['neg'] - df2['pos']
+
+netdata = pd.DataFrame(net ,columns = ['net'])
+print(netdata.head(10))
+
+# print(net.head(10))
 
 
 
 
-df = pd.concat([df1, df2], axis=1)
+df = pd.concat([df1, df2, netdata], axis=1)
 
 df.drop(index= 0,columns=['compound'], inplace = True)
 
@@ -65,6 +74,7 @@ df.index = pd.MultiIndex.from_arrays([df.index])
 
 
 print(df.head(10))
+
 
 pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/'+ datafile +'SentimentAll.csv')
 pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentPositive.csv')
@@ -75,6 +85,8 @@ pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/User/D
 # pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/2018/' + datafile + '/'+ datafile + 'SentimentPositive.csv')
 # pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/2018/' + datafile + '/'+ datafile + 'SentimentNegative.csv')
 # pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/SentimentAnalysis/2018/'+ datafile + '/' + datafile + 'SentimentNeutral.csv')
+
+
 print('Wrote!')
 
 # positive = []
