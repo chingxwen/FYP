@@ -73,6 +73,12 @@ df['Tweets'].replace('    ',np.nan,inplace=True)
 df.dropna(axis = 0, how = 'any', inplace = True)
 print(df.head(10))
 
+#convert datetime to date time
+
+df['Date'] = pd.to_datetime(df['Date']).dt.date
+
+print(df['Date'])
+
 #Removal of Trailing White Spaces
 dfframe = df['Tweets'].to_frame()
 dflist = df['Tweets'].tolist()

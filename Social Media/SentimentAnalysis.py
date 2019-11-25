@@ -56,7 +56,27 @@ print(len(df3))
 print(df1)
 print(df2)
 
-net = df2['neg'] - df2['pos']
+net = df2['pos'] - df2['neg']
+
+netposneg = []
+
+for i in range(len(net)):
+
+    if (net[i] > 0):
+
+        netposneg.append('Positive')
+
+    elif (net[i] < 0): 
+
+        netposneg.append('Negative')
+
+    elif (net[i] == 0):
+
+        netposneg.append('Neutral')
+
+print(netposneg)
+
+netconclude = pd.DataFrame(netposneg,columns = ['netconclude'])
 
 netdata = pd.DataFrame(net ,columns = ['net'])
 print(netdata.head(10))
@@ -66,7 +86,7 @@ print(netdata.head(10))
 
 
 
-df = pd.concat([df1, df2, netdata], axis=1)
+df = pd.concat([df1, df2, netdata,netconclude], axis=1)
 
 df.drop(index= 0,columns=['compound'], inplace = True)
 
