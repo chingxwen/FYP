@@ -2,6 +2,7 @@ import pandas as pd
 
 def keywordsearch():
 
+    #Samsung Dictionary
     samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group", 
         "samsung technologies","galaxy s10", "galaxy note10", "galaxy fold", 
         "galaxy s10+", "galaxy s10e", "galaxy buds", "galaxy watch", "watch active 2",
@@ -21,16 +22,16 @@ def keywordsearch():
     datafile = input('Which data set do you want to cleanse?')
     df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
     
-    
-    # for words in samsunglist:
-    #     check = df.Text.str.contains(words, case = False)
-    # print(df['Text'].iloc[0])
     count = 0
     usercontent = df['User']
     userdate = df['Date']
     content = df["Tweets"]
 
     print(len(content))
+
+    #for loop to run through every row in datafile
+    #inside the for loop is a if else loop to check for relvent data rows using the samsung dictionary
+    #Append relevent rows into a new list then convert into a dataframe 
 
     relevantuser = []
     relevantdate = []
@@ -46,8 +47,6 @@ def keywordsearch():
                 relevantdate.append(userdate.iloc[i])
                 relevanttext.append(content.iloc[i])
 
-                # df = pd.DataFrame(columns=['Tweets'])
-        print(count)
     print(relevantuser)
     print(relevantdate)
     print(relevanttext)
@@ -56,60 +55,15 @@ def keywordsearch():
     dfDate = pd.DataFrame(relevantdate, columns = ['Date'])
     dfTweets = pd.DataFrame(relevanttext, columns = ['Tweets'])
 
-    print(dfUser.head(10))
-
-    # print(df['User'].head(10))
-    # print(df['Date'].head(10))
-    # print(df['Tweets'].head(10))
-
-    # df = pd.DataFrame(relevanttext)
-
 
     final = pd.concat([dfUser,dfDate,dfTweets], axis = 1)
 
-    print(final.head())
-
-    # final.sort_values('Tweets', inplace = True)
-
     # remove duplicate rows
-
     final.drop_duplicates(subset = 'Tweets' ,keep = 'first', inplace = True)
 
-
+    # Convert DataFrame to csv
     pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile + 'Relevant.csv')
- 
-    # df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/vergeRelevant.csv')
- 
- 
-    #     # print(df['Text'].iloc[0])
-            # for i in range(len(df['Text'])):
+
     
-    # for keywords in samsunglist:
-    #     if keywords
-                
-                # if True:
-
-                #     df = df[df.Text.str.contains(words)]
-
-                #     print(words)
-                #     print(df)
-
-                #     print(len(df))
-
-                    # df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Samsung/UserKeywordSearch' + words + '.csv')
-
-                    # i = i + 1
-
-        # if include == True:
-
-
-
-        #     print(df)
-
-        #     df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/UserKeywordSearch' + words + '.csv')
-
-        #     print(df.head(10))
-        #     i += 1
-
 
 keywordsearch()

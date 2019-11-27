@@ -7,6 +7,7 @@ import csv
 import re
 import ast
 from googletrans import Translator
+from datetime import datetime
 
 datefile = input('Which data file do you want to cleanse ?')
 
@@ -22,25 +23,17 @@ filterrows = (df['Date'] > startdate) & (df['Date'] <= enddate)
 
 df = df.loc[filterrows]
 
-print(df)
-
 #Drop columns 
 df.drop(columns=['ID'], inplace = True)
 print(type(df))
 
 
 # remove 'b' flags
-
 df['Tweets'] = df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
-print(type(df['Tweets']))
-# print(df['Tweets'].head(10))
 
 
 # remove https links
-
 df['Tweets'] = df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
-print(type(df['Tweets']))
-# print(df['Tweets'].head(10))
 
 # Removal of Null Values
 df['Tweets'].replace('',np.nan,inplace=True)
@@ -48,21 +41,14 @@ df.dropna(axis = 0, how = 'any', inplace = True)
 print(df)
 
 #remove username in Tweets
-
 df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 
 # Remove Special Characters 
-
 df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 
-#Remove Empty Rows
+# Replace empty cells with Nan then Remove Empty Rows
 df['Tweets'].replace('',np.nan,inplace=True)
 df.dropna(axis = 0, how = 'any', inplace = True)
-print(df)
-
-print(df['Tweets'].head(10))
-
-# Remove space bars
 
 # Removal of Null Values
 df['Tweets'].replace('',np.nan,inplace=True)
@@ -74,10 +60,8 @@ df.dropna(axis = 0, how = 'any', inplace = True)
 print(df.head(10))
 
 #convert datetime to date time
-
-df['Date'] = pd.to_datetime(df['Date']).dt.date
-
-print(df['Date'])
+df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+df['Date'] = pd.to_datetime(df['Date'])
 
 #Removal of Trailing White Spaces
 dfframe = df['Tweets'].to_frame()
@@ -86,45 +70,7 @@ dflist = df['Tweets'].tolist()
 dftweet2 = df['Tweets'].str.strip()
 df2 = dftweet2.to_frame()
 
-#remove username in Tweets
-
-df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
-
-# Remove Special Characters 
-
-df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
-
-
-
-# tokenizer = RegexpTokenizer(r'\w+')
-
-# df['Text'] = df['Text'].apply(lambda x : tokenizer.tokenize(x))
-# print(df['Text'].head(10))
-
-# remove stopwords
-# def remove_stopwords(text): 
-#     words = [x for x in text if x not in stopwords.words('english')]
-#     return words
-
-# df['Text'] = df['Text'].apply(lambda x: remove_stopwords(x))
-
 final = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1)
 
-
+# Convert list DataFrame to csv
 pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datefile + 'Cleanse.csv')
-
-# # tokenize
- 
-# # tokenizer = RegexpTokenizer(r'\w+')   
-# # print(df['Tweets'].head(10))
-
-# # # remove stopwords
-# # def remove_stopwords(text):
-# #     words = [x for x in text if x not in stopwords.words('english')]
-# #     return words
-    
-
-# final = pd.concat([df['User'], df['Date'], df['Tweets'] ],axis = 1)
-
-
-# pd.DataFrame.from_dict(data = final , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/ChannelNewsAsiaCleanse.csv')
