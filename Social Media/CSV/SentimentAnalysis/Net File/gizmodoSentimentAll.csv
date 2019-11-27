@@ -1,34 +1,3 @@
-<<<<<<< HEAD
-,0,neg,neu,pos,net
-0,['Samsungs second foldable is a flip phone with a nextgen design '],0,1,0,0
-1,['Samsung brings big bright QLED displays to laptops for the first time '],0,0.805,0.195,-0.195
-2,['Samsungs space selfie satellite plummets from sky onto Michigan horse farm '],0,1,0,0
-3,['One month with the Samsung Galaxy Fold Folding is believing'],0,1,0,0
-4,['A month with the improved Samsung Galaxy Fold and I actually still like it '],0,0.682,0.318,-0.318
-5,['A bug lets any fingerprint unlock the Galaxy S10 and Note 10 and Samsung blames phone covers '],0.137,0.863,0,0.137
-6,['Samsung Galaxy Tab S6 review The last of a dying breed  '],0,1,0,0
-7,['This Samsung Galaxy Fold stunt filled me with hope and joy  '],0,0.599,0.401,-0.401
-8,['Samsung had to fix one thing with the Galaxy Watch Active2 '],0,1,0,0
-9,['The Samsung Galaxy Fold finally goes on sale this week again '],0,1,0,0
-10,['All the phone companies not named Apple and Samsung that you should care about '],0,0.814,0.186,-0.186
-11,['Samsung just released a smaller version of its famouslyhuge phone the Galaxy Note 10 Here are the differences be '],0,1,0,0
-12,['Can you spot the upgrades on the new Samsung Galaxy Fold  '],0,1,0,0
-13,['Samsung Galaxy Fold to launch in Korea on Sept 6 no official US release date listed yet  '],0.121,0.879,0,0.121
-14,['Samsung is supposedly working on a much cooler folding phone  '],0,1,0,0
-15,['Samsungs first Bixby speaker still isnt out but now theres a mini version '],0,1,0,0
-16,['Samsung probably got a lot of wedgies in high school '],0,1,0,0
-17,['One month with the improved Galaxy Fold and I actually still like it  '],0,0.663,0.337,-0.337
-18,['Hubble sees our galaxy sucking up a mysterious amount of gas  '],0,1,0,0
-19,['Galaxy Note 10 Review A smaller Note makes for better handling '],0,0.775,0.225,-0.225
-20,['Galaxy Note 10 alternate internets and Bernies climate plan best Gizmodo stories of the week '],0,0.781,0.219,-0.219
-21,['The Galaxy Note 10 is damn near perfect '],0.201,0.522,0.276,-0.075
-22,['Should you buy the Galaxy Note 10  ']-,0,1,0,0
-23,['Googles budget Chromebook might walk the fine line between high design and great value  '],0,0.591,0.409,-0.409
-24,['Could the Pixelbook Go be the best Chromebook of the year  '],0,0.724,0.276,-0.276
-25,['The Pixelbook Go is a smaller cheaper Googlemade Chromebook  '],0,1,0,0
-26,['New Pixel phones buds Chromebook Nest products and Stadia pics flashed up on screen No watch madebygoogle '],0.115,0.885,0,0.115
-27,,,,,
-=======
 ,0,neg,neu,pos,net,netconclude
 1,['Samsungs second foldable is a flip phone with a nextgen design '],0.0,1.0,0.0,0.0,Neutral
 2,['Samsung brings big bright QLED displays to laptops for the first time '],0.0,0.805,0.195,0.195,Positive
@@ -57,4 +26,3 @@
 25,['Could the Pixelbook Go be the best Chromebook of the year  '],0.0,0.724,0.276,0.276,Positive
 26,['The Pixelbook Go is a smaller cheaper Googlemade Chromebook  '],0.0,1.0,0.0,0.0,Neutral
 27,['New Pixel phones buds Chromebook Nest products and Stadia pics flashed up on screen No watch madebygoogle '],0.115,0.885,0.0,-0.115,Negative
->>>>>>> 0ca78be2478ebae1f75a25a8f4b76aa23edf66d8
