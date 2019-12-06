@@ -3,9 +3,9 @@ import pandas as pd
 number = int(input("Enter the number of data you want: "))
 
 #parameters and pulling from API 
-tweetCriteria = got.manager.TweetCriteria().setQuerySearch('TradeWar')\
-                                           .setSince("2019-10-01")\
-                                           .setUntil("2019-10-31")\
+tweetCriteria = got.manager.TweetCriteria().setQuerySearch('Samsung')\
+                                           .setSince("2018-08-01")\
+                                           .setUntil("2018-08-31")\
                                            .setMaxTweets(number)
                                         
 
@@ -21,5 +21,5 @@ for x in range (number):
 # Writing to csv 
 print(type(get_tweets))
 df = pd.DataFrame(get_tweets)
-df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/keywords.csv', index=False)
+df.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Samsung/august2018.csv', index=False)
 print('Written')
