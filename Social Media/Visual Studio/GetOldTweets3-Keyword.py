@@ -1,9 +1,11 @@
 import GetOldTweets3 as got
 import pandas as pd
+from UserKeywordDictionary import samsungdict
+
 number = int(input("Enter the number of data you want: "))
 
 #parameters and pulling from API 
-tweetCriteria = got.manager.TweetCriteria().setQuerySearch('Samsung')\
+tweetCriteria = got.manager.TweetCriteria().setQuerySearch(samsungdict)\
                                            .setSince("2018-08-01")\
                                            .setUntil("2018-08-31")\
                                            .setMaxTweets(number)
