@@ -9,7 +9,7 @@ import ast
 from googletrans import Translator
 from datetime import datetime
 
-def UserCleanse():
+def user_cleanse():
     datefile = input('Which data file do you want to cleanse ?')
 
     df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + datefile + '.csv', names = ['User','ID','Date','Tweets'])
@@ -76,4 +76,4 @@ def UserCleanse():
     # Convert list DataFrame to csv
     pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datefile + 'Cleanse.csv')
 
-UserCleanse()
+user_cleanse()
