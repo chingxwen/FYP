@@ -1,6 +1,6 @@
 import pandas as pd
 
-def keywordsearch():
+def keyword_search():
 
     #Samsung Dictionary
     samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group", 
@@ -66,4 +66,4 @@ def keywordsearch():
 
     
 
-keywordsearch()
+keyword_search()
