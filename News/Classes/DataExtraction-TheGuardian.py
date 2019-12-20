@@ -67,7 +67,6 @@ class DataExtraction:
         export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
         if export_csv.upper() =="YES":
             df.to_csv(config["q"] +"_" + str(self.page) + ".csv", index=False)
-            print(os.getcwd())
         else: 
             print(df['Title'])
             print(df.shape)
@@ -87,10 +86,23 @@ data = extraction.RetrieveData(config)
 extraction.NewsExtraction(data[0])
 
 if data[1] <= data[2]:
-    print(data[1], data[2])
     extraction.AddPages()
     config = extraction.NewsConfig()
     data = extraction.RetrieveData(config) 
     extraction.NewsExtraction(data[0])
 
+concat_csv = input("Do you want to concatenate the csv files into a single csv file? Yes or No? ")
+if concat_csv.upper() =="YES":
+    files = []
+    li = []
+    for i in range(1,(data[2] + 1)):
+        files.append(config["q"] +"_" + str(i) + ".csv")
 
+    for filename in files:
+        df = pd.read_csv(filename, index_col=None, header=0)
+        li.append(df)
+    combined = pd.concat(li, axis=0, ignore_index=True)
+    combined.to_csv(config["q"] + ".csv", index=False)
+
+    for filename in files:
+        os.remove(filename)
