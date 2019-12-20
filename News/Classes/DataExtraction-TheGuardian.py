@@ -77,7 +77,7 @@ class DataExtraction:
 extraction = DataExtraction(
     "9c31513f-beb6-4aac-86ee-0b1320f2860b", 
     "https://content.guardianapis.com/search?",
-    "Samsung",
+    input("Which Company? "),
     "2018-07-01",
     "2019-11-01",)
 
@@ -85,7 +85,8 @@ config = extraction.NewsConfig()
 data = extraction.RetrieveData(config) 
 extraction.NewsExtraction(data[0])
 
-if data[1] <= data[2]:
+while data[1] <= data[2]:
+    print(str(data[1]) + "/" + str(data[2]))
     extraction.AddPages()
     config = extraction.NewsConfig()
     data = extraction.RetrieveData(config) 
