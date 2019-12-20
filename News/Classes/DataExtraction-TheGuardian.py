@@ -17,43 +17,45 @@ class DataExtraction:
         self.page = page
 
 
-    def NewsExtraction(self):
-        # self.api_key = '9c31513f-beb6-4aac-86ee-0b1320f2860b'
+    def NewsConfig(self):
 
-        # self.url = 'https://content.guardianapis.com/search?'
-
-        # self.query = "Samsung"#str(input("Query: "))
-        # self.fromdate = "2018-07-01"#str(input("From Date (YYYY-MM-DD): "))
-        # self.todate = "2019-11-01"#str(input("To Date (YYYY-MM-DD): "))
-        # self.page = 1 #int(input("Page Number: "))
-
-        
-        df = pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))
-        
         parameters = {
         'q': self.query,
         'from-date': self.fromdate,
         'to-date': self.todate,
         'order-by': 'newest',
-        'page-size': 200, #200 max
+        'page-size': 200,
         'page': self.page,
         'api-key': self.api_key
         }
-
+        return parameters
+    
+    def RetrieveData(self, parameters):
+        
         print("Current Page Number: " + str(self.page))
 
         response = requests.get(self.url, params=parameters)
-        response_json = response.json()['response']['results']
         totalpage = response.json()['response']['pages']
-        print(response.json()['response']['total'])
+        # response_json = response.json()['response']['results']
+        print("The total number of articles to be printed " + str(response.json()['response']['total']))
         print("The total number of pages to be extracted: " + str(totalpage))
+        return (response, self.page, totalpage)
 
 
+    def AddPages(self):
+        self.page += 1
+        return self.page
+
+
+    def NewsExtraction(self, response):
+        pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 = pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))
+        response_json = response.json()['response']['results']
         g = Goose()
 
         i = 0
         for article in response_json:
             i = i + 1
+            print
             section = article['sectionName']
             title = article['webTitle']
             url = article['webUrl']
@@ -61,19 +63,34 @@ class DataExtraction:
             text = g.extract(url=url)
             text = text.cleaned_text
             df.loc[i] = section, title, url, date, text
-            # page += 1
+            
+            if export_csv.upper() =="YES":
+                df.to_csv(config["q"] +"_" + self.page + ".csv", index=False)
+                print(os.getcwd())
+            else: 
+                print(df['Title'])
+                print(df.shape)
 
-        export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
 
-        if export_csv.upper() =="YES":
-            df.to_csv(parameters["q"] + ".csv", index=False)
-            print(os.getcwd())
-        else: 
-            print(df['Title'])
+
+
 extraction = DataExtraction(
     "9c31513f-beb6-4aac-86ee-0b1320f2860b", 
     "https://content.guardianapis.com/search?",
     "Samsung",
     "2018-07-01",
-    "2019-11-01")
-print(extraction.NewsExtraction())
+    "2019-11-01",)
+
+config = extraction.NewsConfig()
+data = extraction.RetrieveData(config) 
+# extraction.NewsExtraction(data[0])
+
+if data[1] <= data[2]:
+    print(data[1], data[2])
+    extraction.AddPages()
+    config = extraction.NewsConfig()
+    data = extraction.RetrieveData(config) 
+    # extraction.NewsExtraction(data[0])
+
+export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
+
