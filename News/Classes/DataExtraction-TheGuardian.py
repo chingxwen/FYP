@@ -48,7 +48,7 @@ class DataExtraction:
 
 
     def NewsExtraction(self, response):
-        pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 = pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))
+        df = pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))
         response_json = response.json()['response']['results']
         g = Goose()
 
@@ -63,13 +63,14 @@ class DataExtraction:
             text = g.extract(url=url)
             text = text.cleaned_text
             df.loc[i] = section, title, url, date, text
-            
-            if export_csv.upper() =="YES":
-                df.to_csv(config["q"] +"_" + self.page + ".csv", index=False)
-                print(os.getcwd())
-            else: 
-                print(df['Title'])
-                print(df.shape)
+        
+        export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
+        if export_csv.upper() =="YES":
+            df.to_csv(config["q"] +"_" + str(self.page) + ".csv", index=False)
+            print(os.getcwd())
+        else: 
+            print(df['Title'])
+            print(df.shape)
 
 
 
@@ -83,14 +84,13 @@ extraction = DataExtraction(
 
 config = extraction.NewsConfig()
 data = extraction.RetrieveData(config) 
-# extraction.NewsExtraction(data[0])
+extraction.NewsExtraction(data[0])
 
 if data[1] <= data[2]:
     print(data[1], data[2])
     extraction.AddPages()
     config = extraction.NewsConfig()
     data = extraction.RetrieveData(config) 
-    # extraction.NewsExtraction(data[0])
+    extraction.NewsExtraction(data[0])
 
-export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
 
