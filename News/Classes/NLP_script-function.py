@@ -158,72 +158,28 @@ def article_senti(total_fw):
     
     return net_senti
 
+#Wordcloud
 
-#All the words in the article
-article_comment_words = ''
+def wordcloud_text():
+    #Extract all text for wordcloud
+    wc_text = ''
+    for i in range(len(text)):
+        wc_text = wc_text + text[i] + ' '
+    return wc_text
 
-for i in range(len(df['Text'])):
-#     print(df['Text'][i])
-    article_comment_words = article_comment_words + df['Text'][i] + ' '
-# print(len(article_comment_words))
-
-#All the words in the article before NLP
-
-wordcloud = WordCloud(width = 800, height = 800, 
-                background_color ='white', 
-                min_font_size = 10).generate(article_comment_words) 
-  
-# plot the WordCloud image                        
-plt.figure(figsize = (8, 8), facecolor = None) 
-plt.imshow(wordcloud) 
-plt.axis("off") 
-plt.tight_layout(pad = 0) 
-  
-plt.show() 
-
-
-#All the words in the article added into a var
-comment_content_words = ''
-for i in range(len(content)):
-    for values in content[i]:
-        comment_content_words = comment_content_words + values + ' '
-#         print(values)
-# print(len(comment_content_words))
-
-#All the words in the article after NLP
-
-wordcloud = WordCloud(width = 800, height = 800, 
-                background_color ='white', 
-                min_font_size = 10).generate(comment_content_words) 
-  
-# plot the WordCloud image                        
-plt.figure(figsize = (8, 8), facecolor = None) 
-plt.imshow(wordcloud) 
-plt.axis("off") 
-plt.tight_layout(pad = 0) 
-  
-plt.show() 
-
-
-#All the words in the article that are identified as "JJ" added into a var
-comment_words = ''
-for i in range(len(net_senti)):
-    for values in net_senti[i]:
-        comment_words = comment_words + values[0] + ' '
-# print(len(comment_words))
-
-#Wordcloud based on the feeling words after NLP
-wordcloud = WordCloud(width = 800, height = 800, 
-                background_color ='white', 
-                min_font_size = 10).generate(comment_words) 
-  
-# plot the WordCloud image                        
-plt.figure(figsize = (8, 8), facecolor = None) 
-plt.imshow(wordcloud) 
-plt.axis("off") 
-plt.tight_layout(pad = 0) 
-  
-plt.show() 
+def wordcloud_generator(wc_text):
+    #Wordlcloud config
+    wordcloud = WordCloud(width = 800, height = 800, 
+                    background_color ='white', 
+                    min_font_size = 10).generate(wc_text) 
+    
+    #Plot the WordCloud image                      
+    plt.figure(figsize = (8, 8), facecolor = None) 
+    plt.imshow(wordcloud) 
+    plt.axis("off") 
+    plt.tight_layout(pad = 0) 
+    
+    plt.show() 
 
 
 #Final printing and to count the number of articles that are positive, negative or neutral based on the sentiment values
@@ -266,4 +222,3 @@ df['Final Sentiment'] = sentiment
 
 
 df.to_csv("Formatted_Data_Sentiment.csv", index = False)
-
