@@ -63,13 +63,8 @@ class DataExtraction:
             text = g.extract(url=url)
             text = text.cleaned_text
             df.loc[i] = section, title, url, date, text
-        
-        export_csv = input("Do you want to export the data to a csv file? Yes or No? ")
-        if export_csv.upper() =="YES":
-            df.to_csv(config["q"] +"_" + str(self.page) + ".csv", index=False)
-        else: 
+            df.to_csv(str(os.getcwd()) + "/Classes/" + config["q"] + "_" + str(self.page) + ".csv", index=False) 
             print(df['Title'])
-            print(df.shape)
 
 
 
@@ -79,14 +74,14 @@ extraction = DataExtraction(
     "https://content.guardianapis.com/search?",
     input("Which Company? "),
     "2018-07-01",
-    "2019-11-01",)
+    "2019-11-01")
 
 config = extraction.NewsConfig()
 data = extraction.RetrieveData(config) 
 extraction.NewsExtraction(data[0])
 
-while data[1] <= data[2]:
-    print(str(data[1]) + "/" + str(data[2]))
+while data[1] < data[2]:
+    print(str(data[1] + 1) + "/" + str(data[2]))
     extraction.AddPages()
     config = extraction.NewsConfig()
     data = extraction.RetrieveData(config) 
@@ -97,13 +92,13 @@ if concat_csv.upper() =="YES":
     files = []
     li = []
     for i in range(1,(data[2] + 1)):
-        files.append(config["q"] +"_" + str(i) + ".csv")
+        files.append(str(os.getcwd()) + "/Classes/" + config["q"] +"_" + str(i) + ".csv")
 
     for filename in files:
         df = pd.read_csv(filename, index_col=None, header=0)
         li.append(df)
     combined = pd.concat(li, axis=0, ignore_index=True)
-    combined.to_csv(config["q"] + ".csv", index=False)
+    combined.to_csv(str(os.getcwd()) + "/Classes/" + config["q"] + ".csv", index=False)
 
     for filename in files:
         os.remove(filename)
