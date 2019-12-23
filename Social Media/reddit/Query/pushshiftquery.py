@@ -2,50 +2,54 @@ from pushshift_py import PushshiftAPI
 import praw
 import datetime as dt
 
-api = PushshiftAPI()
-reddit = praw.Reddit(
-    client_id = 'ft1YI89jxATR_g', \
-    client_secret = '31k1f4ORFpgtQlZ-h2QLO9qxCPc', \
-    user_agent = 'scrubmasterAPI', \
-    username = 'pythonscrubSP', \
-    password = 'scrubmaster54321'
-)
 
-start_epoch=int(dt.datetime(2018,7,1).timestamp())
+def get_reddit():
+    api = PushshiftAPI()
+    reddit = praw.Reddit(
+        client_id = 'ft1YI89jxATR_g', \
+        client_secret = '31k1f4ORFpgtQlZ-h2QLO9qxCPc', \
+        user_agent = 'scrubmasterAPI', \
+        username = 'pythonscrubSP', \
+        password = 'scrubmaster54321'
+    )
 
-gen = api.search_submissions(after = start_epoch,
-                            subreddit = 'android',
-                            search = 'samsung',
-                            filter = ['title', 'subreddit', 'created'],
-                            limit = 2000)
-results = list(gen)
-print(results)
+    start_epoch=int(dt.datetime(2018,7,1).timestamp())
 
-import pandas as pd
+    gen = api.search_submissions(after = start_epoch,
+                                subreddit = 'android',
+                                search = 'samsung',
+                                filter = ['title', 'subreddit', 'created'],
+                                limit = 2000)
+    results = list(gen)
+    print(results)
 
-data = pd.DataFrame(results)
-print(data)
+    import pandas as pd
 
-#Converting datetime column from UNIX to normal
-def get_date(created):
-    return dt.datetime.fromtimestamp(created)
-_timestamp = data["created"].apply(get_date)
-data = data.assign(timestamp = _timestamp)
+    data = pd.DataFrame(results)
+    print(data)
 
-print(data)
+    #Converting datetime column from UNIX to normal
+    def get_date(created):
+        return dt.datetime.fromtimestamp(created)
+    _timestamp = data["created"].apply(get_date)
+    data = data.assign(timestamp = _timestamp)
 
-#drop 'created' column
-data = data.drop('created_utc', axis = 1)
-print(data)
+    print(data)
 
-#drop 'd_' column
-data = data.drop('d_', axis = 1)
-print(data)
+    #drop 'created' column
+    data = data.drop('created_utc', axis = 1)
+    print(data)
 
-#drop 'created' column
-data = data.drop('created', axis = 1)
-print(data)
+    #drop 'd_' column
+    data = data.drop('d_', axis = 1)
+    print(data)
 
-#Write data to csv
-data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftandroid.csv', index=False)
-print('Written!')
+    #drop 'created' column
+    data = data.drop('created', axis = 1)
+    print(data)
+
+    #Write data to csv
+    data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftandroid.csv', index=False)
+    print('Written!')
+
+get_reddit()
