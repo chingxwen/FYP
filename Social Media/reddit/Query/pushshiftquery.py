@@ -15,11 +15,11 @@ def get_reddit():
 
     start_epoch=int(dt.datetime(2018,7,1).timestamp())
 
-    gen = api.search_submissions(after = start_epoch,
-                                subreddit = 'android',
-                                search = 'samsung',
-                                filter = ['title', 'subreddit', 'created'],
-                                limit = 2000)
+    gen = api.search_comments(after = start_epoch,
+                            subreddit = 'samsung',
+                            q = 'samsung',
+                            limit = 2000,
+                             filter = ['body'])
     results = list(gen)
     print(results)
 
