@@ -18,7 +18,7 @@ import csv
 #Reading of .csv file
 class class_NLP:
 
-   filename = r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\Samsung.csv"
+   filename = input("Please input the path of the CSV file: ") #r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\Samsung.csv"
 
    def __inti__(self):
       pass
