@@ -8,9 +8,9 @@ def StockDownloader():
     """
     fromdate = input("Please input the start date to be extracted(yyyy-mm-dd): ")
     todate = input("Please input the start date to be extracted(yyyy-mm-dd): ")
-    stock = input("Please input which stock you would like to extract in its index format in capital letters: ").upper()
+    stock = input("Please input which stock you would like to extract in its index format: ").upper()
 
     data = yf.download(stock, start = fromdate, end = todate)
     data.to_csv(stock + ".csv")
-
+    return stock 
 StockDownloader()
