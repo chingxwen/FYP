@@ -73,7 +73,18 @@ class class_NLP:
       print("Tagging words")
       self.content = [nltk.pos_tag(i) for i in self.content]
       print("Words are tagged")
+      print("Exporting cleansed content")
+      exportcsv_content = pd.DataFrame(self.content)
+      exportcsv_content.to_csv(r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\SamsungCleansed.csv", index = False)
+      print("File has been exported")
+      print(exportcsv_content[0])
       return self.content
+
+   #Export cleansed content to a csv file
+   def export_csv(self, csv_path):
+      self.content.to_csv(csv_path)
+      print("File has been exported")
+
 
 News_NLP = class_NLP()
 df = News_NLP.read_file()
@@ -82,3 +93,5 @@ News_Tokenizing = News_NLP.tokenize(content)
 News_RemoveWords = News_NLP.stopwords_removal()
 News_Lemmatizing = News_NLP.lemmatization()
 News_POStag = News_NLP.nltk_pos_tag()
+# df['Cleansed Data'] = News_POStag
+# df['Cleansed Data'].to_csv(r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\SamsungCleansed.csv", index = False)
