@@ -49,7 +49,8 @@ def get_reddit():
     print(data)
 
     #Write data to csv
-    data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftandroid.csv', index=False)
+    # data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftandroid.csv', index=False)
+    data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/pushshiftandroid.csv', index=False)
     print('Written!')
 
 get_reddit()

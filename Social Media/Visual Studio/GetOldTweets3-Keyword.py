@@ -18,7 +18,8 @@ def getoldtweets():
 
     print(type(get_tweets))
     df = pd.DataFrame(get_tweets)
-    df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Keywords/Samsung/October2018.csv', index=False)
+    csvname = input('What would you like to name ur CSV file as?')
+    df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Keywords/Samsung/' + csvname + '.csv', index=False)
     print('Written')
 
 getoldtweets()
