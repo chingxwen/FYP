@@ -6,54 +6,47 @@ from nltk.tokenize import RegexpTokenizer
 import csv
 import re
 import ast
-from googletrans import Translator
 from datetime import datetime
 
 class UserClense:
 
-    def __init__(self, datefile):
-        
-        self.datefile = datefile
-        
-    def user_cleanse(self, datafile):
-        datefile = input('Which data file do you want to cleanse ?')
+    datafile = input('Which data file do you want to cleanse ?')
 
-        df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + datefile + '.csv', names = ['User','ID','Date','Tweets'])
+    def __init__(self):
+        
+        pass
+        
+    def read_Csv(self):
 
-        #Extra rows by date 
+        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + self.datafile + '.csv', names = ['User','ID','Date','Tweets'])
+
+        return self.df
+    
+    def drop_columns(self): 
+        #Drop columns 
+        self.df.drop(columns=['ID'], inplace = True)
+
+        return self.df
+
+    def cleanse_data(self, df):
+
+        #Extra rows by date
+
         df['Date'] = pd.to_datetime(df['Date'])
 
-        startdate = '01-07-2018'
-        enddate = '31-10-2019'
+        startdate = '2018-07-01'
+        enddate = '2019-10-31'
 
-        filterrows = (df['Date'] > startdate) & (df['Date'] <= enddate)
+        filterrows = (df['Date'] >= startdate) & (df['Date'] <= enddate)
 
-        df = df.loc[filterrows]
-
-        #Drop columns 
-        df.drop(columns=['ID'], inplace = True)
-        print(type(df))
-
-
-        # remove 'b' flags
         df['Tweets'] = df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
 
-
-        # remove https links
         df['Tweets'] = df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
 
-        # Removal of Null Values
-        df['Tweets'].replace('',np.nan,inplace=True)
-        df.dropna(axis = 0, how = 'any', inplace = True)
-        print(df)
-
-        #remove username in Tweets
         df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 
-        # Remove Special Characters 
         df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 
-        # Replace empty cells with Nan then Remove Empty Rows
         df['Tweets'].replace('',np.nan,inplace=True)
         df.dropna(axis = 0, how = 'any', inplace = True)
 
@@ -64,25 +57,39 @@ class UserClense:
         df['Tweets'].replace('   ',np.nan,inplace=True)
         df['Tweets'].replace('    ',np.nan,inplace=True)
         df.dropna(axis = 0, how = 'any', inplace = True)
-        print(df.head(10))
 
-        #convert datetime to date time
-        df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
-        df['Date'] = pd.to_datetime(df['Date'])
+        df['Tweets'].to_frame()
+        df['Tweets'].tolist()
 
-        #Removal of Trailing White Spaces
-        dfframe = df['Tweets'].to_frame()
-        dflist = df['Tweets'].tolist()
+        df['Tweets'].str.strip().to_frame()
+        # df2 = dftweet2.to_frame()
 
-        dftweet2 = df['Tweets'].str.strip()
-        df2 = dftweet2.to_frame()
 
-        final = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1)
+        df = df.loc[filterrows]
+      
+        print(df)
+        print('df')
 
+        return df
+
+    def export(self):
         # Convert list DataFrame to csv
-        pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datefile + 'Cleanse.csv')
+        pd.DataFrame.from_dict(data = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1) , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + self.datafile + 'Cleanse.csv')
+
 
 
 #usage
 
-UserClense('BBCTech')
+SM_Cleanse = UserClense()
+df = SM_Cleanse.read_Csv()
+Date = df['Date']
+Tweets = df['Tweets']
+User = df['User']
+SM_Drop = SM_Cleanse.drop_columns()
+SM_filter = SM_Cleanse.cleanse_data(df)
+SM_Cleanse.export()
+
+
+
+
+

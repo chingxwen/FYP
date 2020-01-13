@@ -18,27 +18,23 @@ samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group",
 
 class UserKeywordSearch:
 
-    def __init__(self,datafile,samsunglist):
-        
-        self.datafile = datafile
-        self.samsunglist = samsunglist
+    datafile = input('Which data set do you want to cleanse?')
 
-    def keyword_search(self, datafile):
+    def __init__(self):
+         
+        pass
 
-        datafile = input('Which data set do you want to cleanse?')
+    def read_file(self):
 
-        df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
+        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + self.datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
     
-        count = 0
-        usercontent = df['User']
-        userdate = df['Date']
-        content = df["Tweets"]
-
-        print(len(content))
+        return self.df
 
         #for loop to run through every row in datafile
         #inside the for loop is a if else loop to check for relvent data rows using the samsung dictionary
         #Append relevent rows into a new list then convert into a dataframe 
+
+    def searchloop(self):
 
         relevantuser = []
         relevantdate = []
@@ -48,7 +44,7 @@ class UserKeywordSearch:
             for i in range(len(content)):
                 if (words in content.iloc[i].lower()) == True:
                     print(words)
-                    count += 1 
+                    global count
                     print(content.iloc[i])
 
                     relevantuser.append(usercontent.iloc[i])
@@ -63,11 +59,27 @@ class UserKeywordSearch:
         dfDate = pd.DataFrame(relevantdate, columns = ['Date'])
         dfTweets = pd.DataFrame(relevanttext, columns = ['Tweets'])
 
+        self.final = pd.concat([dfUser,dfDate,dfTweets], axis = 1)
 
-        final = pd.concat([dfUser,dfDate,dfTweets], axis = 1)
+        return self.final
+
+    def concat(self):
 
         # remove duplicate rows
-        final.drop_duplicates(subset = 'Tweets' ,keep = 'first', inplace = True)
+        self.final.drop_duplicates(subset = 'Tweets' ,keep = 'first', inplace = True)
+
+    def export(self):
 
         # Convert DataFrame to csv
-        pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile + 'Relevant.csv')
+        pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile + 'Relevant.csv')
+
+
+KeywordSearch = UserKeywordSearch()
+df = KeywordSearch.read_file()
+
+count = 0
+usercontent = df['User']
+userdate = df['Date']
+content = df["Tweets"]
+Search = KeywordSearch.searchloop()
+Export = KeywordSearch.export()
