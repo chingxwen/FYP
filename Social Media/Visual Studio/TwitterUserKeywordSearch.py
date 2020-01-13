@@ -18,7 +18,6 @@ def keyword_search():
        "galaxy FIT E", "samsung T5", "galaxy T5", "Samsung Catalyst Fund", "samsungcatalyst", "SamsungCEOSummit",
        "Samsung 5G Exynos 980", "SamMobile"]
 
-
     datafile = input('Which data set do you want to cleanse?')
     df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
     

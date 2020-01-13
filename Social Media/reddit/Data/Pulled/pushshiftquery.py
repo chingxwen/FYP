@@ -1,6 +1,7 @@
 from pushshift_py import PushshiftAPI
 import praw
 import datetime as dt
+import pandas as pd
 
 
 def get_reddit():
@@ -13,44 +14,36 @@ def get_reddit():
         password = 'scrubmaster54321'
     )
 
-    start_epoch=int(dt.datetime(2018,7,1).timestamp())
+    start_epoch=int(dt.datetime(2019,10,1).timestamp())
 
-    gen = api.search_comments(after = start_epoch,
-                            subreddit = 'samsung',
-                            q = 'samsung',
-                            limit = 2000,
-                             filter = ['body'])
+    gen = api.search_submissions(after = start_epoch,
+                                subreddit = 'samsung',
+                                q = 'samsung',
+                                filter = ['subreddit', 'created','title'],
+                                limit = 1000)
     results = list(gen)
     print(results)
 
-    import pandas as pd
+
 
     data = pd.DataFrame(results)
-    print(data)
-
     #Converting datetime column from UNIX to normal
     def get_date(created):
         return dt.datetime.fromtimestamp(created)
     _timestamp = data["created"].apply(get_date)
     data = data.assign(timestamp = _timestamp)
 
-    print(data)
-
     #drop 'created' column
     data = data.drop('created_utc', axis = 1)
-    print(data)
 
     #drop 'd_' column
     data = data.drop('d_', axis = 1)
-    print(data)
 
     #drop 'created' column
     data = data.drop('created', axis = 1)
-    print(data)
 
     #Write data to csv
-    # data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftandroid.csv', index=False)
-    data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/pushshiftandroid.csv', index=False)
+    data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
     print('Written!')
 
 get_reddit()
