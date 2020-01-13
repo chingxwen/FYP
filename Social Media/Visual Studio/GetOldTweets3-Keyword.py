@@ -4,9 +4,9 @@ number = int(input("Enter the number of data you want: "))
 
 def getoldtweets():
 
-    tweetCriteria = got.manager.TweetCriteria().setQuerySearch('samsung')\
-                                            .setSince("2018-10-01")\
-                                            .setUntil("2018-10-31")\
+    tweetCriteria = got.manager.TweetCriteria().setQuerySearch('#Samsung')\
+                                            .setSince("2018-12-01")\
+                                            .setUntil("2018-12-31")\
                                             .setMaxTweets(number)
 
 
@@ -18,7 +18,7 @@ def getoldtweets():
 
     print(type(get_tweets))
     df = pd.DataFrame(get_tweets)
-    df.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Keywords/Samsung/October2018.csv', index=False)
+    df.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Samsung/dec2018.csv', index=False)
     print('Written')
 
 getoldtweets()
