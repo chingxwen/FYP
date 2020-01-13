@@ -1,33 +1,42 @@
-import json
+import os
+import sys
+import csv
 import tweepy
 
-api_url = input('Input your API')
-consumer_key = input('Input your consumer key here')
-consumer_secret = input('Input your consumer secret here')
-access_key = input('Input your access key here')
-access_secret = input('Input your access secret here')
-number_of_tweets = input('Input the number of tweets u want to extract')
 
 class TwitterUserExtract:
 
-    def __init__(self, api_url,consumer_key,consumer_secret,access_key,access_secret,number_of_tweets,tweets_for_csv,tweet_count):
+    username = input("Enter the username without the '@' sign: ")
+
+    tweets_for_csv = []
+    tweet_count = 0
+
+    twitter_keys = {
+        'consumer_key':        'DdzX4hSW7Dth3CQb71MsTR8e2',
+        'consumer_secret':     '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
+        'access_token_key':    '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
+        'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
+    }
+
+    def __init__(selfkeys_dict=twitter_keys, api=api, result_limit = 100000):
         
-        self.api_url = api_url
-        self.consumer_key = consumer_key
-        self.consumer_secret = consumer_secret
-        self.access_key = access_key
-        self.access_secret = access_secret
-        self.number_of_tweets = number_of_tweets
-        self.tweets_for_csv = []
-        self.tweet_count = 0
+        # self.consumer_key = consumer_key
+        # self.consumer_secret = consumer_secret
+        # self.access_key = access_key
+        # self.access_secret = access_secret
+        # self.number_of_tweets = number_of_tweets
 
+        self.twitter_keys = keys_dict
 
-    def get_tweets(self,api,consumer_key,consumer_secret,access_key,access_secret):
+        auth = tweepy.OAuthHandler(keys_dict['consumer_key'], keys_dict['consumer_secret'])
+	    auth.set_access_token(keys_dict['access_token_key'], keys_dict['access_token_secret'])
 
-	    self.username = input("Enter the username without the '@' sign: ")
-	    self.auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-	    self.auth.set_access_token(access_key, access_secret)
 	    self.api = tweepy.API(auth)
+
+        self.result_limit = result_limit
+        
+
+    def get_tweets(self):
 
         for tweet in tweepy.Cursor(api.user_timeline, screen_name = username).items(number_of_tweets):
             #create array of tweet information: username, tweet id, date/time, text
@@ -36,10 +45,28 @@ class TwitterUserExtract:
             print("Appended {} / {}".format(tweet_count, number_of_tweets))
 
 
+    def export(self):
+
         #write to a new csv file from the array of tweets
-        outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + username + ".csv"
-        print(outfile)
+        outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + self.username + ".csv"
+        print(type(outfile))
         print ("writing to " + outfile)
         with open(outfile, 'w+') as file:
             writer = csv.writer(file, delimiter=',')
-            writer.writerows(tweets_for_csv)
+            writer.writerows(self.tweets_for_csv)
+
+
+
+DataExtraction = TwitterUserExtract(
+                'DdzX4hSW7Dth3CQb71MsTR8e2',
+                '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
+                '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
+                '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO',
+                1000000000,
+
+)
+
+
+
+DataExtraction.get_tweets()
+DataExtraction.export()
