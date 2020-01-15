@@ -1,0 +1,58 @@
+<<<<<<< HEAD
+,0,neg,neu,pos,net
+0,['Samsung ramps up its B2B partner and developer efforts  by  '],0,1,0,0
+1,['Samsung teases a clamshell foldable form factor  by  '],0.239,0.761,0,0.239
+2,['Samsungs new laptops charge phones with their touchpad  by  '],0,1,0,0
+3,['Samsung confirms glaring S10 fingerprint reader flaw promises fix  by  '],0,0.794,0.206,-0.206
+4,['Samsung opens Android 10 One UI beta ahead of final launch  by  '],0,1,0,0
+5,['Samsungs Galaxy Fold concierge service is live in the US for those who need it  by  '],0,1,0,0
+6,['Samsungs Galaxy Watch Active 2 is a solid smartwatch for Android users  by  '],0,0.699,0.301,-0.301
+7,['Life with the Samsung Galaxy Fold  by  '],0,1,0,0
+8,['Samsung pulls the plug on Chinese smartphone production  by  '],0,1,0,0
+9,['Samsungs new rebooted Galaxy arrives this week with one job it just needs to not break '],0,1,0,0
+10,['Samsung Galaxy Fold take two  by  ']--,0,1,0,0
+11,['Five months later Samsungs Galaxy Fold arrives this week  by  '],0,1,0,0
+12,['Samsungs Galaxy Tab S6 combines creative flexibility with great design  by  '],0,0.489,0.511,-0.511
+13,['After announcing Galaxy Fold release date Samsung cancels older preorders  by  '],0.147,0.853,0,0.147
+14,['Samsungs Galaxy Fold arrives in Korea September 6 US in coming weeks  by  '],0,1,0,0
+15,['Samsungs Note 10 is available today starting at 949  by  '],0,1,0,0
+16,['Samsung Galaxy Note 10 review  by  ']-,0,1,0,0
+17,['The Galaxy Fold is now available for purchase in the US '],0,1,0,0
+18,['The Galaxy Fold is now available for purchase in the US  by  '],0,1,0,0
+19,['My Galaxy Fold display is damaged after a day  by  '],0.244,0.756,0,0.244
+20,['IoT security startup Particle has raised 40 million in its Series C round '],0,0.833,0.167,-0.167
+21,['German tech investor leads Series A for Germanys first medical Cannabis startup  by '],0,1,0,0
+22,['Heres the first trailer for the upcoming Disney Star Wars series The Mandalorian  by  '],0.205,0.795,0,0.205
+23,['Pixelbook Go review a Chromebook in search of meaning  by  '],0,1,0,0
+24,['Up close with Googles budget Chromebook the Pixelbook Go  by  '],0,1,0,0
+25,['Google launches the 649 Pixelbook Go Chromebook  by  '],0,1,0,0
+26,,,,,
+=======
+,0,neg,neu,pos,net,netconclude
+1,['Samsung ramps up its B2B partner and developer efforts  by  '],0.0,1.0,0.0,0.0,Neutral
+2,['Samsung teases a clamshell foldable form factor  by  '],0.239,0.761,0.0,-0.239,Negative
+3,['Samsungs new laptops charge phones with their touchpad  by  '],0.0,1.0,0.0,0.0,Neutral
+4,['Samsung confirms glaring S10 fingerprint reader flaw promises fix  by  '],0.0,0.794,0.206,0.206,Positive
+5,['Samsung opens Android 10 One UI beta ahead of final launch  by  '],0.0,1.0,0.0,0.0,Neutral
+6,['Samsungs Galaxy Fold concierge service is live in the US for those who need it  by  '],0.0,1.0,0.0,0.0,Neutral
+7,['Samsungs Galaxy Watch Active 2 is a solid smartwatch for Android users  by  '],0.0,0.699,0.301,0.301,Positive
+8,['Life with the Samsung Galaxy Fold  by  '],0.0,1.0,0.0,0.0,Neutral
+9,['Samsung pulls the plug on Chinese smartphone production  by  '],0.0,1.0,0.0,0.0,Neutral
+10,['Samsungs new rebooted Galaxy arrives this week with one job it just needs to not break '],0.0,1.0,0.0,0.0,Neutral
+11,['Samsung Galaxy Fold take two  by  ']--,0.0,1.0,0.0,0.0,Neutral
+12,['Five months later Samsungs Galaxy Fold arrives this week  by  '],0.0,1.0,0.0,0.0,Neutral
+13,['Samsungs Galaxy Tab S6 combines creative flexibility with great design  by  '],0.0,0.489,0.511,0.511,Positive
+14,['After announcing Galaxy Fold release date Samsung cancels older preorders  by  '],0.147,0.853,0.0,-0.147,Negative
+15,['Samsungs Galaxy Fold arrives in Korea September 6 US in coming weeks  by  '],0.0,1.0,0.0,0.0,Neutral
+16,['Samsungs Note 10 is available today starting at 949  by  '],0.0,1.0,0.0,0.0,Neutral
+17,['Samsung Galaxy Note 10 review  by  ']-,0.0,1.0,0.0,0.0,Neutral
+18,['The Galaxy Fold is now available for purchase in the US '],0.0,1.0,0.0,0.0,Neutral
+19,['The Galaxy Fold is now available for purchase in the US  by  '],0.0,1.0,0.0,0.0,Neutral
+20,['My Galaxy Fold display is damaged after a day  by  '],0.244,0.756,0.0,-0.244,Negative
+21,['IoT security startup Particle has raised 40 million in its Series C round '],0.0,0.833,0.167,0.167,Positive
+22,['German tech investor leads Series A for Germanys first medical Cannabis startup  by '],0.0,1.0,0.0,0.0,Neutral
+23,['Heres the first trailer for the upcoming Disney Star Wars series The Mandalorian  by  '],0.205,0.795,0.0,-0.205,Negative
+24,['Pixelbook Go review a Chromebook in search of meaning  by  '],0.0,1.0,0.0,0.0,Neutral
+25,['Up close with Googles budget Chromebook the Pixelbook Go  by  '],0.0,1.0,0.0,0.0,Neutral
+26,['Google launches the 649 Pixelbook Go Chromebook  by  '],0.0,1.0,0.0,0.0,Neutral
+>>>>>>> 0ca78be2478ebae1f75a25a8f4b76aa23edf66d8
