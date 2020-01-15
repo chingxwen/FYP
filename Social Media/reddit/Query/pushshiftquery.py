@@ -1,6 +1,7 @@
 from pushshift_py import PushshiftAPI
 import praw
 import datetime as dt
+import pandas as pd
 
 
 def get_reddit():
@@ -23,14 +24,14 @@ def get_reddit():
     results = list(gen)
     print(results)
 
-    import pandas as pd
-
     data = pd.DataFrame(results)
     print(data)
 
     #Converting datetime column from UNIX to normal
     def get_date(created):
+        
         return dt.datetime.fromtimestamp(created)
+        
     _timestamp = data["created"].apply(get_date)
     data = data.assign(timestamp = _timestamp)
 

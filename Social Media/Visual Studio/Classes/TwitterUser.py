@@ -20,7 +20,7 @@ class TweetMiner(object):
         'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
     }
     
-    user = input('Please input username')
+    user = input("Enter the username without the '@' sign: ")
     
     def __init__(self, keys_dict=twitter_keys, api=api, result_limit = 20):
         
@@ -95,14 +95,9 @@ class TweetMiner(object):
         print(type(outfile))
         df = pd.DataFrame(data)
         print(type(df))
-        export_csv = df.to_csv(outfile)
+        df.to_csv(outfile)
         print('Written!')
-        # export_csv = data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' +outfile+ '.csv', index = False)
-
-        # print ("writing to " + outfile)
-        # with open(outfile, 'w+') as file:
-        #     writer = csv.writer(file, delimiter=',')
-        #     writer.writerows(self.data)
+    
 
         return data 
 
