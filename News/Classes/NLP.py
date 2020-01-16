@@ -39,7 +39,7 @@ class class_NLP:
       return self.content
 
    #Removal of Stop Words
-   def stopwords_removal(self):
+   def stopwords_removal(self, ):
       print("Removing stopwords")
       set(stopwords.words('english'))
 
