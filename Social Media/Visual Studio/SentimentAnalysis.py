@@ -12,8 +12,10 @@ def twitter_sentiment():
     # df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Format/Cleanse/' + datafile +'Cleanse.csv', names=["Tweets", "Date"])
 
     # extract specific column
+    dfDate = df['Date']
     df = df['Tweets']
     dftweet = pd.DataFrame(df)
+    
 
     # convert column to list
     dflist = dftweet.values.tolist()
@@ -84,7 +86,7 @@ def twitter_sentiment():
     netdata = pd.DataFrame(net ,columns = ['net'])
 
     # concat all data columns into a dataframe
-    df = pd.concat([df1, df2, netdata,netconclude], axis=1)
+    df = pd.concat([dfDate, df1, df2, netdata,netconclude], axis=1)
 
     #remove unnessary columns
     df.drop(index= 0,columns=['compound'], inplace = True)

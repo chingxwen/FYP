@@ -1,10 +1,71 @@
-,0,neg,neu,pos,net,netconclude
-1,"[""So the Samsung galaxy card linked an article about iPhone?  I'd bet the Samsung galaxy card posts a lot of tech related articles.  No big deal?""]",0.096,0.904,0.0,-0.096,Negative
-2,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-3,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-4,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-5,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-6,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-7,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-8,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
-9,[nan]-----------------------------------,0.0,1.0,0.0,0.0,Neutral
+,Date,0,neg,neu,pos,net,netconclude
+1.0,2019-10-24,['bNetflix to disappear on older Samsung smart TVs '],0.164,0.603,0.233,0.069,Positive
+2.0,2019-10-17,['bRBS pulls Samsung Galaxy S10 app over security flaw '],0.0,0.789,0.211,0.211,Positive
+3.0,2019-09-05,['bAny fingerprint unlocks Galaxy S10 Samsung warns '],0.167,0.833,0.0,-0.167,Negative
+4.0,2019-08-07,['bSamsung Galaxy Fold UK launch date revealed '],0.0,1.0,0.0,0.0,Neutral
+5.0,2019-07-25,['bGalaxy Note 10 Samsung hopes to strike the right Note '],0.113,0.677,0.211,0.09799999999999999,Positive
+6.0,2019-07-04,['bRT  Samsung says the Galaxy Fold will go on sale in September after faulty screens delayed the launch '],0.198,0.802,0.0,-0.198,Negative
+7.0,2019-06-17,['bSamsung sued over waterresistant phone claims '],0.0,1.0,0.0,0.0,Neutral
+8.0,2019-04-30,['bSamsung TVs should be regularly viruschecked the company says '],0.0,1.0,0.0,0.0,Neutral
+9.0,2019-04-22,['bSamsung unveils TV that can switch to vertical mode '],0.0,1.0,0.0,0.0,Neutral
+10.0,2019-04-17,['bSamsung Galaxy Fold launch events delayed in China '],0.192,0.808,0.0,-0.192,Negative
+11.0,2019-04-16,['bSamsungs folding phone breaks for reviewers '],0.0,1.0,0.0,0.0,Neutral
+12.0,2019-02-24,['bRT  Heres my first handson with the Samsung Galaxy Fold GalaxyFold '],0.0,1.0,0.0,0.0,Neutral
+13.0,2019-02-21,['bRT  Our folding phone is bigger and better than Samsungxe2x80x99s says Huawei '],0.0,0.805,0.195,0.195,Positive
+14.0,2019-02-21,['bSamsung on whether you can end calls on the GalaxyFold by snapping it shut like the old flip phones '],0.0,0.884,0.116,0.116,Positive
+15.0,2019-02-20,['bRT  Important can I answer calls with the phone unfolded and then hang up by snapping it shut   Samsungxe2x80xa6'],0.0,0.904,0.096,0.096,Positive
+16.0,2019-02-20,['bSamsung Galaxy Fold The internet reacts '],0.0,1.0,0.0,0.0,Neutral
+17.0,2019-01-08,['bSamsung reveals Galaxy Fold and S10 5G '],0.0,1.0,0.0,0.0,Neutral
+18.0,2019-01-07,['bCES 2019 Samsung adds rival Apples iTunes to smart TVs '],0.0,0.787,0.213,0.213,Positive
+19.0,2018-12-10,['bRT  Samsung has revealed a 75in 190cm television made of modular panels you can rearrange xf0x9fx91x80 CES2019 '],0.0,1.0,0.0,0.0,Neutral
+20.0,2018-12-03,['bHuawei Honor View20 and Samsung A8s have holepunch cameras '],0.0,0.738,0.262,0.262,Positive
+21.0,2018-11-23,['bSamsung Nigeria tweets update using Apple iPhone '],0.0,1.0,0.0,0.0,Neutral
+22.0,2018-11-07,['bSamsung apologises to sick factory workers '],0.327,0.495,0.178,-0.14900000000000002,Negative
+23.0,2018-11-01,['bRT  After 5 years of talking about folding devices Samsung unveiled theirs at SDC18 '],0.0,1.0,0.0,0.0,Neutral
+24.0,2018-10-24,['bSamsung agrees to payouts after worker deaths '],0.0,0.795,0.205,0.205,Positive
+25.0,2018-09-05,['bApple and Samsung fined by Italian authorities over slow phones '],0.0,1.0,0.0,0.0,Neutral
+26.0,2018-08-09,['bSamsung Time for folding smartphones '],0.0,1.0,0.0,0.0,Neutral
+27.0,2018-07-31,['bSamsung Galaxy Note 9 warns of wonky photos '],0.167,0.833,0.0,-0.167,Negative
+28.0,2018-05-31,['bWhy is Samsungs Galaxy S9 flagship struggling '],0.275,0.588,0.137,-0.138,Negative
+29.0,2018-05-25,['bSamsung wont be forced to update old phones '],0.0,0.763,0.237,0.237,Positive
+30.0,2018-05-14,['bApple awarded 539m in US patent case against Samsung '],0.0,0.769,0.231,0.231,Positive
+31.0,2018-02-25,['bAppleSamsung patent battle revived in California court '],0.271,0.729,0.0,-0.271,Negative
+32.0,2018-02-25,['bSamsung Galaxy S9 gets super slowmo and AR emojis '],0.0,0.698,0.302,0.302,Positive
+33.0,2018-02-21,['bSamsung Galaxy S9 focuses on the camera '],0.0,1.0,0.0,0.0,Neutral
+34.0,2019-10-24,['bSamsung Galaxy S9 smartphone images leaked by MWC app '],0.204,0.796,0.0,-0.204,Negative
+35.0,2019-10-17,['bRBS pulls Samsung Galaxy S10 app over security flaw '],0.0,0.789,0.211,0.211,Positive
+36.0,2019-09-05,['bAny fingerprint unlocks Galaxy S10 Samsung warns '],0.167,0.833,0.0,-0.167,Negative
+37.0,2019-08-07,['bSamsung Galaxy Fold UK launch date revealed '],0.0,1.0,0.0,0.0,Neutral
+38.0,2019-07-25,['bGalaxy Note 10 Samsung hopes to strike the right Note '],0.113,0.677,0.211,0.09799999999999999,Positive
+39.0,2019-04-22,['bRT  Samsung says the Galaxy Fold will go on sale in September after faulty screens delayed the launch '],0.198,0.802,0.0,-0.198,Negative
+40.0,2019-04-16,['bSamsung Galaxy Fold launch events delayed in China '],0.192,0.808,0.0,-0.192,Negative
+41.0,2019-02-21,['bRT  Heres my first handson with the Samsung Galaxy Fold GalaxyFold '],0.0,1.0,0.0,0.0,Neutral
+42.0,2019-02-20,['bSamsung on whether you can end calls on the GalaxyFold by snapping it shut like the old flip phones '],0.0,0.884,0.116,0.116,Positive
+43.0,2019-02-20,['bSamsung Galaxy Fold The internet reacts '],0.0,1.0,0.0,0.0,Neutral
+44.0,2018-08-09,['bSamsung reveals Galaxy Fold and S10 5G '],0.0,1.0,0.0,0.0,Neutral
+45.0,2018-07-31,['bSamsung Galaxy Note 9 warns of wonky photos '],0.167,0.833,0.0,-0.167,Negative
+46.0,2018-02-25,['bWhy is Samsungs Galaxy S9 flagship struggling '],0.275,0.588,0.137,-0.138,Negative
+47.0,2018-02-25,['bSamsung Galaxy S9 gets super slowmo and AR emojis '],0.0,0.698,0.302,0.302,Positive
+48.0,2018-02-21,['bSamsung Galaxy S9 focuses on the camera '],0.0,1.0,0.0,0.0,Neutral
+49.0,2018-02-21,['bSamsung Galaxy S9 smartphone images leaked by MWC app '],0.204,0.796,0.0,-0.204,Negative
+50.0,2019-10-24,['bGuardians of the Galaxy Vol 2 Visual effects revealed '],0.0,1.0,0.0,0.0,Neutral
+51.0,2019-09-05,['bRBS pulls Samsung Galaxy S10 app over security flaw '],0.0,0.789,0.211,0.211,Positive
+52.0,2019-04-22,['bSamsung Galaxy Fold UK launch date revealed '],0.0,1.0,0.0,0.0,Neutral
+53.0,2019-04-16,['bSamsung Galaxy Fold launch events delayed in China '],0.192,0.808,0.0,-0.192,Negative
+54.0,2019-02-20,['bRT  Heres my first handson with the Samsung Galaxy Fold GalaxyFold '],0.0,1.0,0.0,0.0,Neutral
+55.0,2018-08-09,['bSamsung Galaxy Fold The internet reacts '],0.0,1.0,0.0,0.0,Neutral
+56.0,2018-02-25,['bSamsung Galaxy Note 9 warns of wonky photos '],0.167,0.833,0.0,-0.167,Negative
+57.0,2018-02-25,['bSamsung Galaxy S9 gets super slowmo and AR emojis '],0.0,0.698,0.302,0.302,Positive
+58.0,2018-02-21,['bSamsung Galaxy S9 focuses on the camera '],0.0,1.0,0.0,0.0,Neutral
+59.0,2019-10-24,['bSamsung Galaxy S9 smartphone images leaked by MWC app '],0.204,0.796,0.0,-0.204,Negative
+60.0,2019-10-17,['bRBS pulls Samsung Galaxy S10 app over security flaw '],0.0,0.789,0.211,0.211,Positive
+61.0,2019-09-05,['bAny fingerprint unlocks Galaxy S10 Samsung warns '],0.167,0.833,0.0,-0.167,Negative
+62.0,2019-07-25,['bSamsung Galaxy Fold UK launch date revealed '],0.0,1.0,0.0,0.0,Neutral
+63.0,2019-04-22,['bRT  Samsung says the Galaxy Fold will go on sale in September after faulty screens delayed the launch '],0.198,0.802,0.0,-0.198,Negative
+64.0,2019-04-16,['bSamsung Galaxy Fold launch events delayed in China '],0.192,0.808,0.0,-0.192,Negative
+65.0,2019-02-20,['bRT  Heres my first handson with the Samsung Galaxy Fold GalaxyFold '],0.0,1.0,0.0,0.0,Neutral
+66.0,2019-02-20,['bSamsung Galaxy Fold The internet reacts '],0.0,1.0,0.0,0.0,Neutral
+67.0,2019-08-07,['bSamsung reveals Galaxy Fold and S10 5G '],0.0,1.0,0.0,0.0,Neutral
+68.0,2018-08-09,['bGalaxy Note 10 Samsung hopes to strike the right Note '],0.113,0.677,0.211,0.09799999999999999,Positive
+69.0,,['bSamsung Galaxy Note 9 warns of wonky photos '],0.167,0.833,0.0,-0.167,Negative
+,Date,,,,,,
