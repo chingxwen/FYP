@@ -19,10 +19,10 @@ def get_reddit():
     gen = api.search_submissions(after = start_epoch,
                                 subreddit = 'samsung',
                                 q = 'samsung',
-                                filter = ['subreddit', 'created','title'],
+                                filter = ['subreddit', 'created','title','id'],
                                 limit = 1000)
     results = list(gen)
-    print(results)
+    # print(results)
 
 
 
@@ -43,7 +43,8 @@ def get_reddit():
     data = data.drop('created', axis = 1)
 
     #Write data to csv
-    data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
+    # data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
     print('Written!')
+    print(data.head(10))
 
 get_reddit()

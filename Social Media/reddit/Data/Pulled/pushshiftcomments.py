@@ -1,0 +1,71 @@
+from pushshift_py import PushshiftAPI
+import praw
+import datetime as dt
+import pandas as pd
+from praw.models import MoreComments
+
+
+def get_redditcomments():
+    api = PushshiftAPI()
+    reddit = praw.Reddit(
+        client_id = 'ft1YI89jxATR_g', \
+        client_secret = '31k1f4ORFpgtQlZ-h2QLO9qxCPc', \
+        user_agent = 'scrubmasterAPI', \
+        username = 'pythonscrubSP', \
+        password = 'scrubmaster54321'
+    )
+
+    start_epoch=int(dt.datetime(2019,10,1).timestamp())
+
+    gen = api.search_submissions(after = start_epoch,
+                                subreddit = 'samsung',
+                                q = 'samsung',
+                                filter = ['subreddit', 'created','title','id'],
+                                limit = 1000)
+    results = list(gen)
+    # print(results)
+
+    #Getting post comments
+
+    data = pd.DataFrame(results)
+
+    iddata = data[['id']]
+    iddata = iddata.values.tolist()
+
+    for i in range(len(iddata)):
+        def listTostring(s):
+            str1 = ''
+            return(str1.join(s))
+        print(listTostring(iddata[i]))
+
+    for i in range(len(iddata)):
+        try:
+            x = reddit.submission(listTostring(iddata[i]))
+            for comment in x.comments:
+                for reply in comment.replies:
+                    length  = len(iddata)
+                    cData = []
+                    cData.append(reply.body)
+                    print(i, 'Comment')
+                    cTime = []
+                    cTime.append(reply.created_utc)
+                    print(i, 'Time')
+                    print(i, 'out of', length)    
+        except Exception as e:
+            print(type(e))
+            print(e)
+    
+
+    #Converting datetime column from UNIX to normal
+    def get_date(created):
+        return dt.datetime.fromtimestamp(created)
+    _timestamp = data["created"].apply(get_date)
+    data = data.assign(timestamp = _timestamp)
+
+
+    #Write data to csv
+    data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
+    print('Written!')
+    print(data.head(5))
+
+get_redditcomments()
