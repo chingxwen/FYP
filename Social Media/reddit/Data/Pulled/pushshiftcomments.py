@@ -46,25 +46,41 @@ def get_redditcomments():
                     length  = len(iddata)
                     cData = []
                     cData.append(reply.body)
-                    print(i, 'Comment')
+                    print('Comment')
+                    print(reply.body)
                     cTime = []
                     cTime.append(reply.created_utc)
-                    print(i, 'Time')
+                    print('Time')
+                    print(reply.created_utc)
+                    print('\n')
                     print(i, 'out of', length)    
         except Exception as e:
             print(type(e))
             print(e)
     
 
+    data = pd.DataFrame(results)
+    print(data.head(5))
     #Converting datetime column from UNIX to normal
-    def get_date(created):
-        return dt.datetime.fromtimestamp(created)
-    _timestamp = data["created"].apply(get_date)
-    data = data.assign(timestamp = _timestamp)
+    # def get_date(created):
+    #     return dt.datetime.fromtimestamp(created)
+    # _timestamp = data["created"].apply(get_date)
+    # data = data.assign(timestamp = _timestamp)
 
+    #drop columns
+    data = data.drop('created_utc', axis = 1)
+    data = data.drop('id', axis = 1)
+    data = data.drop('subreddit', axis = 1)
+    data = data.drop('title', axis=1)
+    data = data.drop('d_', axis=1)
+    data = data.drop('created', axis = 1)
+
+    #Assigning comments
+    data = data.assign(comments = cData)
+    data = data.assign(created = cTime)
 
     #Write data to csv
-    data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
+    # data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
     print('Written!')
     print(data.head(5))
 
