@@ -46,11 +46,11 @@ def get_redditcomments():
                     length  = len(iddata)
                     cData = []
                     cData.append(reply.body)
-                    print('Comment')
+                    print('Comment Appended!')
                     print(reply.body)
                     cTime = []
                     cTime.append(reply.created_utc)
-                    print('Time')
+                    print('Time Appeneded')
                     print(reply.created_utc)
                     print('\n')
                     print(i, 'out of', length)    
@@ -59,29 +59,34 @@ def get_redditcomments():
             print(e)
     
 
-    data = pd.DataFrame(results)
-    print(data.head(5))
+    #Change to series for concat
+    cData = pd.Series(cData)
+    cTime = pd.Series(cTime)
+    comData = pd.concat([cData, cTime])
+    comData = pd.DataFrame(comData)
+
+
     #Converting datetime column from UNIX to normal
     # def get_date(created):
     #     return dt.datetime.fromtimestamp(created)
     # _timestamp = data["created"].apply(get_date)
     # data = data.assign(timestamp = _timestamp)
 
-    #drop columns
-    data = data.drop('created_utc', axis = 1)
-    data = data.drop('id', axis = 1)
-    data = data.drop('subreddit', axis = 1)
-    data = data.drop('title', axis=1)
-    data = data.drop('d_', axis=1)
-    data = data.drop('created', axis = 1)
+    # #drop columns
+    # data = data.drop('created_utc', axis = 1)
+    # data = data.drop('id', axis = 1)
+    # data = data.drop('subreddit', axis = 1)
+    # data = data.drop('title', axis=1)
+    # data = data.drop('d_', axis=1)
+    # data = data.drop('created', axis = 1)
 
-    #Assigning comments
-    data = data.assign(comments = cData)
-    data = data.assign(created = cTime)
+    # #Assigning comments
+    # data = data.assign(comments = cData)
+    # data = data.assign(created = cTime)
 
     #Write data to csv
-    # data.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/pushshiftsamsungsubmission2019October.csv', index=False)
+    comData.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/comments.csv', index=False, header = ['Comments', 'Time'])
     print('Written!')
-    print(data.head(5))
+    print(comData.head(5))
 
 get_redditcomments()
