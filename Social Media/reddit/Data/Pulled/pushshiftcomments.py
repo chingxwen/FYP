@@ -21,7 +21,7 @@ def get_redditcomments():
                                 subreddit = 'samsung',
                                 q = 'samsung',
                                 filter = ['subreddit', 'created','title','id'],
-                                limit = 1000)
+                                limit = 5)
     results = list(gen)
     # print(results)
 
@@ -37,56 +37,40 @@ def get_redditcomments():
             str1 = ''
             return(str1.join(s))
         print(listTostring(iddata[i]))
-
+    cData = []
     for i in range(len(iddata)):
         try:
             x = reddit.submission(listTostring(iddata[i]))
             for comment in x.comments:
-                for reply in comment.replies:
-                    length  = len(iddata)
-                    cData = []
-                    cData.append(reply.body)
-                    print('Comment Appended!')
-                    print(reply.body)
-                    cTime = []
-                    cTime.append(reply.created_utc)
-                    print('Time Appeneded')
-                    print(reply.created_utc)
-                    print('\n')
-                    print(i, 'out of', length)    
+                comment = comment.body
+                cData.append(comment)
+                # cData.append(comment)
+                # print('appended')
+                # for reply in comment.replies:
+                #     length = len(iddata)
+                #     reply = reply.body
+                #     cData.append(reply)
+                #     # print('Comment Appended')
+                #     # replyt = str(reply.created_utc)
+                #     # cTime.append(replyt)
+                #     # print('Time Appeneded')
+                #     # print('\n')
+                #     print(i, 'out of', length)
         except Exception as e:
             print(type(e))
             print(e)
     
 
     #Change to series for concat
-    cData = pd.Series(cData)
-    cTime = pd.Series(cTime)
-    comData = pd.concat([cData, cTime])
-    comData = pd.DataFrame(comData)
-
-
-    #Converting datetime column from UNIX to normal
-    # def get_date(created):
-    #     return dt.datetime.fromtimestamp(created)
-    # _timestamp = data["created"].apply(get_date)
-    # data = data.assign(timestamp = _timestamp)
-
-    # #drop columns
-    # data = data.drop('created_utc', axis = 1)
-    # data = data.drop('id', axis = 1)
-    # data = data.drop('subreddit', axis = 1)
-    # data = data.drop('title', axis=1)
-    # data = data.drop('d_', axis=1)
-    # data = data.drop('created', axis = 1)
-
-    # #Assigning comments
-    # data = data.assign(comments = cData)
-    # data = data.assign(created = cTime)
+    cData = pd.DataFrame(cData)
+    # cTime = pd.DataFrame(cTime)
+    # frames = [cData, cTime]
+    # comdata = pd.concat(frames)
+    # print(comdata)
 
     #Write data to csv
-    comData.to_csv('C:/Users/jiajie/Desktop/FYP/reddit/Data/comments.csv', index=False, header = ['Comments', 'Time'])
+    cData.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/comments.csv', index=False)
     print('Written!')
-    print(comData.head(5))
+    print(cData)
 
 get_redditcomments()
