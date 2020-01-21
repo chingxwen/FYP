@@ -8,7 +8,7 @@ def twitter_sentiment():
     datafile = input('What CSV do you want to conduct analysis one? ')
 
     # read imported csv
-    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile +'Relevant.csv', names=["User", "Date", "Tweets"])
+    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile +'.csv', names=["User", "Date", "Tweets"])
     # df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Format/Cleanse/' + datafile +'Cleanse.csv', names=["Tweets", "Date"])
 
     # extract specific column
@@ -22,9 +22,7 @@ def twitter_sentiment():
     analyser = SentimentIntensityAnalyzer()
     data = []
     score = []
-    positive = []
-    negative = []
-    neutral = []
+
 
     def sentiment_analyzer_scores (sentence):
         result = analyser.polarity_scores(sentence)
@@ -35,15 +33,6 @@ def twitter_sentiment():
 
         param = "{:-<40}".format(sentence) , str(result)
 
-        #if else loop to seperate the different sentiments, negative, position and neutral
-        if result['compound'] > 0:
-            positive.append(param)
-        elif result['compound'] < 0:
-            negative.append(param)
-        else:
-            neutral.append(param)
-
-        return(sentiment_analyzer_scores)
         
     # for loop to get overall sentiment analysis   
     for i in range (len(dflist)):
@@ -53,49 +42,13 @@ def twitter_sentiment():
     df1 = pd.DataFrame(data)
     df2 = pd.DataFrame(score)
 
-    df3 = pd.DataFrame(positive)
-    df4 = pd.DataFrame(negative)
-    df5 = pd.DataFrame(neutral)
-
-    # Formula to calculate net sentiment
-    net = df2['pos'] - df2['neg']
-
-    # For and if else loop to determine if sentiment is Positive, Negative or Neutral
-    netposneg = []
-
-    for i in range(len(net)):
-
-        if (net[i] > 0):
-
-            netposneg.append('Positive')
-
-        elif (net[i] < 0): 
-
-            netposneg.append('Negative')
-
-        elif (net[i] == 0):
-
-            netposneg.append('Neutral')
-
-    print(netposneg)
-
-    # convert list into dataframe
-    netconclude = pd.DataFrame(netposneg,columns = ['netconclude'])
-    netdata = pd.DataFrame(net ,columns = ['net'])
-
     # concat all data columns into a dataframe
-    df = pd.concat([df1, df2, netdata,netconclude], axis=1)
-
-    #remove unnessary columns
-    df.drop(index= 0,columns=['compound'], inplace = True)
+    df = pd.concat([df1, df2], axis=1)
 
     #add index to data frame
     df.index = pd.MultiIndex.from_arrays([df.index])
 
     # output dataframes to csv files
-    pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/'+ datafile +'SentimentAll.csv')
-    pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentPositive.csv')
-    pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + datafile + '/'+ datafile + 'SentimentNegative.csv')
-    pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile + '/' + datafile + 'SentimentNeutral.csv')
-
+    pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile +'SentimentAll.csv')
+ 
 twitter_sentiment()
