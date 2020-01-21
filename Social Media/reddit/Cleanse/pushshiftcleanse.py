@@ -4,7 +4,8 @@ import re
 import datetime as dt
 import numpy as np
 
-df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/pushshiftsamsungsubmission2019October.csv')
+datafile = input('whcih file would you like to clense?')
+df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/' + datafile + '.csv')
 
 
 #Converting datetime column from UNIX to normal
@@ -70,4 +71,4 @@ df = pd.concat([dfbody, dfDate], axis = 1)
 
 print(df)
 
-pd.DataFrame.from_dict(data = df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Cleanse/pushshiftandroidcleanse.csv')
+pd.DataFrame.from_dict(data = df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Cleanse/' + datafile + 'Cleanse.csv')
