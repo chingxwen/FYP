@@ -16,7 +16,7 @@ def get_redditcomments():
         password = 'scrubmaster54321'
     )
 
-    start_epoch=int(dt.datetime(2018,11,1).timestamp())
+    start_epoch=int(dt.datetime(2019,2,1).timestamp())
     print('Timestamp gotten')
 
     gen = api.search_comments(q = 'samsung',
@@ -31,7 +31,7 @@ def get_redditcomments():
     #Write data to csv
 
 
-    data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/November2018Comments.csv')
+    data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/Feburary2019Comments.csv')
 #     print('Written!')
 #     print(cData)
 
