@@ -29,8 +29,10 @@ def get_redditcomments():
     data = pd.DataFrame(results)
     print(data.head(5))    
     #Write data to csv
+
+
     data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/November2018Comments.csv')
-    print('Written!')
-    print(data.head(5))
+#     print('Written!')
+#     print(cData)
 
 get_redditcomments()
