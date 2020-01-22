@@ -41,8 +41,10 @@ dfnewlist = []
 
 for x in range(len(dflist)):
 
-    print(" ".join(dflist[x].split()))
+    dflist[x] = " ".join(dflist[x].split())
+    dflist[x] = dflist[x].replace('\r', '').replace('\n', '')
     dfnewlist.append(dflist[x])
+    print(dflist[x])
 
 #convert to dataframe again
 
@@ -67,10 +69,7 @@ count = 0
 for words in dict:
     for x in range(len(bodycontent)):
         if (words in bodycontent.iloc[x]) == False:
-                print(words)
                 count += 1 
-
-                # print(bodycontent.iloc[x])
 
                 releventbody.append(bodycontent.iloc[x])
                 releventdate.append(datecontent.iloc[x])
