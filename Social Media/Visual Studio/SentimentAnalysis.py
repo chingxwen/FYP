@@ -12,11 +12,8 @@ def twitter_sentiment():
     # df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Format/Cleanse/' + datafile +'Cleanse.csv', names=["Tweets", "Date"])
 
     # extract specific column
-    df = dfall['body']
+    df = df['body']
     dftweet = pd.DataFrame(df)
-
-    dft = dfall['timestamp']
-    dfTime = pd.DataFrame(dft)
 
     # convert column to list
     dflist = dftweet.values.tolist()
@@ -46,7 +43,7 @@ def twitter_sentiment():
     df2 = pd.DataFrame(score)
 
     # concat all data columns into a dataframe
-    df = pd.concat([dfTime,df1, df2], axis=1)
+    df = pd.concat([df1, df2], axis=1)
 
     #add index to data frame
     df.index = pd.MultiIndex.from_arrays([df.index])
