@@ -8,8 +8,8 @@ def twitter_sentiment():
     datafile = input('What CSV do you want to conduct analysis one? ')
 
     # read imported csv
-    # df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + datafile +'.csv', names=["User", "Date", "Tweets"])
-    df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Cleanse/' + datafile +'Cleanse.csv')
+    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Cleanse/' + datafile +'Cleanse.csv')
+    # df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/CSV/Keywords/Format/Cleanse/' + datafile +'Cleanse.csv', names=["Tweets", "Date"])
 
     # extract specific column
     df = df['body']
@@ -51,5 +51,6 @@ def twitter_sentiment():
     # output dataframes to csv files
     # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile +'SentimentAll.csv')
     pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Sentiment Analysis/'+ datafile +'SentimentAll.csv')
+    # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Sentiment Analysis/'+ datafile +'SentimentAll.csv')
  
 twitter_sentiment()
