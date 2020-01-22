@@ -31,7 +31,7 @@ def get_redditcomments():
     #Write data to csv
 
 
-    data.to_csv('C:/FYP/Social Media/reddit/Data/Pulled/comments/October2019Comments.csv')
+    data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/October2019Comments.csv')
 #     print('Written!')
 #     print(cData)
 
