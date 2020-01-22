@@ -20,7 +20,7 @@ def get_reddit():
                                 subreddit = 'samsung',
                                 q = 'samsung',
                                 filter = ['subreddit', 'created','title','id'],
-                                limit = 1000)
+                                limit = 500)
     results = list(gen)
     # print(results)
 
