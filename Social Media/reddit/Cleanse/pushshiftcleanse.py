@@ -24,7 +24,6 @@ df.drop(columns=['created'], inplace = True)
 df.drop(columns=['Unnamed: 0'], inplace = True)
 print(df.columns.values)
 
-
 #remove links 
 df['body'] = df['body'].str.replace(r'http\S+|www.\S+', '', case=False)
 
@@ -35,6 +34,21 @@ df['timestamp'] = pd.to_datetime(df['timestamp'] ,format='%YY%mm%dd').dt.date
 #drop null values
 df['body'].replace('',np.nan,inplace=True)
 df.dropna(axis = 0, how = 'any', inplace = True)
+
+dflist = df['body'].tolist()
+dfnewlist = []
+#removel spaces
+
+for x in range(len(dflist)):
+
+    print(" ".join(dflist[x].split()))
+    dfnewlist.append(dflist[x])
+
+#convert to dataframe again
+
+df['body'] = pd.DataFrame(dfnewlist)
+
+df = pd.concat([df['body'],df['timestamp']], axis = 1)
 
 #keyword search to remove automated messagede from reddit 
 
@@ -56,7 +70,7 @@ for words in dict:
                 print(words)
                 count += 1 
 
-                print(bodycontent.iloc[x])
+                # print(bodycontent.iloc[x])
 
                 releventbody.append(bodycontent.iloc[x])
                 releventdate.append(datecontent.iloc[x])
