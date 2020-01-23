@@ -1,4 +1,4 @@
-,timestamp,0,neg,neu,pos,compound
+,timestamp,body,neg,neu,pos,compound
 0,2018-06-30 19:15:49,"['I have a Samsung CF391, and I want to use it as a TV, but no sound is coming from it. How do I make it have sound? Thanks so much.']",0.088,0.755,0.157,0.296
 1,2018-07-01 00:12:16,"['I can hear my phone calls and the beeps and samsung voice but i cant hear music, youtube or any sort of media at all. Does anyone have a solution for this problem?']",0.0,0.91,0.09,0.4497
 2,2018-07-01 13:45:03,"['Hi! So I recently got a new phone, I took the Galaxy A8 because it sounded like a great phone for the price, and I love it right now. The only problem is the battery. I find that it is losing battery extremely fast for a new phone. About 15-20% for an hour of using the phone only to configure stuff and install apps, and then about 15% lost over 6 hours of not using it. Is that a normal rate for new phones? Am I already required to desactivate cool features such as the time showing up when idle and activate power saving mode just to get a decent time of usage?']",0.065,0.816,0.118,0.7993

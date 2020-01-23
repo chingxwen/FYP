@@ -1,4 +1,4 @@
-,timestamp,0,neg,neu,pos,compound
+,timestamp,body,neg,neu,pos,compound
 0,2019-07-01 00:23:56,"['Hi, I was looking around for a 4K Smart TV and I found the Samsung UE50NU7020. Is this a good TV for the price? Are there any big issues with the TV? #']",0.0,0.808,0.192,0.7532
 1,2019-07-01 00:49:29,['so i was trying to open a .txt file. and i accidentally selected samsung mobile printing app as default. is there any way i can un-do that? phone: j7 prime android version: 8.1.0'],0.079,0.921,0.0,-0.34
 2,2019-07-01 01:04:28,"['A friend just gave me their old Samsung J7 Prime and since I’ve had it, it’s worked pretty well aside from some charging issues. No matter what I do, it will not increase in charge while it’s on, only when it’s off. I’ve tried clearing cache, rebooting, even resetting the phone and nothing is helping. I’ve used different chargers, different wall sockets, literally nothing is working. Does anyone know how to fix this problem? Will I have to take it into a Samsung store to get it fixed?']",0.095,0.801,0.104,0.1986

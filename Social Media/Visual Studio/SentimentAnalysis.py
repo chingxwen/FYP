@@ -47,13 +47,15 @@ def twitter_sentiment():
     # concat all data columns into a dataframe
     df = pd.concat([dftime,df1, df2], axis=1)
 
+    df.columns=['timestamp','body','neg','neu','pos','compound']
+
     #add index to data frame
-    df.index = pd.MultiIndex.from_arrays([df.index])
+    # df.index = pd.MultiIndex.from_arrays([df.index])
 
     # output dataframes to csv files
     # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ datafile +'SentimentAll.csv')
     pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/MLReady/SelfText/'+ datafile +'SentimentAll.csv')
     # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Sentiment Analysis/'+ datafile +'SentimentAll.csv')
  
- 
+
 twitter_sentiment()

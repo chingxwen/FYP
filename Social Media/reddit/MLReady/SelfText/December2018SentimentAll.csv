@@ -1,4 +1,4 @@
-,timestamp,0,neg,neu,pos,compound
+,timestamp,body,neg,neu,pos,compound
 0,2018-11-30 16:01:43,['When I go to a URL the Samsung Internet browser first goes to the following URL first. How do I prevent this?'],0.0,0.942,0.058,0.0258
 1,2018-11-30 16:24:19,"[""Although I really liked One UI, the performance issues and instability were too inconvenient for me and I probably shouldn't have upgraded in the first place (it being a beta). &amp;#x200B; Its very easy to downgrade 1. Deregister from the beta 2. Download Smart Switch for PC 3. Plug phone into PC via the official samsung USB 4. Load smart switch and press downgrade The option didnt appear for me the first time, however after I installed one of the patches it appeared [ &amp;#x200B; If you have any questions feel free to ask!""]",0.024,0.824,0.152,0.9166
 2,2018-11-30 17:41:38,"[""Tested on an S7 and an S9 the mail app just won't load certain emails. Usually promo ones from sites like best buy. Anyone else having this issue? It doesn't block all marketing/html emails only some.""]",0.042,0.746,0.212,0.807
