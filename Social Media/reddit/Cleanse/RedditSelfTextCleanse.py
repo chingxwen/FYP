@@ -23,7 +23,6 @@ print('unwanted columns removed')
 df['selftext'] = df['selftext'].str.replace(r'http\S+|www.\S+', '', case=False)
 print('links removed')
 
-
 #remove spaces
 dflist = df['selftext'].tolist()
 dfnewlist = []
