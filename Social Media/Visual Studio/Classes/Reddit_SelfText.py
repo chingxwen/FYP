@@ -4,9 +4,10 @@ import datetime as dt
 import pandas as pd
 
 
+class reddit_selftext(object):
 
-class get_reddit():
-
+    # api = PushshiftAPI()
+    api = False
     reddit = praw.Reddit(
         client_id = 'ft1YI89jxATR_g', \
         client_secret = '31k1f4ORFpgtQlZ-h2QLO9qxCPc', \
@@ -15,33 +16,24 @@ class get_reddit():
         password = 'scrubmaster54321'
     )
 
-    api = False
     start_epoch=int(dt.datetime(2018,7,1).timestamp())
 
-
-
-    def __init__(self,keys_dict=reddit, api=api):
-
+    def __init__(self,api = api, keys_dict=reddit):
         self.api = PushshiftAPI()
-        # self.created = created
         self.reddit = keys_dict
         self.timestamps = timestamps = []
 
-    def redditextract(self):
-
-        self.gen = self.api.search_comments(after = self.start_epoch,
-                            subreddit = 'samsung',
-                            q = 'samsung',
-                            limit = 2000,
-                             filter = ['body'])
+    def extract(self):
+        self.gen = self.api.search_submissions(after = self.start_epoch,
+                                    subreddit = 'samsung',
+                                    q = 'samsung',
+                                    filter = ['subreddit', 'created','title','id'],
+                                    limit = 500)
         self.results = list(self.gen)
-        print(self.results)
 
         self.data = pd.DataFrame(self.results)
-        print(self.data)
 
         return self.data
-
 
     def convert_Datetime(self):
         #Converting datetime column from UNIX to normal
@@ -55,30 +47,30 @@ class get_reddit():
 
         return self.data
 
-    def dropcolumn(self):
+    def drop_columns(self):
         #drop 'created' column
         self.data = self.data.drop('created_utc', axis = 1)
-        print(self.data)
 
         #drop 'd_' column
         self.data = self.data.drop('d_', axis = 1)
-        print(self.data)
 
         #drop 'created' column
         self.data = self.data.drop('created', axis = 1)
-        print(self.data)
 
         return self.data
-    
-    def exportcsv(self):
-        self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/pushshiftclass.csv', index=False)
+
+    def write(self):
+
+        #Write data to csv
+        self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw\July2018.csv', index=False)
         print('Written!')
+        print(self.data.head(10))
 
         return self.data
 
-Extract = get_reddit()
-ExtractData = Extract.redditextract()
-ConvertDate = Extract.convert_Datetime()
-DropColumn = Extract.dropcolumn()
-ExportCsv = Extract.exportcsv()
 
+RedditExtract = reddit_selftext(object)
+RedditExtract.extract()
+RedditExtract.convert_Datetime()
+RedditExtract.drop_columns()
+RedditExtract.write()
