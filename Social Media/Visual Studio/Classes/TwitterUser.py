@@ -106,4 +106,3 @@ class TweetMiner(object):
 
 TwitterExtract = TweetMiner()
 TwitterExtract.mine_user_tweets()
-# TwitterExtract.export()
