@@ -20,7 +20,7 @@ _timestamp = df["created"].apply(get_date)
 df = df.assign(timestamp = _timestamp)
 
 
-#remove duplicate rows
+#remove unwanted columns
 df.drop(columns=['id'], inplace = True)
 df.drop(columns=['d_'], inplace = True)
 df.drop(columns=['created_utc'], inplace = True)
@@ -37,8 +37,8 @@ df['timestamp'] = pd.to_datetime(df['timestamp'] ,format='%YY%mm%dd').dt.date
 
 dflist = df['body'].tolist()
 dfnewlist = []
-#removel spaces
 
+#removel spaces
 for x in range(len(dflist)):
 
     dflist[x] = " ".join(dflist[x].split())
@@ -83,6 +83,7 @@ dfDate = pd.DataFrame(releventdate, columns = ['timestamp'])
 
 df = pd.concat([dfbody, dfDate], axis = 1)
 
+
 #drop null values
 df['body'].replace('',np.nan,inplace=True)
 df.dropna(axis = 0, how = 'any', inplace = True) 
@@ -92,5 +93,6 @@ df.dropna(axis = 0, how = 'any', inplace = True)
 df['body'].str.replace("[","")
 
 print(df)
+
 
 pd.DataFrame.from_dict(data = df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Cleanse/' + datafile + 'Cleanse.csv')
