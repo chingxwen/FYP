@@ -6,12 +6,12 @@ import numpy as np
 import praw
 
 class reddit_comment_cleanse(object):
-
+    api = False
     datafile = input('whcih file would you like to clense?')
-    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/' + datafile + '.csv', )
+    df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/' + datafile + '.csv', )
     
-    def __init__(self, api = api, keys_dict=reddit):
-        self.api = PushshiftAPI()
+    def __init__(self, api = api):
+        pass
     
     def body_type(self):
         self.df['body'].astype('object').dtypes
@@ -25,14 +25,17 @@ class reddit_comment_cleanse(object):
         return self.df['body']
 
     def datetimeObject_convert(self):
-        self.df['timestamp'] = pd.to_datetime(df['timestamp'] ,format='%YY%mm%dd').dt.date
+        self.df['timestamp'] = pd.to_datetime(self.df['timestamp']).dt.date
     
         return self.df['timestamp']
 
-    self.dflist = df['body'].tolist()
-    self.dfnewlist=[]
+    # dflist = df['body'].tolist()
+    # self.dfnewlist=[]
 
     def space_removal(self):
+        self.dflist = self.df['body'].tolist()
+        self.dfnewlist=[]
+
         for x in range(len(self.dflist)):
             self.dflist[x] = " ".join(self.dflist[x].split())
             self.dflist[x] = self.dflist[x].replace('\r', '').replace('\n', '')
@@ -40,7 +43,7 @@ class reddit_comment_cleanse(object):
         return self.dfnewlist
 
     def dataframe_convert(self):
-        self.df['body'] = pd.DataFrame(dfnewlist)
+        self.df['body'] = pd.DataFrame(self.dfnewlist)
         self.df = pd.concat([self.df['body'],self.df['timestamp']], axis = 1)
         return self.df['body']
 
@@ -61,10 +64,10 @@ class reddit_comment_cleanse(object):
             for x in range(len(self.bodycontent)):
                 print(type(self.bodycontent.iloc[x]))
                 if (words in self.bodycontent.iloc[x]) == False:
-                    count += 1 
+                    # global count += 1 
 
-                    self.releventbody.append(bodycontent.iloc[x])
-                    self.releventdate.append(datecontent.iloc[x])
+                    self.releventbody.append(self.bodycontent.iloc[x])
+                    self.releventdate.append(self.datecontent.iloc[x])
 
                 else:
                     pass
@@ -88,7 +91,7 @@ class reddit_comment_cleanse(object):
         return self.df
 
     def write(self):
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Cleanse/' + datafile + 'Cleanse.csv')
+        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Cleanse/' + self.datafile + 'Cleanse.csv')
 
         return self.df
 
