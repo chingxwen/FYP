@@ -43,11 +43,11 @@ df['selftext'] = pd.DataFrame(dfnewlist)
 
 df['selftext'].replace('nan',np.nan,inplace=True)
 df['selftext'].replace('[removed]', np.nan, inplace = True)
-df.dropna(axis = 0, how = 'any', inplace = True) 
+df.dropna(axis = 0, how = 'any', threst = None, inplace = False) 
 
 df = pd.concat([df['selftext'],df['timestamp']], axis = 1)
 
-print(df.info())
+print(df)
 
 #Write out
 pd.DataFrame.from_dict(data = df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/raw/Cleanse/' + datafile + 'Cleanse.csv')
