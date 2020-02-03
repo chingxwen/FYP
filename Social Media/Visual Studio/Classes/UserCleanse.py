@@ -18,7 +18,7 @@ class UserClense:
         
     def read_Csv(self):
 
-        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + self.datafile + '.csv', names = ['User','ID','Date','Tweets'])
+        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + self.datafile + '.csv', names = ['ID','User','Tweets','Date'])
 
         return self.df
     
@@ -28,66 +28,63 @@ class UserClense:
 
         return self.df
 
-    def cleanse_data(self, df):
+    def cleanse_data(self):
 
         #Extra rows by date
 
-        df['Date'] = pd.to_datetime(df['Date'])
+        # self.df['Date'] = pd.to_datetime(self.df['Date'])
 
         startdate = '2018-07-01'
         enddate = '2019-10-31'
 
-        filterrows = (df['Date'] >= startdate) & (df['Date'] <= enddate)
+        filterrows = (self.df['Date'] >= startdate) & (self.df['Date'] <= enddate)
 
-        df['Tweets'] = df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
+        # self.df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
 
-        df['Tweets'] = df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
+        self.df['Tweets'] = self.df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
 
-        df['Tweets'] = df['Tweets'].str.replace(r'@[^\s]+','', case=False)
+        self.df['Tweets'] = self.df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 
-        df['Tweets'] = df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
+        self.df['Tweets'] = self.df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 
-        df['Tweets'].replace('',np.nan,inplace=True)
-        df.dropna(axis = 0, how = 'any', inplace = True)
+        # self.df['Tweets'] = self.df['Tweets'].replace('',np.nan,inplace=True)
+
+
+        self.df.dropna(axis = 0, how = 'any', inplace = True)
 
         # Removal of Null Values
-        df['Tweets'].replace('',np.nan,inplace=True)
-        df['Tweets'].replace(' ',np.nan,inplace=True)
-        df['Tweets'].replace('  ',np.nan,inplace=True)
-        df['Tweets'].replace('   ',np.nan,inplace=True)
-        df['Tweets'].replace('    ',np.nan,inplace=True)
-        df.dropna(axis = 0, how = 'any', inplace = True)
+        self.df['Tweets'].replace('',np.nan,inplace=True)
+        self.df['Tweets'].replace(' ',np.nan,inplace=True)
+        self.df['Tweets'].replace('  ',np.nan,inplace=True)
+        self.df['Tweets'].replace('   ',np.nan,inplace=True)
+        self.df['Tweets'].replace('    ',np.nan,inplace=True)
+        self.df.dropna(axis = 0, how = 'any', inplace = True)
 
-        df['Tweets'].to_frame()
-        df['Tweets'].tolist()
+        self.df['Tweets'].to_frame()
+        self.df['Tweets'].tolist()
 
-        df['Tweets'].str.strip().to_frame()
+        self.df['Tweets'].str.strip().to_frame()
         # df2 = dftweet2.to_frame()
 
 
-        df = df.loc[filterrows]
+        self.df = self.df.loc[filterrows]
+
+        print(self.df)
+        print('hi')
       
-        print(df)
+        print(self.df)
         print('df')
 
-        return df
+        return self.df
 
     def export(self):
         # Convert list DataFrame to csv
-        pd.DataFrame.from_dict(data = pd.concat([df['User'], df['Date'], df['Tweets']], axis = 1) , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + self.datafile + 'Cleanse.csv')
+        pd.DataFrame.from_dict(data = pd.concat([self.df['User'], self.df['Date'], self.df['Tweets']], axis = 1) , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + self.datafile + 'Cleanse.csv')
 
 
 
 #usage
 
-SM_Cleanse = UserClense()
-df = SM_Cleanse.read_Csv()
-Date = df['Date']
-Tweets = df['Tweets']
-User = df['User']
-SM_Drop = SM_Cleanse.drop_columns()
-SM_filter = SM_Cleanse.cleanse_data(df)
-SM_Cleanse.export()
 
 
 

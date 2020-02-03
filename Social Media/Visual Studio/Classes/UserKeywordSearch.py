@@ -71,9 +71,10 @@ class UserKeywordSearch:
     def export(self):
 
         # Convert DataFrame to csv
-        pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile + 'Relevant.csv')
+        df = pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile + 'Relevant.csv')
 
-
+        return df
+        
 KeywordSearch = UserKeywordSearch()
 df = KeywordSearch.read_file()
 
@@ -81,5 +82,4 @@ count = 0
 usercontent = df['User']
 userdate = df['Date']
 content = df["Tweets"]
-Search = KeywordSearch.searchloop()
-Export = KeywordSearch.export()
+

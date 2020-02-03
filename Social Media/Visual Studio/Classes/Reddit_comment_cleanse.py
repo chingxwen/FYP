@@ -8,7 +8,7 @@ import praw
 class reddit_comment_cleanse(object):
     api = False
     datafile = input('whcih file would you like to clense?')
-    df = pd.read_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/' + datafile + '.csv', )
+    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/' + datafile + '.csv', )
     
     def __init__(self, api = api):
         pass
@@ -82,7 +82,14 @@ class reddit_comment_cleanse(object):
         self.df['body'].replace('',np.nan,inplace=True)
         self.df.dropna(axis = 0, how = 'any', inplace = True) 
 
+
+        self.df.drop_duplicates(keep="first", inplace=True)
+        print(self.df.shape)
+        print('duplicates removed')
+
         return self.df['body']
+
+
 
     def specialChar_removal(self):
         self.df['body'].str.replace("[","")
@@ -91,17 +98,17 @@ class reddit_comment_cleanse(object):
         return self.df
 
     def write(self):
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Cleanse/' + self.datafile + 'Cleanse.csv')
+        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/Cleanse/' + self.datafile + 'Cleanse.csv')
 
         return self.df
 
-RedditExtract = reddit_comment_cleanse(object)
-RedditExtract.body_type()
-RedditExtract.link_removal()
-RedditExtract.datetimeObject_convert()
-RedditExtract.space_removal()
-RedditExtract.dataframe_convert()
-RedditExtract.keyword_search()
-RedditExtract.nullValue_removal()
-RedditExtract.specialChar_removal()
-RedditExtract.write()
+# RedditExtract = reddit_comment_cleanse(object)
+# RedditExtract.body_type()
+# RedditExtract.link_removal()
+# RedditExtract.datetimeObject_convert()
+# RedditExtract.space_removal()
+# RedditExtract.dataframe_convert()
+# RedditExtract.keyword_search()
+# RedditExtract.nullValue_removal()
+# RedditExtract.specialChar_removal()
+# RedditExtract.write()

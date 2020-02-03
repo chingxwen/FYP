@@ -16,7 +16,7 @@ class reddit_selftext(object):
         password = 'scrubmaster54321'
     )
 
-    start_epoch=int(dt.datetime(2018,7,1).timestamp())
+    start_epoch=int(dt.datetime(2019,10,1).timestamp())
 
     def __init__(self,api = api, keys_dict=reddit):
         self.api = PushshiftAPI()
@@ -27,7 +27,7 @@ class reddit_selftext(object):
         self.gen = self.api.search_submissions(after = self.start_epoch,
                                     subreddit = 'samsung',
                                     q = 'samsung',
-                                    filter = ['subreddit', 'created','title','id'],
+                                    filter = ['subreddit', 'created','selftext','id'],
                                     limit = 500)
         self.results = list(self.gen)
 
@@ -62,15 +62,15 @@ class reddit_selftext(object):
     def write(self):
 
         #Write data to csv
-        self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw\July2018.csv', index=False)
+        self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw\October2019.csv', index=False)
         print('Written!')
         print(self.data.head(10))
 
         return self.data
 
 
-RedditExtract = reddit_selftext(object)
-RedditExtract.extract()
-RedditExtract.convert_Datetime()
-RedditExtract.drop_columns()
-RedditExtract.write()
+# RedditExtract = reddit_selftext(object)
+# RedditExtract.extract()
+# RedditExtract.convert_Datetime()
+# RedditExtract.drop_columns()
+# RedditExtract.write()

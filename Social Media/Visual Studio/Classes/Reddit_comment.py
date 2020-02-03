@@ -54,14 +54,14 @@ class reddit_comments(object):
         return self.data 
 
     def write(self):
-        self.data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/October2019Comments.csv')
+        self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019Comments.csv')
         print('Written!')
         print(self.data.head(10))
 
         return self.data
 
-RedditExtract = reddit_comments(object)
-RedditExtract.extract()
-RedditExtract.convert_Datetime()
-RedditExtract.drop_columns()
-RedditExtract.write()
+# RedditExtract = reddit_comments(object)
+# RedditExtract.extract()
+# RedditExtract.convert_Datetime()
+# RedditExtract.drop_columns()
+# RedditExtract.write()

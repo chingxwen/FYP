@@ -60,30 +60,10 @@ class TweetMiner(object):
             for item in statuses:
 
                 mined = {
-                    # 'tweet_id':        item.id,
-                    # 'name':            item.user.name,
-                    'screen_name':     item.user.screen_name,
-                    # 'retweet_count':   item.retweet_count,
-                    'text':            item.full_text,
-                    # 'mined_at':        datetime.datetime.now(),
-                    'created_at':      item.created_at
-                    # 'favourite_count': item.favorite_count,
-                    # 'hashtags':        item.entities['hashtags'],
-                    # 'status_count':    item.user.statuses_count,
-                    # 'location':        item.place,
-                    # 'source_device':   item.source
+                    'User':     item.user.screen_name,
+                    'Tweets':            item.full_text,
+                    'Date':      item.created_at
                 }
-                
-                # try:
-                    # mined['retweet_text'] = item.retweeted_status.full_text
-                # except:
-                    # mined['retweet_text'] = 'None'
-                # try:
-                    # mined['quote_text'] = item.quoted_status.full_text
-                    # mined['quote_screen_name'] = status.quoted_status.user.screen_name
-                # except:
-                    # mined['quote_text'] = 'None'
-                    # mined['quote_screen_name'] = 'None'
                 
                 last_tweet_id = item.id
                 data.append(mined)
@@ -104,5 +84,5 @@ class TweetMiner(object):
 
 
 
-TwitterExtract = TweetMiner()
-TwitterExtract.mine_user_tweets()
+# TwitterExtract = TweetMiner()
+# TwitterExtract.mine_user_tweets()
