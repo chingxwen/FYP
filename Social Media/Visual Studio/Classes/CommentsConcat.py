@@ -12,7 +12,8 @@ class concat() :
     def read_csv(self):
         # directory folder 
 
-        os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments")
+        # os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments")
+        os.chdir(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\Comments")
 
         #include all files in the folder into the list
 
@@ -28,7 +29,7 @@ class concat() :
 
         df = combined_csv.sort_values(by='timestamp', ascending=True)
 
-        df.to_csv(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv", index=False, encoding='utf-8-sig')
-
+        # df.to_csv(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv", index=False, encoding='utf-8-sig')
+        df.to_csv(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv", index=False, encoding='utf-8-sig')
 
 

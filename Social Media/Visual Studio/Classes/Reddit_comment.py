@@ -5,9 +5,16 @@ import pandas as pd
 
 
 class reddit_comments(object):
+ 
+    yearInput = int(input('Year to Search? (YYYY):  '))
+    monthInput = int(input('Month to Search? (MM):  '))
+    dateInput = int(input('Date to Search? (DD):    '))
 
-    start_epoch=int(dt.datetime(2019,10,1).timestamp())
+    start_epoch=int(dt.datetime(yearInput,monthInput,dateInput).timestamp())
+    month = dt.date(1900, monthInput, 1).strftime('%B')
     print('Timestamp gotten')
+    print('This is the time in Unix-Format:', start_epoch)
+    print('You are searching in the month of ' + month)
 
     api = False
     reddit = praw.Reddit(
@@ -17,10 +24,12 @@ class reddit_comments(object):
         username = 'pythonscrubSP', \
         password = 'scrubmaster54321'
     )
+    print('credentials verified')
 
     def __init__(self, api = api, keys_dict=reddit):
         self.api = PushshiftAPI()
         self.timestamps = timestamps = []
+        print('initialised')
         
 
     def extract(self):
@@ -28,10 +37,12 @@ class reddit_comments(object):
                                 subreddit = 'samsung',
                                 after = self.start_epoch,
                                 filter = ['created','body','id'],
-                                size = 5)
+                                size = 1)
         self.results = list(self.gen)
+        print('extracted')
 
         self.data = pd.DataFrame(self.results)
+        print('converted')
 
         return self.data
 
@@ -54,7 +65,8 @@ class reddit_comments(object):
         return self.data 
 
     def write(self):
-        self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019Comments.csv')
+        # self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019comments.csv')
+        self.data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
         print('Written!')
         print(self.data.head(10))
 

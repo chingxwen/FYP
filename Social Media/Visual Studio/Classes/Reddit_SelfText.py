@@ -15,9 +15,18 @@ class reddit_selftext(object):
         username = 'pythonscrubSP', \
         password = 'scrubmaster54321'
     )
+    print('initialised')
 
-    start_epoch=int(dt.datetime(2019,10,1).timestamp())
+    yearInput = int(input('Year to Search? (YYYY):  '))
+    monthInput = int(input('Month to Search? (MM):  '))
+    dateInput = int(input('Date to Search? (DD):    '))
 
+    start_epoch=int(dt.datetime(yearInput,monthInput,dateInput).timestamp())
+    month = dt.date(1900, monthInput, 1).strftime('%B')
+    print('Timestamp gotten')
+    print('This is the time in Unix-Format:', start_epoch)
+    print('You are searching in the month of '+ month)
+    
     def __init__(self,api = api, keys_dict=reddit):
         self.api = PushshiftAPI()
         self.reddit = keys_dict
@@ -62,7 +71,8 @@ class reddit_selftext(object):
     def write(self):
 
         #Write data to csv
-        self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw\October2019.csv', index=False)
+        # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw\October2019.csv', index=False)
+        self.data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/raw/' + self.month + str(self.yearInput)+'.csv', index=False)
         print('Written!')
         print(self.data.head(10))
 
