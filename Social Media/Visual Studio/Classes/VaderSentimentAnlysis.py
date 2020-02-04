@@ -9,13 +9,11 @@ class VaderSentiment:
     pd.options.display.max_rows = 999999
 
     def __init__(self):
-        self.data = data = []
-        self.score = score = []
-        self.positive = positive = []
-        self.negative = negative = []
-        self.neutral = neutral = []
-        self.netposneg = netposneg = []
-        self.net = net = 0
+        self.data = []
+        self.score = []
+        self.positive = []
+        self.negative = []
+        self.neutral = []
 
     def read_csv(self):
 
@@ -74,42 +72,10 @@ class VaderSentiment:
         #convert list to dataframes
         df1 = pd.DataFrame(self.data)
         df2 = pd.DataFrame(self.score)
-        df3 = pd.DataFrame(self.positive)
-        df4 = pd.DataFrame(self.negative)
-        df5 = pd.DataFrame(self.neutral)
 
-    #     return self.df1, self.df2, self.df3, self.df4, self.df5
-
-    # def calculate(self):
-
-         # Formula to calculate net sentiment
-        net = df2['pos'] - df2['neg']
-
-        # For and if else loop to determine if sentiment is Positive, Negative or Neutral
-        # netposneg = []
-
-        for i in range(len(net)):
-
-            if (net[i] > 0):
-
-                self.netposneg.append('Positive')
-
-            elif (net[i] < 0): 
-
-                self.netposneg.append('Negative')
-
-            elif (net[i] == 0):
-
-                self.netposneg.append('Neutral')
-
-            print('loop 2')
-
-        # convert list into dataframe
-        netconclude = pd.DataFrame(self.netposneg,columns = ['netconclude'])
-        netdata = pd.DataFrame(net ,columns = ['net'])
 
         # concat all data columns into a dataframe
-        df = pd.concat([df1, df2, netdata,netconclude], axis=1)
+        df = pd.concat([df1, df2], axis=1)
 
         #remove unnessary columns
         df.drop(index= 0,columns=['compound'], inplace = True)
@@ -119,16 +85,8 @@ class VaderSentiment:
 
         # output dataframes to csv files
         pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/'+ self.datafile + '/'+ self.datafile +'SentimentAll.csv')
-        pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/' + self.datafile + '/'+ self.datafile + 'SentimentPositive.csv')
-        pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/' + self.datafile + '/'+ self.datafile + 'SentimentNegative.csv')
-        pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/'+ self.datafile + '/' + self.datafile + 'SentimentNeutral.csv')
 
-        
-        # pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + self.datafile + '/'+ self.datafile + 'SentimentPositive.csv')
-        # pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/' + self.datafile + '/'+ self.datafile + 'SentimentNegative.csv')
-        # pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/SentimentAnalysis/'+ self.datafile + '/' + self.datafile + 'SentimentNeutral.csv')
-
-        return df3,df4,df5 
+        return df
 
 SentimentAnalysis = VaderSentiment()
 Read = SentimentAnalysis.read_csv()

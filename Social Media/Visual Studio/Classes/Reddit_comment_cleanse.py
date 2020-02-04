@@ -7,13 +7,14 @@ import praw
 
 class reddit_comment_cleanse(object):
     api = False
-    datafile = input('whcih file would you like to clense?')
-    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/' + datafile + '.csv', )
+    # datafile = input('whcih file would you like to clense?')
+    df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv', )
     
     def __init__(self, api = api):
         pass
     
     def body_type(self):
+        self.df.drop(['id','selftext'])
         self.df['body'].astype('object').dtypes
         print(self.df.dtypes.value_counts())
 
@@ -98,17 +99,17 @@ class reddit_comment_cleanse(object):
         return self.df
 
     def write(self):
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/Cleanse/' + self.datafile + 'Cleanse.csv')
+        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Cleanse')
 
         return self.df
 
-# RedditExtract = reddit_comment_cleanse(object)
-# RedditExtract.body_type()
-# RedditExtract.link_removal()
-# RedditExtract.datetimeObject_convert()
-# RedditExtract.space_removal()
-# RedditExtract.dataframe_convert()
-# RedditExtract.keyword_search()
-# RedditExtract.nullValue_removal()
-# RedditExtract.specialChar_removal()
-# RedditExtract.write()
+RedditExtract = reddit_comment_cleanse(object)
+RedditExtract.body_type()
+RedditExtract.link_removal()
+RedditExtract.datetimeObject_convert()
+RedditExtract.space_removal()
+RedditExtract.dataframe_convert()
+RedditExtract.keyword_search()
+RedditExtract.nullValue_removal()
+RedditExtract.specialChar_removal()
+RedditExtract.write()

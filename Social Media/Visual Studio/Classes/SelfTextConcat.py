@@ -12,7 +12,7 @@ class concat() :
     def read_csv(self):
         # directory folder 
 
-        os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText")
+        os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw")
 
         #include all files in the folder into the list
 
@@ -24,12 +24,13 @@ class concat() :
 
         #combine all files in the list
 
-        combined_csv = pd.concat([pd.read_csv(f) for f in self.all_filenames ])
+        combined_csv = pd.concat([pd.read_csv(f) for f in self.all_filenames ],sort=False)
 
         df = combined_csv.sort_values(by='timestamp', ascending=True)
 
         df.to_csv(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv", index=False, encoding='utf-8-sig')
 
 
-
-
+SelfConcat = concat()
+SelfConcat.read_csv()
+SelfConcat.combine()

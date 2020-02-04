@@ -13,11 +13,10 @@ class VaderSentiment:
 
     def read_csv(self):
 
-        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv', names = ['Unnamed: 0','timestamp','body','neg','neu','pos','compound'])
+        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Cleanse\All_selftext_cleanse.csv')
    
-        print(self.df.columns)
          # extract specific column
-        self.dfb = self.df['body']
+        self.dfb = self.df['title']
         dftweet = pd.DataFrame(self.dfb)
 
         self.dfT = self.df['timestamp']
@@ -30,15 +29,12 @@ class VaderSentiment:
 
     def extract_column(self):
 
-        self.df = self.df.body
-        print(self.df)
+        self.df = self.df.title
         self.dftweet = pd.DataFrame(self.df)
-        print(self.dftweet)
 
         #convert column to list
         self.dflist = self.dftweet.values.tolist()
 
-        print(len(self.dflist))
         return  self.dflist
         
     
@@ -61,20 +57,23 @@ class VaderSentiment:
 
 
         #convert list to dataframes
-        df1 = pd.DataFrame(self.data)
-        df2 = pd.DataFrame(self.score)
+        self.df1 = pd.DataFrame(self.data)
+        self.df2 = pd.DataFrame(self.score)
         # concat all data columns into a dataframe
-        df = pd.concat([self.dftime,df1, df2], axis=1)
+        print(self.df1)
+        print(self.df2)
+        print(self.dftime)
+        df = pd.concat([self.dftime,self.df1, self.df2], axis=1)
 
         df = df.loc[~df.index.duplicated(keep='first')]
 
-        df.columns=['timestamp','body','neg','neu','pos','compound']
+        df.columns=['timestamp','title','neg','neu','pos','compound']
 
         #add index to data frame
         df.index = pd.MultiIndex.from_arrays([df.index])
 
 
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns' ).to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
+        pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
         
         return df
 

@@ -7,15 +7,13 @@ import numpy as np
 
 class redditSelfTextCleanse(object):
 
-    datafile = input('whcih file would you like to clense: ')
-
 
     def __init__(self):
         pass
 
     def read_csv(self):
 
-        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/raw/' + self.datafile + '.csv')
+        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv')
         # print(self.df)
 
         return self.df
@@ -31,6 +29,7 @@ class redditSelfTextCleanse(object):
         #remove duplicate rows
         self.df.drop(columns=['id'], inplace = True)
         self.df.drop(columns=['subreddit'], inplace=True)
+        self.df.drop(columns=['selftext'],inplace=True)
         print('unwanted columns removed')
         
 
@@ -44,12 +43,12 @@ class redditSelfTextCleanse(object):
         #     print("File does not have any links to remove")
         # else:
         #     pass
-        self.df['selftext'].str.replace(r'http\S+|www.\S+', '', case=False)
+        self.df['title'].str.replace(r'http\S+|www.\S+', '', case=False)
         print('links removed')
 
 
         #remove spaces
-        self.dflist = self.df['selftext'].tolist()
+        self.dflist = self.df['title'].tolist()
         self.dfnewlist = []
 
         for x in range(len(self.dflist)):
@@ -60,24 +59,20 @@ class redditSelfTextCleanse(object):
             # print(dflist[x])
 
         #convert to dataframe again
-        self.df['selftext'] = pd.DataFrame(self.dfnewlist)
+        self.df['title'] = pd.DataFrame(self.dfnewlist)
         
 
-        #dropping NaN
-        # dffinal = df.dropna()
-        # print('NaN dropped')
-
-        self.df['selftext'].replace('nan',np.nan,inplace=True)
-        self.df['selftext'].replace('[removed]', np.nan, inplace = True)
+        self.df['title'].replace('nan',np.nan,inplace=True)
+        self.df['title'].replace('[removed]', np.nan, inplace = True)
         self.df.dropna(axis = 0, how = 'any', inplace = True) 
 
         print(self.df)
         return self.df
 
     def concat_write(self):
-        self.df = pd.concat([self.df['selftext'],self.df['timestamp']], axis = 1)
+        self.df = pd.concat([self.df['title'],self.df['timestamp']], axis = 1)
         #Write out
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/raw/Cleanse/' + self.datafile + 'Cleanse.csv')
+        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Cleanse\All_selftext_cleanse.csv')
         print('written!')
         
         return self.df

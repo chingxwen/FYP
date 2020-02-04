@@ -7,8 +7,8 @@ class VaderSentiment:
     pd.options.display.max_rows = 999999
 
     def __init__(self):
-        self.data = data = []
-        self.score = score = []
+        self.data = []
+        self.score = []
 
 
     def read_csv(self):
@@ -19,26 +19,21 @@ class VaderSentiment:
    
          # extract specific column
         dfs = self.df['body']
-        dftweet = pd.DataFrame(dfs)
+        self.dftweet = pd.DataFrame(dfs)
 
         dfT = self.df['timestamp']
         self.dftime = pd.DataFrame(dfT)
-        # convert column to list
-        dflist = dftweet.values.tolist()
 
         return self.df
 
     def extract_column(self):
 
-        self.df = self.df['body']
-        print(self.df)
-        self.dftweet = pd.DataFrame(self.df)
+        self.dftweet = self.df['body']
         print(self.dftweet)
 
         #convert column to list
         self.dflist = self.dftweet.values.tolist()
 
-        print(len(self.dflist))
         return  self.dflist
         
     
@@ -64,28 +59,23 @@ class VaderSentiment:
         df1 = pd.DataFrame(self.data)
         df2 = pd.DataFrame(self.score)
         # concat all data columns into a dataframe
-        df = pd.concat([self.dftime,df1, df2], axis=1)
+        # print(self.df2)
+        newdf= pd.concat([self.dftime,df1, df2])
 
 
-        df.columns=['timestamp','body','neg','neu','pos','compound']
+        newdf.columns=['timestamp','body','neg','neu','pos','compound']
 
         #add index to data frame
-        df.index = pd.MultiIndex.from_arrays([df.index])
+        newdf.index = pd.MultiIndex.from_arrays([newdf.index])
 
-        # output dataframes to csv files
-        # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/'+ self.datafile + '/'+ self.datafile +'SentimentAll.csv')
-        # pd.DataFrame.from_dict(data = df3 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/' + self.datafile + '/'+ self.datafile + 'SentimentPositive.csv')
-        # pd.DataFrame.from_dict(data = df4 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/' + self.datafile + '/'+ self.datafile + 'SentimentNegative.csv')
-        # pd.DataFrame.from_dict(data = df5 , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/'+ self.datafile + '/' + self.datafile + 'SentimentNeutral.csv')
-
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/MLReady/Comments/Final_Senti/Reddit_comments_senti.csv')
+        pd.DataFrame.from_dict(data = newdf , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/MLReady/Comments/Final_Senti/Reddit_comments_senti.csv')
         
-        return df
+        return newdf
 
-# SentimentAnalysis = VaderSentiment()
-# Read = SentimentAnalysis.read_csv()
-# PullColumn = SentimentAnalysis.extract_column()
-# Analysis = SentimentAnalysis.sentimentanalysis()
+SentimentAnalysis = VaderSentiment()
+Read = SentimentAnalysis.read_csv()
+PullColumn = SentimentAnalysis.extract_column()
+Analysis = SentimentAnalysis.sentimentanalysis()
 
 
 

@@ -57,6 +57,8 @@ class reddit_selftext(object):
         #drop 'created' column
         self.data = self.data.drop('created', axis = 1)
 
+        self.data.drop_duplicates(keep="first", inplace=True)
+
         return self.data
 
     def write(self):
@@ -69,8 +71,8 @@ class reddit_selftext(object):
         return self.data
 
 
-# RedditExtract = reddit_selftext(object)
-# RedditExtract.extract()
-# RedditExtract.convert_Datetime()
-# RedditExtract.drop_columns()
-# RedditExtract.write()
+RedditExtract = reddit_selftext(object)
+RedditExtract.extract()
+RedditExtract.convert_Datetime()
+RedditExtract.drop_columns()
+RedditExtract.write()

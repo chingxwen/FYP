@@ -6,6 +6,7 @@ import pandas as pd
 
 class reddit_comments(object):
 
+    # input('Which date do you want to cleanse? (YY/mm/dd)')
     start_epoch=int(dt.datetime(2019,10,1).timestamp())
     print('Timestamp gotten')
 
@@ -51,17 +52,18 @@ class reddit_comments(object):
         self.data = self.data.drop('d_', axis = 1)
         self.data = self.data.drop('created', axis=1)
         self.data = self.data.drop('id', axis = 1)
+        self.data.drop_duplicates(keep="first", inplace=True)
         return self.data 
 
     def write(self):
-        self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019Comments.csv')
+        self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Comments\October2019')
         print('Written!')
         print(self.data.head(10))
 
         return self.data
 
-# RedditExtract = reddit_comments(object)
-# RedditExtract.extract()
-# RedditExtract.convert_Datetime()
-# RedditExtract.drop_columns()
-# RedditExtract.write()
+RedditExtract = reddit_comments(object)
+RedditExtract.extract()
+RedditExtract.convert_Datetime()
+RedditExtract.drop_columns()
+RedditExtract.write()
