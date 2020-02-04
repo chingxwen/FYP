@@ -5,10 +5,21 @@ import pandas as pd
 
 
 class reddit_comments(object):
+ 
+    yearInput = int(input('Year to Search? (YYYY):  '))
+    monthInput = int(input('Month to Search? (MM):  '))
+    dateInput = int(input('Date to Search? (DD):    '))
 
+<<<<<<< HEAD
     # input('Which date do you want to cleanse? (YY/mm/dd)')
     start_epoch=int(dt.datetime(2019,10,1).timestamp())
+=======
+    start_epoch=int(dt.datetime(yearInput,monthInput,dateInput).timestamp())
+    month = dt.date(1900, monthInput, 1).strftime('%B')
+>>>>>>> f2145e251f7b5c356f8fb0635f2ea94509db5755
     print('Timestamp gotten')
+    print('This is the time in Unix-Format:', start_epoch)
+    print('You are searching in the month of ' + month)
 
     api = False
     reddit = praw.Reddit(
@@ -18,10 +29,12 @@ class reddit_comments(object):
         username = 'pythonscrubSP', \
         password = 'scrubmaster54321'
     )
+    print('credentials verified')
 
     def __init__(self, api = api, keys_dict=reddit):
         self.api = PushshiftAPI()
         self.timestamps = timestamps = []
+        print('initialised')
         
 
     def extract(self):
@@ -29,10 +42,12 @@ class reddit_comments(object):
                                 subreddit = 'samsung',
                                 after = self.start_epoch,
                                 filter = ['created','body','id'],
-                                size = 5)
+                                size = 1)
         self.results = list(self.gen)
+        print('extracted')
 
         self.data = pd.DataFrame(self.results)
+        print('converted')
 
         return self.data
 
@@ -56,7 +71,12 @@ class reddit_comments(object):
         return self.data 
 
     def write(self):
+<<<<<<< HEAD
         self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Comments\October2019')
+=======
+        # self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019comments.csv')
+        self.data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
+>>>>>>> f2145e251f7b5c356f8fb0635f2ea94509db5755
         print('Written!')
         print(self.data.head(10))
 

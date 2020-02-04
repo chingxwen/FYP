@@ -13,8 +13,14 @@ class VaderSentiment:
 
     def read_csv(self):
 
+<<<<<<< HEAD
         self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Cleanse\All_selftext_cleanse.csv')
    
+=======
+        # self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv', names = ['Unnamed: 0','timestamp','body','neg','neu','pos','compound'])
+        self.df = pd.read_csv(r'C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv', names = ['Unnamed: 0','timestamp','body','neg','neu','pos','compound'])
+        print(self.df.columns)
+>>>>>>> f2145e251f7b5c356f8fb0635f2ea94509db5755
          # extract specific column
         self.dfb = self.df['title']
         dftweet = pd.DataFrame(self.dfb)
@@ -73,8 +79,13 @@ class VaderSentiment:
         df.index = pd.MultiIndex.from_arrays([df.index])
 
 
+<<<<<<< HEAD
         pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
         
+=======
+        # pd.DataFrame.from_dict(data = self.df , orient = 'columns' ).to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
+        pd.DataFrame.from_dict(data = self.df , orient = 'columns' ).to_csv(r'C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
+>>>>>>> f2145e251f7b5c356f8fb0635f2ea94509db5755
         return df
 
 SentimentAnalysis = VaderSentiment()
