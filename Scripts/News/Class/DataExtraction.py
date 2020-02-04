@@ -16,7 +16,6 @@ class DataExtraction:
         self.todate = todate
         self.page = page
 
-
     def NewsConfig(self):
 
         parameters = {
@@ -47,7 +46,7 @@ class DataExtraction:
         return self.page
 
 
-    def NewsExtraction(self, response):
+    def NewsExtraction(self, response, config, filepath):
         df = pd.DataFrame(columns =('Section', 'Title', 'URL', 'Date', 'Text'))
         response_json = response.json()['response']['results']
         g = Goose()
@@ -63,42 +62,42 @@ class DataExtraction:
             text = g.extract(url=url)
             text = text.cleaned_text
             df.loc[i] = section, title, url, date, text
-            df.to_csv(str(os.getcwd()) + "/Classes/" + config["q"] + "_" + str(self.page) + ".csv", index=False) 
+            df.to_csv(filepath + "\\" + config["q"] + "_" + str(self.page) + ".csv", index=False) 
             print(df['Title'])
 
 
 
 
-extraction = DataExtraction(
-    "9c31513f-beb6-4aac-86ee-0b1320f2860b", 
-    "https://content.guardianapis.com/search?",
-    input("Which Company? "),
-    "2018-07-01",
-    "2019-11-01")
+# extraction = DataExtraction(
+#     "9c31513f-beb6-4aac-86ee-0b1320f2860b", 
+#     "https://content.guardianapis.com/search?",
+#     input("Which Company? "),
+#     "2018-07-01",
+#     "2019-11-01")
 
-config = extraction.NewsConfig()
-data = extraction.RetrieveData(config) 
-extraction.NewsExtraction(data[0])
+# config = extraction.NewsConfig()
+# data = extraction.RetrieveData(config) 
+# extraction.NewsExtraction(data[0], filepath)
 
-while data[1] < data[2]:
-    print(str(data[1] + 1) + "/" + str(data[2]))
-    extraction.AddPages()
-    config = extraction.NewsConfig()
-    data = extraction.RetrieveData(config) 
-    extraction.NewsExtraction(data[0])
+# while data[1] < data[2]:
+#     print(str(data[1] + 1) + "/" + str(data[2]))
+#     extraction.AddPages()
+#     config = extraction.NewsConfig()
+#     data = extraction.RetrieveData(config) 
+#     extraction.NewsExtraction(data[0])
 
-concat_csv = input("Do you want to concatenate the csv files into a single csv file? Yes or No? ")
-if concat_csv.upper() =="YES":
-    files = []
-    li = []
-    for i in range(1,(data[2] + 1)):
-        files.append(str(os.getcwd()) + "/Classes/" + config["q"] +"_" + str(i) + ".csv")
+# concat_csv = input("Do you want to concatenate the csv files into a single csv file? Yes or No? ")
+# if concat_csv.upper() =="YES":
+#     files = []
+#     li = []
+#     for i in range(1,(data[2] + 1)):
+#         files.append(filepath + config["q"] +"_" + str(i) + ".csv")
 
-    for filename in files:
-        df = pd.read_csv(filename, index_col=None, header=0)
-        li.append(df)
-    combined = pd.concat(li, axis=0, ignore_index=True)
-    combined.to_csv(str(os.getcwd()) + "/Classes/" + config["q"] + ".csv", index=False)
+#     for filename in files:
+#         df = pd.read_csv(filename, index_col=None, header=0)
+#         li.append(df)
+#     combined = pd.concat(li, axis=0, ignore_index=True)
+#     combined.to_csv(filepath + config["q"] + ".csv", index=False)
 
-    for filename in files:
-        os.remove(filename)
+#     for filename in files:
+#         os.remove(filename)

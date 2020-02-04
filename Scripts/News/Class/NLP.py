@@ -18,15 +18,15 @@ import csv
 #Reading of .csv file
 class class_NLP:
 
-   filename = input("Please input the path of the CSV file: ") #r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\Samsung.csv"
+   # filename = input("Please input the path of the CSV file: ") #r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\Samsung.csv"
 
    def __inti__(self):
       pass
 
    #Read csv file
-   def read_file(self):
+   def read_file(self, filepath):
       print("Reading csv file")
-      self.data_as_csv = pd.read_csv(self.filename)
+      self.data_as_csv = pd.read_csv(filepath)
       print("There are {} column attributes: {}".format(len(self.data_as_csv.columns), list(self.data_as_csv)))
       return self.data_as_csv
       
@@ -77,17 +77,17 @@ class class_NLP:
       return self.content
 
    #Export cleansed content to a csv file
-   def export_csv(self):
-      df['Cleansed Data'] = self.content
-      self.content.to_csv(r"CleansedData.csv", index = False)
+   def export_csv(self, filepath, df):
+      # df['Cleansed Data'] = self.content
+      self.content.to_csv(filepath, index = False)
 
 
 
-News_NLP = class_NLP()
-df = News_NLP.read_file()
-content = df['Text']
-News_Tokenizing = News_NLP.tokenize(content)
-News_RemoveWords = News_NLP.stopwords_removal()
-News_Lemmatizing = News_NLP.lemmatization()
-News_NLP.export_csv()
-News_POStag = News_NLP.nltk_pos_tag()
+# News_NLP = class_NLP()
+# df = News_NLP.read_file()
+# content = df['Text']
+# News_Tokenizing = News_NLP.tokenize(content)
+# News_RemoveWords = News_NLP.stopwords_removal()
+# News_Lemmatizing = News_NLP.lemmatization()
+# News_NLP.export_csv()
+# News_POStag = News_NLP.nltk_pos_tag()
