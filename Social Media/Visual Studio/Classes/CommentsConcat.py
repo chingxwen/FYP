@@ -12,12 +12,8 @@ class concat() :
     def read_csv(self):
         # directory folder 
 
-<<<<<<< HEAD
         os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Comments")
-=======
-        # os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments")
-        os.chdir(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\Comments")
->>>>>>> f2145e251f7b5c356f8fb0635f2ea94509db5755
+        # os.chdir(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\Comments")
 
         #include all files in the folder into the list
 
@@ -37,6 +33,6 @@ class concat() :
         df.to_csv(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv", index=False, encoding='utf-8-sig')
 
 
-ComConcat = concat()
-ComConcat.read_csv()
-ComConcat.combine()
+# ComConcat = concat()
+# ComConcat.read_csv()
+# ComConcat.combine()

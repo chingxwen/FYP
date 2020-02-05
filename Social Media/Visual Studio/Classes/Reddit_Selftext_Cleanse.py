@@ -77,7 +77,7 @@ class redditSelfTextCleanse(object):
         
         return self.df
 
-# RedditSelfTextCleanse = redditSelfTextCleanse()
-# ReadFile = RedditSelfTextCleanse.read_csv()
-# Cleanse = RedditSelfTextCleanse.cleanse()
-# ConcatWrite = RedditSelfTextCleanse.concat_write()
+RedditSelfTextCleanse = redditSelfTextCleanse()
+ReadFile = RedditSelfTextCleanse.read_csv()
+Cleanse = RedditSelfTextCleanse.cleanse()
+ConcatWrite = RedditSelfTextCleanse.concat_write()
