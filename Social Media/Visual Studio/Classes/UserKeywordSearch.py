@@ -18,15 +18,13 @@ samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group",
 
 class UserKeywordSearch:
 
-    datafile = input('Which data set do you want to cleanse?')
-
     def __init__(self):
          
         pass
 
     def read_file(self):
 
-        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + self.datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
+        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Cleanse\TwitterCleanse.csv', names = ['User','Date','Tweets'])
     
         return self.df
 
@@ -39,9 +37,12 @@ class UserKeywordSearch:
         relevantuser = []
         relevantdate = []
         relevanttext = []
+        content = df['Tweets']
+        content = content.astype(str)
 
         for words in samsunglist:
             for i in range(len(content)):
+                print(content.iloc[i])
                 if (words in content.iloc[i].lower()) == True:
                     print(words)
                     global count
@@ -71,15 +72,20 @@ class UserKeywordSearch:
     def export(self):
 
         # Convert DataFrame to csv
-        df = pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile + 'Relevant.csv')
+        df = pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Keyword\KeywordCleanse.csv')
 
         return df
         
-KeywordSearch = UserKeywordSearch()
-df = KeywordSearch.read_file()
+# KeywordSearch = UserKeywordSearch()
+TwitterCleanse = UserKeywordSearch()
+df = TwitterCleanse.read_file()
 
 count = 0
 usercontent = df['User']
 userdate = df['Date']
 content = df["Tweets"]
+
+
+TwitterCleanse.searchloop()
+TwitterCleanse.export()
 

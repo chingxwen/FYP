@@ -10,9 +10,8 @@ from googletrans import Translator
 from datetime import datetime
 
 def user_cleanse():
-    datefile = input('Which data file do you want to cleanse ?')
 
-    df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + datefile + '.csv', names = ['ID','User','Tweets','Date'])
+    df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Concat\All_concat_Twitter.csv', names = ['ID','User','Tweets','Date'])
 
     #Extra rows by date 
     # df['Date'] = pd.to_datetime(df['Date'])
@@ -74,6 +73,6 @@ def user_cleanse():
     final = pd.concat([df['User'], df['Tweets'],df['Date']], axis = 1)
 
     # Convert list DataFrame to csv
-    pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + datefile + 'Cleanse.csv')
+    pd.DataFrame.from_dict(data = final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/TwitterCleanse.csv')
 
 user_cleanse()
