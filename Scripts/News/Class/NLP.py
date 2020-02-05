@@ -77,8 +77,9 @@ class class_NLP:
       return self.content
 
    #Export cleansed content to a csv file
-   def export_csv(self, filepath, df):
+   def export_csv(self, filepath):
       # df['Cleansed Data'] = self.content
+      self.content = pd.DataFrame(self.content)
       self.content.to_csv(filepath, index = False)
 
 
