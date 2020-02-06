@@ -80,10 +80,10 @@ class VaderSentiment:
         # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(r'C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
         return df
 
-SentimentAnalysis = VaderSentiment()
-Read = SentimentAnalysis.read_csv()
-PullColumn = SentimentAnalysis.extract_column()
-Analysis = SentimentAnalysis.sentimentanalysis()
+# SentimentAnalysis = VaderSentiment()
+# Read = SentimentAnalysis.read_csv()
+# PullColumn = SentimentAnalysis.extract_column()
+# Analysis = SentimentAnalysis.sentimentanalysis()
 
 
 

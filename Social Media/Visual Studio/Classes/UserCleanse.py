@@ -83,11 +83,11 @@ class UserClense:
 
 #usage
 
-TwitterCleanse = UserClense()
-TwitterCleanse.read_Csv()
-TwitterCleanse.drop_columns()
-TwitterCleanse.cleanse_data()
-TwitterCleanse.export()
+# TwitterCleanse = UserClense()
+# TwitterCleanse.read_Csv()
+# TwitterCleanse.drop_columns()
+# TwitterCleanse.cleanse_data()
+# TwitterCleanse.export()
 
 
 

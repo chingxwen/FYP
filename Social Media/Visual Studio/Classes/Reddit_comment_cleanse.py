@@ -103,13 +103,13 @@ class reddit_comment_cleanse(object):
 
         return self.df
 
-RedditExtract = reddit_comment_cleanse(object)
-RedditExtract.body_type()
-RedditExtract.link_removal()
-RedditExtract.datetimeObject_convert()
-RedditExtract.space_removal()
-RedditExtract.dataframe_convert()
-RedditExtract.keyword_search()
-RedditExtract.nullValue_removal()
-RedditExtract.specialChar_removal()
-RedditExtract.write()
+# RedditExtract = reddit_comment_cleanse(object)
+# RedditExtract.body_type()
+# RedditExtract.link_removal()
+# RedditExtract.datetimeObject_convert()
+# RedditExtract.space_removal()
+# RedditExtract.dataframe_convert()
+# RedditExtract.keyword_search()
+# RedditExtract.nullValue_removal()
+# RedditExtract.specialChar_removal()
+# RedditExtract.write()

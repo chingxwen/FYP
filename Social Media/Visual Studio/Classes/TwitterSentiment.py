@@ -83,10 +83,10 @@ class VaderSentiment:
 
         return df
 
-SentimentAnalysis = VaderSentiment()
-Read = SentimentAnalysis.read_csv()
-PullColumn = SentimentAnalysis.extract_column()
-Analysis = SentimentAnalysis.sentimentanalysis()
+# SentimentAnalysis = VaderSentiment()
+# Read = SentimentAnalysis.read_csv()
+# PullColumn = SentimentAnalysis.extract_column()
+# Analysis = SentimentAnalysis.sentimentanalysis()
 
 
 

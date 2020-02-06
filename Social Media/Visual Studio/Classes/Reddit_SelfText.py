@@ -81,8 +81,8 @@ class reddit_selftext(object):
         return self.data
 
 
-RedditExtract = reddit_selftext(object)
-RedditExtract.extract()
-RedditExtract.convert_Datetime()
-RedditExtract.drop_columns()
-RedditExtract.write()
+# RedditExtract = reddit_selftext(object)
+# RedditExtract.extract()
+# RedditExtract.convert_Datetime()
+# RedditExtract.drop_columns()
+# RedditExtract.write()

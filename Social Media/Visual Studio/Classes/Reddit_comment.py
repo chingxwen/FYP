@@ -74,8 +74,8 @@ class reddit_comments(object):
 
         return self.data
 
-RedditExtract = reddit_comments(object)
-RedditExtract.extract()
-RedditExtract.convert_Datetime()
-RedditExtract.drop_columns()
-RedditExtract.write()
+# RedditExtract = reddit_comments(object)
+# RedditExtract.extract()
+# RedditExtract.convert_Datetime()
+# RedditExtract.drop_columns()
+# RedditExtract.write()

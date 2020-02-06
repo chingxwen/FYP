@@ -33,6 +33,6 @@ class concat() :
         # df.to_csv(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv", index=False, encoding='utf-8-sig')
 
 
-SelfConcat = concat()
-SelfConcat.read_csv()
-SelfConcat.combine()
+# SelfConcat = concat()
+# SelfConcat.read_csv()
+# SelfConcat.combine()
