@@ -77,8 +77,8 @@ class UserKeywordSearch:
         return df
         
 # KeywordSearch = UserKeywordSearch()
-# TwitterCleanse = UserKeywordSearch()
-# df = TwitterCleanse.read_file()
+TwitterCleanse = UserKeywordSearch()
+df = TwitterCleanse.read_file()
 
 count = 0
 usercontent = df['User']
