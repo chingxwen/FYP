@@ -1,4 +1,4 @@
-from Class import DataExtraction, NLP
+from Class import DataExtraction, NLP, Sentiment
 import os
 import pandas as pd
 
@@ -56,5 +56,12 @@ content = df['Text']
 News_Tokenizing = News_NLP.tokenize(content)
 News_RemoveWords = News_NLP.stopwords_removal()
 News_Lemmatizing = News_NLP.lemmatization()
-News_NLP.export_csv((filepath + "\\" + config["q"] + "_Cleansed.csv"), df)
-News_POStag = News_NLP.nltk_pos_tag()
+News_NLP.export_csv((filepath + "\\" + config["q"] + "_Cleansed.csv"))
+# News_POStag = News_NLP.nltk_pos_tag()
+
+
+# Sentiment
+News_Senti = Sentiment.senti_value()
+News_MergeWords = News_Senti.joinContent(News_Lemmatizing)
+News_SentiScore = News_Senti.sentiScore()
+News_Senti.exportCSV((filepath + "\\" + config["q"] + "_Sentiment.csv"))
