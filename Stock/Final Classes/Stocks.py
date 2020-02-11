@@ -37,7 +37,9 @@ class StockData:
         data['High'] = data['High'].replace('null', np.nan)
         dg = data.dropna(axis=0, subset=['High'])
         #renaming columns
-        dg.rename(columns={'Adj Close':'adj_close', 'Date':'date', 'Volume': 'volume', 'Close':'close', 'High': 'high', 'Low': 'low', 'Open':'open'}, inplace = True)
+        dg.rename(columns={'Adj Close':'adj_close', 'Date':'date',
+                             'Volume': 'volume', 'Close':'close', 'High': 'high', 
+                             'Low': 'low', 'Open':'open'}, inplace = True)
 
         # Change data to a dataframe
         df = pd.DataFrame(dg)
