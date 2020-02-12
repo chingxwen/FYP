@@ -5,16 +5,6 @@ import pandas as pd
 
 
 class reddit_comments(object):
- 
-    yearInput = int(input('Year to Search? (YYYY):  '))
-    monthInput = int(input('Month to Search? (MM):  '))
-    dateInput = int(input('Date to Search? (DD):    '))
-
-    start_epoch=int(dt.datetime(yearInput,monthInput,dateInput).timestamp())
-    month = dt.date(1900, monthInput, 1).strftime('%B')
-    print('Timestamp gotten')
-    print('This is the time in Unix-Format:', start_epoch)
-    print('You are searching in the month of ' + month)
 
     api = False
     reddit = praw.Reddit(
@@ -33,15 +23,29 @@ class reddit_comments(object):
         
 
     def extract(self):
-        self.gen = self.api.search_comments(q = 'samsung',
+        
+        self.yearInput = int(input('Year to Search? (YYYY):  '))
+        monthInput = int(input('Month to Search? (MM):  '))
+        dateInput = int(input('Date to Search? (DD):    '))
+        print(self.yearInput, monthInput, dateInput)
+        start_epoch=int(dt.datetime(self.yearInput,monthInput,dateInput).timestamp())
+
+        self.month = dt.date(1900, monthInput, 1).strftime('%B')
+
+        print('Timestamp gotten')
+        print('This is the time in Unix-Format:', start_epoch)
+        print('You are searching in the month of '+ self.month)
+
+
+        gen = self.api.search_comments(q = 'samsung',
                                 subreddit = 'samsung',
-                                after = self.start_epoch,
+                                after = start_epoch,
                                 filter = ['created','body','id'],
                                 size = 1)
-        self.results = list(self.gen)
+        results = list(gen)
         print('extracted')
 
-        self.data = pd.DataFrame(self.results)
+        self.data = pd.DataFrame(results)
         print('converted')
 
         return self.data

@@ -1,10 +1,11 @@
 from Classes import Reddit_SelfText
 from Classes import Reddit_comment
-from Classes import SelfTextConcat
-from Classes import CommentsConcat
 
-#Pull reddit Data
+
+# Pull reddit Data
+
 RedditExtract = Reddit_SelfText.reddit_selftext(object)
+RedditExtract.cred()
 RedditExtract.extract()
 RedditExtract.convert_Datetime()
 RedditExtract.drop_columns()

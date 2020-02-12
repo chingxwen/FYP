@@ -8,30 +8,9 @@ import tweepy
 import datetime 
 
 class TweetMiner(object):
-
-    result_limit    =   20    
-    data            =   []
-    api             =   False
     
-    twitter_keys = {
-       'consumer_key':        'DdzX4hSW7Dth3CQb71MsTR8e2',
-        'consumer_secret':     '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
-        'access_token_key':    '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
-        'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
-    }
-    
-    user = input("Enter the username without the '@' sign: ")
-    
-    def __init__(self, keys_dict=twitter_keys, api=api, result_limit = 20):
-        
-        self.twitter_keys = keys_dict
-        
-        auth = tweepy.OAuthHandler(keys_dict['consumer_key'], keys_dict['consumer_secret'])
-        auth.set_access_token(keys_dict['access_token_key'], keys_dict['access_token_secret'])
-        
-        self.api = tweepy.API(auth)
-        self.twitter_keys = keys_dict
-        
+    def __init__(self, result_limit = 20):
+            
         self.result_limit = result_limit
         
 
@@ -42,6 +21,25 @@ class TweetMiner(object):
         data           =  []
         last_tweet_id  =  False
         page           =  1
+
+        result_limit    =   20    
+        data            =   []
+        api             =   False
+    
+
+        self.twitter_keys = {
+       'consumer_key':        'DdzX4hSW7Dth3CQb71MsTR8e2',
+        'consumer_secret':     '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
+        'access_token_key':    '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
+        'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
+        }
+
+        self.user = input("Enter the username without the '@' sign: ")
+
+        auth = tweepy.OAuthHandler(self.twitter_keys['consumer_key'], self.twitter_keys['consumer_secret'])
+        auth.set_access_token(self.twitter_keys['access_token_key'], self.twitter_keys['access_token_secret'])
+        
+        self.api = tweepy.API(auth)
         
         while page <= max_pages:
             if last_tweet_id:

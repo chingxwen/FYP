@@ -4,11 +4,9 @@ import numpy as np
 
 class VaderSentiment:
 
-    pd.options.display.max_rows = 999999
-
     def __init__(self):
-        self.data = data = []
-        self.score = score = []
+        self.data = []
+        self.score = []
 
 
     def read_csv(self):
@@ -43,6 +41,8 @@ class VaderSentiment:
     def sentimentanalysis(self):
 
         analyser = SentimentIntensityAnalyzer()
+
+        pd.options.display.max_rows = 999999
         
         def sentiment_analyzer_scores (sentence):
             result = analyser.polarity_scores(sentence)
