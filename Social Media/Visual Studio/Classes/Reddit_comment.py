@@ -72,14 +72,15 @@ class reddit_comments(object):
     def write(self):
         # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Comments\October2019')
         # self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019comments.csv')
-        self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit/Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
+        # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit/Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
+        self.data.to_csv(r'C:\FYP\Social Media\reddit\Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
         print('Written!')
         print(self.data.head(10))
 
         return self.data
 
-# RedditExtract = reddit_comments(object)
-# RedditExtract.extract()
-# RedditExtract.convert_Datetime()
-# RedditExtract.drop_columns()
-# RedditExtract.write()
+RedditExtract = reddit_comments(object)
+RedditExtract.extract()
+RedditExtract.convert_Datetime()
+RedditExtract.drop_columns()
+RedditExtract.write()
