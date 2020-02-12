@@ -69,7 +69,7 @@ class StockData:
         c = CurrencyConverter('http://www.ecb.int/stats/eurofxref/eurofxref-hist.zip', fallback_on_missing_rate=True)
         def convert(amount, dateyear, datemonth, dateday):
         #     value = amount
-            value = c.convert(amount, "KRW", "USD", date=date(dateyear, datemonth, dateday))
+            value = c.convert(amount, input("Please input the foreign currency: "), "USD", date=date(dateyear, datemonth, dateday))
 
             return value
 
