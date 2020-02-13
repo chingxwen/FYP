@@ -37,7 +37,9 @@ class StockData:
         data['High'] = data['High'].replace('null', np.nan)
         dg = data.dropna(axis=0, subset=['High'])
         #renaming columns
-        dg.rename(columns={'Adj Close':'adj_close', 'Date':'date', 'Volume': 'volume', 'Close':'close', 'High': 'high', 'Low': 'low', 'Open':'open'}, inplace = True)
+        dg.rename(columns={'Adj Close':'adj_close', 'Date':'date',
+                             'Volume': 'volume', 'Close':'close', 'High': 'high', 
+                             'Low': 'low', 'Open':'open'}, inplace = True)
 
         # Change data to a dataframe
         df = pd.DataFrame(dg)
@@ -67,7 +69,8 @@ class StockData:
         c = CurrencyConverter('http://www.ecb.int/stats/eurofxref/eurofxref-hist.zip', fallback_on_missing_rate=True)
         def convert(amount, dateyear, datemonth, dateday):
         #     value = amount
-            value = c.convert(amount, "KRW", "USD", date=date(dateyear, datemonth, dateday))
+            currency = input("Please input the foreign currency: ")
+            value = c.convert(amount, currency, "USD", date=date(dateyear, datemonth, dateday))
 
             return value
 
@@ -120,6 +123,8 @@ class StockData:
         ndf.insert(11, 'Close_USD', convertclosearrStart, True)
         ndf.insert(12, 'Adj_Close_USD', convertadjclosearrStart, True)
 
-        pd.DataFrame.from_dict(data=ndf, orient='columns').to_csv(self.fromdate + "." + self.todate + "." + self.stock + ".csv")
+        directory = input("Please input your preferred directory: ")
+
+        pd.DataFrame.from_dict(data=ndf, orient='columns').to_csv(directory + self.fromdate + "." + self.todate + "." + self.stock + ".csv")
 
         return ndf
