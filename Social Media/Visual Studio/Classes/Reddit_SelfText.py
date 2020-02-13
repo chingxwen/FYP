@@ -8,9 +8,10 @@ class reddit_selftext(object):
 
     api = False
 
-    def __init__(self,api = api):
+    def __init__(self,path,api = api):
         self.api = PushshiftAPI()
         self.timestamps = []
+        self.path = path
 
     def cred(self):
 
@@ -54,12 +55,20 @@ class reddit_selftext(object):
 
     def convert_Datetime(self):
         #Converting datetime column from UNIX to normal
+        self.data = self.data.dropna()
         self.timelist = self.data['created'].tolist()
+        print(self.data.info())
+        print(len(self.timelist))
+
         for i in range(len(self.timelist)):
+            print(self.timelist[i])
+            print(i)
+
             unix_timestamp = float(self.timelist[i])
 
             utc_time = dt.datetime.utcfromtimestamp(unix_timestamp)
             self.timestamps.append(utc_time)
+
         self.data = self.data.assign(timestamp = self.timestamps)
 
         return self.data
@@ -81,7 +90,7 @@ class reddit_selftext(object):
     def write(self):
 
         #Write data to csv
-        self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/raw/' + self.month + str(self.yearInput) + '.csv', index=False)
+        self.data.to_csv(self.path + "\\SelfText" + "\\Pulled" + "\\" + self.month + str(self.yearInput) + '.csv', index=False)
         # self.data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/raw/' + self.month + str(self.yearInput)+'.csv', index=False)
         print('Written!')
         print(self.data.head(10))

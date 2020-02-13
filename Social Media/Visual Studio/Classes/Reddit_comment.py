@@ -4,7 +4,7 @@ import datetime as dt
 import pandas as pd
 
 
-class reddit_comments(object):
+class reddit_comments():
 
     api = False
     reddit = praw.Reddit(
@@ -16,9 +16,11 @@ class reddit_comments(object):
     )
     print('credentials verified')
 
-    def __init__(self, api = api, keys_dict=reddit):
+    def __init__(self, path,api = api, keys_dict=reddit):
         self.api = PushshiftAPI()
-        self.timestamps = timestamps = []
+        self.timestamps =  []
+
+        self.path = path
         print('initialised')
         
 
@@ -73,14 +75,14 @@ class reddit_comments(object):
         # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Comments\October2019')
         # self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019comments.csv')
         # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit/Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
-        self.data.to_csv(r'C:\FYP\Social Media\reddit\Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
+        self.data.to_csv(self.path + "\\Comments" + "\\Comments" + "\\" + self.month + str(self.yearInput) +'.csv')
         print('Written!')
         print(self.data.head(10))
 
         return self.data
 
-RedditExtract = reddit_comments(object)
-RedditExtract.extract()
-RedditExtract.convert_Datetime()
-RedditExtract.drop_columns()
-RedditExtract.write()
+# RedditExtract = reddit_comments(object)
+# RedditExtract.extract()
+# RedditExtract.convert_Datetime()
+# RedditExtract.drop_columns()
+# RedditExtract.write()

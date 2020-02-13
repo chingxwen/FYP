@@ -13,7 +13,7 @@ class concat() :
     def read_csv(self):
         # directory folder 
 
-        os.chdir(input('Please input the file path for concatenation'))
+        os.chdir(input('Please input the folder path for concatenation'))
 
         #include all files in the folder into the list
 

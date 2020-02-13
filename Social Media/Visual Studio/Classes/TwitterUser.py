@@ -9,8 +9,9 @@ import datetime
 
 class TweetMiner(object):
     
-    def __init__(self, result_limit = 20):
+    def __init__(self, path, result_limit = 20):
             
+        self.path = path
         self.result_limit = result_limit
         
 
@@ -69,7 +70,7 @@ class TweetMiner(object):
             page += 1
             print(data)
 
-        outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + self.user + ".csv"
+        outfile = self.path + "\\User" +"\\"+ self.user + ".csv"
         print(type(outfile))
         df = pd.DataFrame(data)
         print(type(df))
