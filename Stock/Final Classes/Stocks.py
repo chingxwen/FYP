@@ -123,6 +123,8 @@ class StockData:
         ndf.insert(11, 'Close_USD', convertclosearrStart, True)
         ndf.insert(12, 'Adj_Close_USD', convertadjclosearrStart, True)
 
-        pd.DataFrame.from_dict(data=ndf, orient='columns').to_csv(self.fromdate + "." + self.todate + "." + self.stock + ".csv")
+        directory = input("Please input your preferred directory: ")
+
+        pd.DataFrame.from_dict(data=ndf, orient='columns').to_csv(directory + self.fromdate + "." + self.todate + "." + self.stock + ".csv")
 
         return ndf
