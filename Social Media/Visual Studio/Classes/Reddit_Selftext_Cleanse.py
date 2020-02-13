@@ -8,19 +8,18 @@ import numpy as np
 class redditSelfTextCleanse(object):
 
 
-    def __init__(self):
+    def __init__(self,path):
+        self.path = path
         pass
 
     def read_csv(self):
 
-        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv')
-        # print(self.df)
+        self.df = pd.read_csv(self.path + "\\SelfText" + "\\Concat" + "\\All_concat_selftext.csv")
 
         return self.df
 
     def cleanse(self):
                 
-        # self.df.sort_values("id", inplace = True)
         print(self.df.shape)
         self.df.drop_duplicates(subset="id", keep="first", inplace=True)
         print(self.df.shape)
@@ -29,20 +28,9 @@ class redditSelfTextCleanse(object):
         #remove duplicate rows
         self.df.drop(columns=['id'], inplace = True)
         self.df.drop(columns=['subreddit'], inplace=True)
-        self.df.drop(columns=['selftext'],inplace=True)
+        self.df.drop(columns=['selftext'],inplace = True)
         print('unwanted columns removed')
         
-
-        #remove links 
-        # try:
-        #     self.df['selftext'].str.replace(r'http\S+|www.\S+', '', case=False)
-        #     print('links removed')
-        # except OSError:
-        #     print("File cannot be opened")
-        # except TypeError:
-        #     print("File does not have any links to remove")
-        # else:
-        #     pass
         self.df['title'].str.replace(r'http\S+|www.\S+', '', case=False)
         print('links removed')
 
@@ -70,9 +58,12 @@ class redditSelfTextCleanse(object):
         return self.df
 
     def concat_write(self):
+
         self.df = pd.concat([self.df['title'],self.df['timestamp']], axis = 1)
         #Write out
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Cleanse\All_selftext_cleanse.csv')
+
+        self.df.to_csv(self.path + "\\SelfText" + "\\Cleanse" + "\\All_selftext_cleanse.csv")
+       
         print('written!')
         
         return self.df

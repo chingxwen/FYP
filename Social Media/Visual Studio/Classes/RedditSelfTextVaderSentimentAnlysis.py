@@ -4,26 +4,22 @@ import numpy as np
 
 class VaderSentiment:
 
-    def __init__(self):
+    def __init__(self, path):
+        self.path = path
         self.data = []
         self.score = []
 
 
     def read_csv(self):
 
-        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Cleanse\All_selftext_cleanse.csv')
+        self.df = pd.read_csv(self.path + "\\SelfText" + "\\Cleanse" + "\\All_selftext_cleanse.csv")
    
-        # self.df = pd.read_csv(r'C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv', names = ['Unnamed: 0','timestamp','body','neg','neu','pos','compound'])
-        # print(self.df.columns)
-         # extract specific column
+        # extract specific column
         self.dfb = self.df['title']
         dftweet = pd.DataFrame(self.dfb)
 
         self.dfT = self.df['timestamp']
         self.dftime = pd.DataFrame(self.dfT)
-
-        # convert column to list
-        dflist = dftweet.values.tolist()
 
         return self.df
 
@@ -68,16 +64,15 @@ class VaderSentiment:
         df = pd.concat([self.dftime,self.df1, self.df2], axis=1)
 
         df = df.loc[~df.index.duplicated(keep='first')]
+        df = df.drop(df.index[0])
 
         df.columns=['timestamp','title','neg','neu','pos','compound']
 
         #add index to data frame
         df.index = pd.MultiIndex.from_arrays([df.index])
-
-
-        pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
         
-        # pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(r'C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Final_Senti\Reddit_selftext_senti.csv')
+        df.to_csv(self.path + "\\SelfText" + "\\Final_Senti" + "\\Reddit_selftext_senti.csv")
+
         return df
 
 # SentimentAnalysis = VaderSentiment()

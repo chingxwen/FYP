@@ -6,15 +6,17 @@ import numpy as np
 import praw
 
 class reddit_comment_cleanse(object):
+
     api = False
-    # datafile = input('whcih file would you like to clense?')
-    df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv', )
     
-    def __init__(self, api = api):
-        pass
+    
+    def __init__(self, path):
+        self.path = path
     
     def body_type(self):
-        self.df.drop(['id','selftext'])
+
+        self.df = pd.read_csv(self.path + '\\Comments'+ '\\Concat' + '\\All_concat_comments.csv' )
+        
         self.df['body'].astype('object').dtypes
         print(self.df.dtypes.value_counts())
 
@@ -29,9 +31,6 @@ class reddit_comment_cleanse(object):
         self.df['timestamp'] = pd.to_datetime(self.df['timestamp']).dt.date
     
         return self.df['timestamp']
-
-    # dflist = df['body'].tolist()
-    # self.dfnewlist=[]
 
     def space_removal(self):
         self.dflist = self.df['body'].tolist()
@@ -63,7 +62,6 @@ class reddit_comment_cleanse(object):
         
         for words in self.dict:
             for x in range(len(self.bodycontent)):
-                print(type(self.bodycontent.iloc[x]))
                 if (words in self.bodycontent.iloc[x]) == False:
                     # global count += 1 
 
@@ -99,7 +97,8 @@ class reddit_comment_cleanse(object):
         return self.df
 
     def write(self):
-        pd.DataFrame.from_dict(data = self.df , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Cleanse')
+
+        self.df.to_csv(self.path + "\\Comments"+"\\Cleanse"  + "\\All_comments_Cleanse.csv")
 
         return self.df
 

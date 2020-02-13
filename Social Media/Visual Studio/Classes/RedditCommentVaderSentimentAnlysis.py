@@ -4,20 +4,16 @@ import numpy as np
 
 class VaderSentiment:
 
-    def __init__(self):
+    def __init__(self, path):
+        self.path = path
         self.data = []
         self.score = []
 
 
     def read_csv(self):
-
-        # self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile +'Relevant.csv', names=["User", "Date", "Tweets"])
-
         
-        # self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv', names = ['timestamp','body','neg','neu','pos','compound'])
+        self.df = pd.read_csv(self.path + "\\Comments" + "\\Cleanse" + "\\All_comments_Cleanse.csv")
    
-
-        self.df = pd.read_csv(r'C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\Comments\Concat\All_concat_comments.csv', names = ['timestamp','body','neg','neu','pos','compound'])
          # extract specific column
         dfs = self.df['body']
         self.dftweet = pd.DataFrame(dfs)
@@ -63,19 +59,19 @@ class VaderSentiment:
         df2 = pd.DataFrame(self.score)
         # concat all data columns into a dataframe
         # print(self.df2)
-        newdf= pd.concat([self.dftime,df1, df2])
+        newdf= pd.concat([self.dftime,df1, df2] ,axis=1)
+
+        print(newdf)
 
 
         newdf.columns=['timestamp','body','neg','neu','pos','compound']
 
         #add index to data frame
         newdf.index = pd.MultiIndex.from_arrays([newdf.index])
-
-        pd.DataFrame.from_dict(data = newdf , orient = 'columns' ).to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/MLReady/Comments/Final_Senti/Reddit_comments_senti.csv')
         
+        newdf.to_csv(self.path + "\\Comments" + "\\Final_Senti" + "\\Reddit_comments_senti.csv")
+
         return newdf
-    
-        # pd.DataFrame.from_dict(data = self.df , orient = 'columns' ).to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/MLReady/Comments/Final_Senti/Reddit_comments_senti.csv')
 
 # SentimentAnalysis = VaderSentiment()
 # Read = SentimentAnalysis.read_csv()

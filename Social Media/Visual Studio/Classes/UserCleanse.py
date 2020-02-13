@@ -16,7 +16,14 @@ class UserClense:
         
     def read_Csv(self):
 
-        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Concat\All_concat_Twitter.csv')
+        file = input('Please input the file you want to cleanse ')
+
+        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Concat/' + file +'.csv')
+
+        file = input('Please input directory')
+
+        self.df = pd.read_csv(file)
+
         print(self.df)
         return self.df
     
@@ -43,8 +50,6 @@ class UserClense:
         self.df['Tweets'] = self.df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 
         self.df['Tweets'] = self.df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
-
-        # self.df['Tweets'] = self.df['Tweets'].replace('',np.nan,inplace=True)
 
         print(self.df)
         self.df.dropna(axis = 0, how = 'any', inplace = True)

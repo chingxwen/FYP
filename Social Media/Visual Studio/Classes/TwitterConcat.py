@@ -13,7 +13,6 @@ class concat() :
         # directory folder 
 
         os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Users")
-        # os.chdir(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText")
 
         #include all files in the folder into the list
 

@@ -6,14 +6,14 @@ import numpy as np
 class concat() :
 
 
-    def __init__(self):
+    def __init__(self,path):
+        self.path = path
         pass
 
     def read_csv(self):
         # directory folder 
 
-        os.chdir(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\Data\Pulled\raw")
-        # os.chdir(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText")
+        os.chdir(input('Filepath for files to concat SelfText? '))
 
         #include all files in the folder into the list
 
@@ -29,8 +29,7 @@ class concat() :
 
         df = combined_csv.sort_values(by='timestamp', ascending=True)
 
-        df.to_csv(r"C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv", index=False, encoding='utf-8-sig')
-        # df.to_csv(r"C:\Users\jiajie25\Documents\GitHub\FYP\Social Media\reddit\MLReady\SelfText\Concat\All_concat_selftext.csv", index=False, encoding='utf-8-sig')
+        df.to_csv(self.path + "\\SelfText" + "\\Concat" + "\\All_concat_selftext.csv", index=False, encoding='utf-8-sig')
 
 
 # SelfConcat = concat()
