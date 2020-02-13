@@ -2,22 +2,23 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import pandas as pd
 import numpy as np
 
-class VaderSentiment:
+class VaderSentiment():
 
     pd.options.display.max_rows = 999999
 
-    def __init__(self):
+    def __init__(self, path):
         self.data = []
         self.score = []
         self.positive = []
         self.negative = []
         self.neutral = []
+        self.path = path
 
     def read_csv(self):
 
         # self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile +'Relevant.csv', names=["User", "Date", "Tweets"])
 
-        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Keyword\KeywordCleanse.csv')
+        self.df = pd.read_csv(self.path + "\\KeywordSearch" + "\\TwitterKeyword.csv")
    
         return self.df
 
@@ -79,7 +80,7 @@ class VaderSentiment:
         df.index = pd.MultiIndex.from_arrays([df.index])
 
         # output dataframes to csv files
-        pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Senti\TwitterSenti.csv')
+        pd.DataFrame.from_dict(data = df , orient = 'columns' ).to_csv(self.path + "\\Senti" + "\\Twitter_Senti.csv")
 
         return df
 

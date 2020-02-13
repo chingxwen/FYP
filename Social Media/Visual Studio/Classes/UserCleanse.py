@@ -10,19 +10,14 @@ from datetime import datetime
 
 class UserClense:
 
-    def __init__(self):
+    def __init__(self, path):
         
-        pass
+        self.path = path
         
     def read_Csv(self):
 
-        file = input('Please input the file you want to cleanse ')
 
-        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Concat/' + file +'.csv')
-
-        file = input('Please input directory')
-
-        self.df = pd.read_csv(file)
+        self.df = pd.read_csv(self.path + "\\Concat" + "\\TwitterConcat.csv")
 
         print(self.df)
         return self.df
@@ -72,17 +67,14 @@ class UserClense:
 
         self.df = self.df.loc[filterrows]
         print(self.df)
-        # print(self.df)
-        # print('hi')
-      
-        # print(self.df)
-        # print('df')
+
 
         return self.df
 
     def export(self):
         # Convert list DataFrame to csv
-        pd.DataFrame.from_dict(data = pd.concat([self.df['User'], self.df['Date'], self.df['Tweets']], axis = 1) , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Cleanse\TwitterCleanse.csv')
+        pd.DataFrame.from_dict(data = pd.concat([self.df['User'], self.df['Date'], self.df['Tweets']], axis = 1) , orient = 'columns').to_csv(self.path + "\\Cleanse" + "\\TwitterCleanse.csv")
+
 
 
 

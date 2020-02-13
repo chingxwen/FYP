@@ -2,13 +2,13 @@ import pandas as pd
 
 class UserKeywordSearch:
 
-    def __init__(self):
+    def __init__(self, path):
          
-        pass
+        self.path = path
 
     def read_file(self):
 
-        self.df = pd.read_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Cleanse\TwitterCleanse.csv', names = ['User','Date','Tweets'])
+        self.df = pd.read_csv(self.path + "\\Cleanse" + "\\TwitterCleanse.csv", names = ['User','Date','Tweets'])
     
         return self.df
 
@@ -74,13 +74,13 @@ class UserKeywordSearch:
     def export(self):
 
         # Convert DataFrame to csv
-        df = pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\CSV\Keyword\KeywordCleanse.csv')
+        df = pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv(self.path + "\\KeywordSearch" + "\\TwitterKeyword.csv")
 
         return df
         
 
-TwitterCleanse = UserKeywordSearch()
-TwitterCleanse.read_file()
-TwitterCleanse.searchloop()
-TwitterCleanse.export()
+# TwitterCleanse = UserKeywordSearch()
+# TwitterCleanse.read_file()
+# TwitterCleanse.searchloop()
+# TwitterCleanse.export()
 
