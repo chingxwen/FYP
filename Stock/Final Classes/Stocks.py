@@ -12,11 +12,11 @@ import yfinance as yf
 
 class StockData:
     
-    def __init__(self, fromdate, todate, stock):
+    def __init__(self, fromdate, todate, stock, currency):
         self.fromdate = fromdate
         self.todate= todate
         self.stock = stock
-        
+        self.currency = currency
     
     #yfinance scraper
     def yfinance_scraper(self):
@@ -45,14 +45,15 @@ class StockData:
         df = pd.DataFrame(dg)
         #print(df)
 
-        Stockname = []
+        #Stockname = self.stock
 
-        for i in range (len(df.high)):
-            Stockname.append(self.stock)
+        # for i in range (len(df.high)):
+        #     Stockname.append(self.stock)
 
         # Add a column and column name
-        df.insert(7, "Stockname", Stockname , True)
+        #df.insert(7, "Stockname", Stockname , True)
         #print(df)
+        #df['stockname'] = self.stock
 
         return df
     
@@ -69,8 +70,7 @@ class StockData:
         c = CurrencyConverter('http://www.ecb.int/stats/eurofxref/eurofxref-hist.zip', fallback_on_missing_rate=True)
         def convert(amount, dateyear, datemonth, dateday):
         #     value = amount
-            currency = input("Please input the foreign currency: ")
-            value = c.convert(amount, currency, "USD", date=date(dateyear, datemonth, dateday))
+            value = c.convert(amount, self.currency, "USD", date=date(dateyear, datemonth, dateday))
 
             return value
 
@@ -86,7 +86,7 @@ class StockData:
         nclose = []
         nadj_close = []
         nvolume = []
-        nstockname = []
+        # nstockname = []
         ndf = pd.DataFrame()
 
         for i in range(len(data.open)):
@@ -97,7 +97,6 @@ class StockData:
             nclose.append(data.close[i])
             nadj_close.append(data.adj_close[i])
             nvolume.append(data.volume[i])
-            nstockname.append(data.Stockname[i])
             convertopen1 = float(convert(data.open[i], theDates[i].year, theDates[i].month, theDates[i].day))
             convertopenarrStart.append(convertopen1)
             converthigh1 = float(convert(data.high[i], theDates[i].year, theDates[i].month, theDates[i].day))
@@ -116,15 +115,14 @@ class StockData:
         ndf.insert(4, 'close', nclose, True)
         ndf.insert(5, 'adj_close', nadj_close, True)
         ndf.insert(6, 'volume', nvolume, True)
-        ndf.insert(7, 'Stockname', nstockname, True)
-        ndf.insert(8, 'Open_USD', convertopenarrStart, True)
-        ndf.insert(9, 'High_USD', converthigharrStart, True)
-        ndf.insert(10, 'Low_USD', convertlowarrStart, True)
-        ndf.insert(11, 'Close_USD', convertclosearrStart, True)
-        ndf.insert(12, 'Adj_Close_USD', convertadjclosearrStart, True)
+        ndf.insert(7, 'Open_USD', convertopenarrStart, True)
+        ndf.insert(8, 'High_USD', converthigharrStart, True)
+        ndf.insert(9, 'Low_USD', convertlowarrStart, True)
+        ndf.insert(10, 'Close_USD', convertclosearrStart, True)
+        ndf.insert(11, 'Adj_Close_USD', convertadjclosearrStart, True)
 
         directory = input("Please input your preferred directory: ")
-
-        pd.DataFrame.from_dict(data=ndf, orient='columns').to_csv(directory + self.fromdate + "." + self.todate + "." + self.stock + ".csv")
+        ndf['stockname'] = self.stock
+        pd.DataFrame.from_dict(data=ndf, orient='columns').to_csv(directory + "\\" + self.fromdate + "." + self.todate + "." + self.stock + ".csv")
 
         return ndf
