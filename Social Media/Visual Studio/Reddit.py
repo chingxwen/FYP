@@ -12,7 +12,6 @@ RedditExtract.convert_Datetime()
 RedditExtract.drop_columns()
 RedditExtract.write()
 
-
 #Extract Reddit Comments
 RedditExtract = Reddit_comment.reddit_comments(path)
 RedditExtract.extract()

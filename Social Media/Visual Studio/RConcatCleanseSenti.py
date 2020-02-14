@@ -5,10 +5,7 @@ from Classes import CommentsConcat
 from Classes import Reddit_comment_cleanse
 from Classes import RedditCommentVaderSentimentAnlysis
 
-
-
 path = input("Please input the filepath for the files to be downloaded to: ")
-
 
 #SelfText Concat
 SelfConcat = SelfTextConcat.concat(path)
@@ -46,7 +43,6 @@ RedditExtract.specialChar_removal()
 RedditExtract.write()
 
 # # Comment Senti 
-
 CommentSenti = RedditCommentVaderSentimentAnlysis.VaderSentiment(path)
 CommentSenti.read_csv()
 CommentSenti.extract_column()

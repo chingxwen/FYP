@@ -5,7 +5,6 @@ import pandas as pd
 
 
 class reddit_comments():
-
     api = False
     reddit = praw.Reddit(
         client_id = 'ft1YI89jxATR_g', \
@@ -23,21 +22,16 @@ class reddit_comments():
         self.path = path
         print('initialised')
         
-
     def extract(self):
-        
         self.yearInput = int(input('Year to Search? (YYYY):  '))
         monthInput = int(input('Month to Search? (MM):  '))
         dateInput = int(input('Date to Search? (DD):    '))
         print(self.yearInput, monthInput, dateInput)
         start_epoch=int(dt.datetime(self.yearInput,monthInput,dateInput).timestamp())
-
         self.month = dt.date(1900, monthInput, 1).strftime('%B')
-
         print('Timestamp gotten')
         print('This is the time in Unix-Format:', start_epoch)
         print('You are searching in the month of '+ self.month)
-
 
         gen = self.api.search_comments(q = 'samsung',
                                 subreddit = 'samsung',
@@ -46,21 +40,17 @@ class reddit_comments():
                                 size = 1)
         results = list(gen)
         print('extracted')
-
         self.data = pd.DataFrame(results)
         print('converted')
-
         return self.data
 
     def convert_Datetime(self):
         self.timelist = self.data['created'].tolist()
         for i in range(len(self.timelist)):
             unix_timestamp = float(self.timelist[i])
-            
             utc_time = dt.datetime.utcfromtimestamp(unix_timestamp)
             self.timestamps.append(utc_time)
         self.data = self.data.assign(timestamp = self.timestamps)
-
         return self.data
 
     def drop_columns(self):
@@ -72,13 +62,9 @@ class reddit_comments():
         return self.data 
 
     def write(self):
-        # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit\MLReady\Comments\Comments\October2019')
-        # self.data.to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/reddit/Data/Pulled/comments/October2019comments.csv')
-        # self.data.to_csv(r'C:\Users\User\Desktop\FYP\FYP\Social Media\reddit/Data/Pulled/comments/'+ self.month + str(self.yearInput) +'.csv')
         self.data.to_csv(self.path + "\\Comments" + "\\Comments" + "\\" + self.month + str(self.yearInput) +'.csv')
         print('Written!')
         print(self.data.head(10))
-
         return self.data
 
 # RedditExtract = reddit_comments(object)

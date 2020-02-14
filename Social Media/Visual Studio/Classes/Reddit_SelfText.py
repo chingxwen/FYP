@@ -5,7 +5,6 @@ import pandas as pd
 
 
 class reddit_selftext(object):
-
     api = False
 
     def __init__(self,path,api = api):
@@ -14,7 +13,6 @@ class reddit_selftext(object):
         self.path = path
 
     def cred(self):
-
         reddit = praw.Reddit(
             client_id = 'ft1YI89jxATR_g', \
             client_secret = '31k1f4ORFpgtQlZ-h2QLO9qxCPc', \
@@ -24,33 +22,25 @@ class reddit_selftext(object):
         )
         print('initialised')
         self.reddit = reddit
-
         return self.reddit
 
-    
     def extract(self):
-
         self.yearInput = int(input('Year to Search? (YYYY):  '))
         monthInput = int(input('Month to Search? (MM):  '))
         dateInput = int(input('Date to Search? (DD):    '))
         print(self.yearInput, monthInput, dateInput)
         start_epoch=int(dt.datetime(self.yearInput,monthInput,dateInput).timestamp())
-
         self.month = dt.date(1900, monthInput, 1).strftime('%B')
-
         print('Timestamp gotten')
         print('This is the time in Unix-Format:', start_epoch)
         print('You are searching in the month of '+ self.month)
-
         gen = self.api.search_submissions(after = start_epoch,
                                     subreddit = 'samsung',
                                     q = 'samsung',
                                     filter = ['subreddit', 'created','selftext','id'],
                                     limit = 500)
         results = list(gen)
-
         self.data = pd.DataFrame(results)
-
         return self.data #, self.yearInput, self.month
 
     def convert_Datetime(self):
@@ -59,16 +49,12 @@ class reddit_selftext(object):
         self.timelist = self.data['created'].tolist()
         print(self.data.info())
         print(len(self.timelist))
-
         for i in range(len(self.timelist)):
             print(self.timelist[i])
             print(i)
-
             unix_timestamp = float(self.timelist[i])
-
             utc_time = dt.datetime.utcfromtimestamp(unix_timestamp)
             self.timestamps.append(utc_time)
-
         self.data = self.data.assign(timestamp = self.timestamps)
 
         return self.data
@@ -91,7 +77,6 @@ class reddit_selftext(object):
 
         #Write data to csv
         self.data.to_csv(self.path + "\\SelfText" + "\\Pulled" + "\\" + self.month + str(self.yearInput) + '.csv', index=False)
-        # self.data.to_csv('C:/Users/jiajie25/Documents/GitHub/FYP/Social Media/reddit/Data/Pulled/raw/' + self.month + str(self.yearInput)+'.csv', index=False)
         print('Written!')
         print(self.data.head(10))
 
