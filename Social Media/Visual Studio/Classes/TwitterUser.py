@@ -12,6 +12,7 @@ class TweetMiner(object):
         self.path = path
         self.result_limit = result_limit
 
+
     def mine_user_tweets(self,
                          mine_rewteets=False,
                          max_pages=5):
@@ -21,16 +22,24 @@ class TweetMiner(object):
         result_limit    =   20    
         data            =   []
         api             =   False
+
+        #Credentials
         self.twitter_keys = {
        'consumer_key':        'DdzX4hSW7Dth3CQb71MsTR8e2',
         'consumer_secret':     '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
         'access_token_key':    '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
         'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
         }
+
+        #input for user to key in userdata
         self.user = input("Enter the username without the '@' sign: ")
+
         auth = tweepy.OAuthHandler(self.twitter_keys['consumer_key'], self.twitter_keys['consumer_secret'])
         auth.set_access_token(self.twitter_keys['access_token_key'], self.twitter_keys['access_token_secret'])
+
         self.api = tweepy.API(auth)
+
+        #Extraction of twittwe user data
         while page <= max_pages:
             if last_tweet_id:
                 statuses   =   self.api.user_timeline(screen_name= self.user,
@@ -55,6 +64,7 @@ class TweetMiner(object):
             page += 1
             print(data)
 
+        #write into csv
         outfile = self.path + "\\User" +"\\"+ self.user + ".csv"
         print(type(outfile))
         df = pd.DataFrame(data)

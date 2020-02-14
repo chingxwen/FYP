@@ -7,7 +7,8 @@ class UserKeywordSearch:
         self.path = path
 
     def read_file(self):
-
+        
+        #read csv
         self.df = pd.read_csv(self.path + "\\Cleanse" + "\\TwitterCleanse.csv", names = ['User','Date','Tweets'])
     
         return self.df
@@ -42,6 +43,8 @@ class UserKeywordSearch:
             "galaxy FIT E", "samsung T5", "galaxy T5", "Samsung Catalyst Fund", "samsungcatalyst", "SamsungCEOSummit",
             "Samsung 5G Exynos 980", "SamMobile"]
 
+        #loop to search for words in samsung dictionary 
+
         for words in samsunglist:
             for i in range(len(content)):
                 print(content.iloc[i])
@@ -58,10 +61,12 @@ class UserKeywordSearch:
         print(relevantdate)
         print(relevanttext)
 
+        #convert list to dataframe
         dfUser = pd.DataFrame(relevantuser, columns = ['User'])
         dfDate = pd.DataFrame(relevantdate, columns = ['Date'])
         dfTweets = pd.DataFrame(relevanttext, columns = ['Tweets'])
 
+        #convert list to dataframe and concat together
         self.final = pd.concat([dfUser,dfDate,dfTweets], axis = 1)
 
         return self.final

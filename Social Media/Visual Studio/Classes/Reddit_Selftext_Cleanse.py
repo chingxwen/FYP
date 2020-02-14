@@ -13,13 +13,15 @@ class redditSelfTextCleanse(object):
         pass
 
     def read_csv(self):
-
+        
+        #read csv
         self.df = pd.read_csv(self.path + "\\SelfText" + "\\Concat" + "\\All_concat_selftext.csv")
 
         return self.df
 
     def cleanse(self):
                 
+        #Cleansing of file
         print(self.df.shape)
         self.df.drop_duplicates(subset="id", keep="first", inplace=True)
         print(self.df.shape)
@@ -49,7 +51,7 @@ class redditSelfTextCleanse(object):
         #convert to dataframe again
         self.df['title'] = pd.DataFrame(self.dfnewlist)
         
-
+        #remove nan values
         self.df['title'].replace('nan',np.nan,inplace=True)
         self.df['title'].replace('[removed]', np.nan, inplace = True)
         self.df.dropna(axis = 0, how = 'any', inplace = True) 

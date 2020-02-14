@@ -11,7 +11,7 @@ class VaderSentiment:
 
 
     def read_csv(self):
-        
+        #reading of csv file
         self.df = pd.read_csv(self.path + "\\Comments" + "\\Cleanse" + "\\All_comments_Cleanse.csv")
    
          # extract specific column
@@ -40,6 +40,8 @@ class VaderSentiment:
 
         pd.options.display.max_rows = 999999
         
+
+        #sen csv in for analysis
         def sentiment_analyzer_scores (sentence):
             result = analyser.polarity_scores(sentence)
             self.sentiment = "{:-<40}".format(sentence)
@@ -57,8 +59,8 @@ class VaderSentiment:
         #convert list to dataframes
         df1 = pd.DataFrame(self.data)
         df2 = pd.DataFrame(self.score)
+        
         # concat all data columns into a dataframe
-        # print(self.df2)
         newdf= pd.concat([self.dftime,df1, df2] ,axis=1)
 
         print(newdf)

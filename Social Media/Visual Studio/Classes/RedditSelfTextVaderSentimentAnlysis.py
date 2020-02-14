@@ -11,7 +11,8 @@ class VaderSentiment:
 
 
     def read_csv(self):
-
+        
+        #Write to csv
         self.df = pd.read_csv(self.path + "\\SelfText" + "\\Cleanse" + "\\All_selftext_cleanse.csv")
    
         # extract specific column
@@ -25,6 +26,7 @@ class VaderSentiment:
 
     def extract_column(self):
 
+        #extract specific column
         self.df = self.df.title
         self.dftweet = pd.DataFrame(self.df)
 
@@ -40,6 +42,7 @@ class VaderSentiment:
 
         pd.options.display.max_rows = 999999
         
+        #Send data in for analysis
         def sentiment_analyzer_scores (sentence):
             result = analyser.polarity_scores(sentence)
             self.sentiment = "{:-<40}".format(sentence)
@@ -57,6 +60,7 @@ class VaderSentiment:
         #convert list to dataframes
         self.df1 = pd.DataFrame(self.data)
         self.df2 = pd.DataFrame(self.score)
+        
         # concat all data columns into a dataframe
         print(self.df1)
         print(self.df2)

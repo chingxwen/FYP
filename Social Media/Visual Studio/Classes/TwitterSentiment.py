@@ -14,10 +14,14 @@ class VaderSentiment():
         self.path = path
 
     def read_csv(self):
+
+        #read csv
         self.df = pd.read_csv(self.path + "\\KeywordSearch" + "\\TwitterKeyword.csv")
         return self.df
 
     def extract_column(self):
+
+        #Extract different columns
         self.df = self.df['Tweets']
         print(self.df)
         self.dftweet = pd.DataFrame(self.df)
@@ -31,6 +35,7 @@ class VaderSentiment():
     def sentimentanalysis(self):
         analyser = SentimentIntensityAnalyzer()
         
+        #send data in for analysis
         def sentiment_analyzer_scores (sentence):
             result = analyser.polarity_scores(sentence)
             self.sentiment = "{:-<40}".format(sentence)

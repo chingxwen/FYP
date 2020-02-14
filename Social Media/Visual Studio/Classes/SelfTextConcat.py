@@ -11,12 +11,11 @@ class concat() :
         pass
 
     def read_csv(self):
-        # directory folder 
 
+        # directory folder 
         os.chdir(input('Filepath for files to concat SelfText? '))
 
         #include all files in the folder into the list
-
         extension = 'csv'
         self.all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
 
@@ -24,7 +23,6 @@ class concat() :
     def combine(self):
 
         #combine all files in the list
-
         combined_csv = pd.concat([pd.read_csv(f) for f in self.all_filenames ],sort=False)
 
         df = combined_csv.sort_values(by='timestamp', ascending=True)

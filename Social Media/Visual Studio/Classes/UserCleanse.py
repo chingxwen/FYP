@@ -16,7 +16,7 @@ class UserClense:
         
     def read_Csv(self):
 
-
+        #read csv
         self.df = pd.read_csv(self.path + "\\Concat" + "\\TwitterConcat.csv")
 
         print(self.df)
@@ -32,20 +32,25 @@ class UserClense:
 
         #Extra rows by date
 
-        # self.df['Date'] = pd.to_datetime(self.df['Date'])
-
         startdate = '2018-07-01'
         enddate = '2019-10-31'
 
+        #filter date from data
         filterrows = (self.df['Date'] >= startdate) & (self.df['Date'] <= enddate)
+
+        #remove b flags
         self.df['Tweets'] = self.df['Tweets'].apply(ast.literal_eval).str.decode("utf-8")
 
+        #remove links
         self.df['Tweets'] = self.df['Tweets'].str.replace(r'http\S+|www.\S+', '', case=False)
 
+        #remove username
         self.df['Tweets'] = self.df['Tweets'].str.replace(r'@[^\s]+','', case=False)
 
+        #remove symbols
         self.df['Tweets'] = self.df['Tweets'].str.replace(r'[^A-Za-z0-9 ]+', '', case = False)
 
+        #drop null rows
         print(self.df)
         self.df.dropna(axis = 0, how = 'any', inplace = True)
         

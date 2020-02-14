@@ -12,6 +12,7 @@ class reddit_selftext(object):
         self.timestamps = []
         self.path = path
 
+    #Credentiates
     def cred(self):
         reddit = praw.Reddit(
             client_id = 'ft1YI89jxATR_g', \
@@ -25,6 +26,8 @@ class reddit_selftext(object):
         return self.reddit
 
     def extract(self):
+
+        #Input for Year,Month and Day
         self.yearInput = int(input('Year to Search? (YYYY):  '))
         monthInput = int(input('Month to Search? (MM):  '))
         dateInput = int(input('Date to Search? (DD):    '))
@@ -34,6 +37,8 @@ class reddit_selftext(object):
         print('Timestamp gotten')
         print('This is the time in Unix-Format:', start_epoch)
         print('You are searching in the month of '+ self.month)
+
+        #Extraction of SelfText
         gen = self.api.search_submissions(after = start_epoch,
                                     subreddit = 'samsung',
                                     q = 'samsung',
