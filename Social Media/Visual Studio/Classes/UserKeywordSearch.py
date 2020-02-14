@@ -1,32 +1,15 @@
 import pandas as pd
 
-#Samsung Dictionary
-samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group", 
-        "samsung technologies","galaxy s10", "galaxy note10", "galaxy fold", 
-        "galaxy s10+", "galaxy s10e", "galaxy buds", "galaxy watch", "watch active 2",
-        "galaxy tab", "tab S6", "galaxy book S", "samsung electronics", "samsung x IFA 2019", 
-        "the wall luxury", "Q series soundbar", "seoul sisters conference", 
-        " Samsung Semiconductor Institute of Technology", "galaxy A30", "galaxy S11", 
-        "a70 waterproof", "a70 wireless charging", "s10 plus", "s7 edge", "galaxy m30", "galaxy j7", 
-       "galaxy j2", "galaxy a10", "space zoom", "samsung support", "the serif", "#dowhatyoucant", "spacemax", 
-       "galaxy A", "galaxy note", "QLED", "quickdrive", "s series", "galaxyAs", "samsung mobile", "SamsungMobileSA",
-       "#DontFumbleTheBag", "galaxy a30s", "#FillUpRoyalBafokeng", "#SDC19", "galaxy buds", "samsungUS", "samsungsupport",
-       "chromebook", "samsung J4", "samsung J4 core", "galaxy J4", "galaxy J2", "galaxy J4 core", "galaxy tab",
-       "samsung health", "SamsungKids", "SamsungKidsUS", "samsung galacy", "TeamGalaxy", "#TeamGalaxy", "withgalaxy",
-       "galaxy FIT E", "samsung T5", "galaxy T5", "Samsung Catalyst Fund", "samsungcatalyst", "SamsungCEOSummit",
-       "Samsung 5G Exynos 980", "SamMobile"]
-
 class UserKeywordSearch:
 
-    datafile = input('Which data set do you want to cleanse?')
-
-    def __init__(self):
+    def __init__(self, path):
          
-        pass
+        self.path = path
 
     def read_file(self):
-
-        self.df = pd.read_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Cleanse/' + self.datafile + 'Cleanse.csv', names = ['User','Date','Tweets'])
+        
+        #read csv
+        self.df = pd.read_csv(self.path + "\\Cleanse" + "\\TwitterCleanse.csv", names = ['User','Date','Tweets'])
     
         return self.df
 
@@ -39,9 +22,32 @@ class UserKeywordSearch:
         relevantuser = []
         relevantdate = []
         relevanttext = []
+        content = self.df['Tweets']
+        usercontent = self.df['User']
+        userdate = self.df['Date']
+        content = content.astype(str)
+
+        #Samsung Dictionary
+        samsunglist = ["samsung","galaxy", "samsung galaxy", "samsung group", 
+            "samsung technologies","galaxy s10", "galaxy note10", "galaxy fold", 
+            "galaxy s10+", "galaxy s10e", "galaxy buds", "galaxy watch", "watch active 2",
+            "galaxy tab", "tab S6", "galaxy book S", "samsung electronics", "samsung x IFA 2019", 
+            "the wall luxury", "Q series soundbar", "seoul sisters conference", 
+            " Samsung Semiconductor Institute of Technology", "galaxy A30", "galaxy S11", 
+            "a70 waterproof", "a70 wireless charging", "s10 plus", "s7 edge", "galaxy m30", "galaxy j7", 
+            "galaxy j2", "galaxy a10", "space zoom", "samsung support", "the serif", "#dowhatyoucant", "spacemax", 
+            "galaxy A", "galaxy note", "QLED", "quickdrive", "s series", "galaxyAs", "samsung mobile", "SamsungMobileSA",
+            "#DontFumbleTheBag", "galaxy a30s", "#FillUpRoyalBafokeng", "#SDC19", "galaxy buds", "samsungUS", "samsungsupport",
+            "chromebook", "samsung J4", "samsung J4 core", "galaxy J4", "galaxy J2", "galaxy J4 core", "galaxy tab",
+            "samsung health", "SamsungKids", "SamsungKidsUS", "samsung galacy", "TeamGalaxy", "#TeamGalaxy", "withgalaxy",
+            "galaxy FIT E", "samsung T5", "galaxy T5", "Samsung Catalyst Fund", "samsungcatalyst", "SamsungCEOSummit",
+            "Samsung 5G Exynos 980", "SamMobile"]
+
+        #loop to search for words in samsung dictionary 
 
         for words in samsunglist:
             for i in range(len(content)):
+                print(content.iloc[i])
                 if (words in content.iloc[i].lower()) == True:
                     print(words)
                     global count
@@ -55,10 +61,12 @@ class UserKeywordSearch:
         print(relevantdate)
         print(relevanttext)
 
+        #convert list to dataframe
         dfUser = pd.DataFrame(relevantuser, columns = ['User'])
         dfDate = pd.DataFrame(relevantdate, columns = ['Date'])
         dfTweets = pd.DataFrame(relevanttext, columns = ['Tweets'])
 
+        #convert list to dataframe and concat together
         self.final = pd.concat([dfUser,dfDate,dfTweets], axis = 1)
 
         return self.final
@@ -71,15 +79,13 @@ class UserKeywordSearch:
     def export(self):
 
         # Convert DataFrame to csv
-        pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv('C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Relevant/' + self.datafile + 'Relevant.csv')
+        df = pd.DataFrame.from_dict(data = self.final , orient = 'columns').to_csv(self.path + "\\KeywordSearch" + "\\TwitterKeyword.csv")
 
+        return df
+        
 
-KeywordSearch = UserKeywordSearch()
-df = KeywordSearch.read_file()
+# TwitterCleanse = UserKeywordSearch()
+# TwitterCleanse.read_file()
+# TwitterCleanse.searchloop()
+# TwitterCleanse.export()
 
-count = 0
-usercontent = df['User']
-userdate = df['Date']
-content = df["Tweets"]
-Search = KeywordSearch.searchloop()
-Export = KeywordSearch.export()

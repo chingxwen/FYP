@@ -8,41 +8,38 @@ import tweepy
 import datetime 
 
 class TweetMiner(object):
-
-    result_limit    =   20    
-    data            =   []
-    api             =   False
-    
-    twitter_keys = {
-       'consumer_key':        'DdzX4hSW7Dth3CQb71MsTR8e2',
-        'consumer_secret':     '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
-        'access_token_key':    '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
-        'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
-    }
-    
-    user = input("Enter the username without the '@' sign: ")
-    
-    def __init__(self, keys_dict=twitter_keys, api=api, result_limit = 20):
-        
-        self.twitter_keys = keys_dict
-        
-        auth = tweepy.OAuthHandler(keys_dict['consumer_key'], keys_dict['consumer_secret'])
-        auth.set_access_token(keys_dict['access_token_key'], keys_dict['access_token_secret'])
-        
-        self.api = tweepy.API(auth)
-        self.twitter_keys = keys_dict
-        
+    def __init__(self, path, result_limit = 20):
+        self.path = path
         self.result_limit = result_limit
-        
+
 
     def mine_user_tweets(self,
                          mine_rewteets=False,
                          max_pages=5):
-
         data           =  []
         last_tweet_id  =  False
         page           =  1
-        
+        result_limit    =   20    
+        data            =   []
+        api             =   False
+
+        #Credentials
+        self.twitter_keys = {
+       'consumer_key':        'DdzX4hSW7Dth3CQb71MsTR8e2',
+        'consumer_secret':     '5ZuIeoGSNODfhz7EDM9dDRT8etGXwKtHs6JtWnJDifmZq5ig8j',
+        'access_token_key':    '3149688854-aby5gZg2kCGkKyoKcSP0dC2txrKipYsZsQV6e1r',
+        'access_token_secret': '6f1N7oApk2RDgR7VCdAEwR4uhpRl09dEBwZpDIkZ0e1xO'
+        }
+
+        #input for user to key in userdata
+        self.user = input("Enter the username without the '@' sign: ")
+
+        auth = tweepy.OAuthHandler(self.twitter_keys['consumer_key'], self.twitter_keys['consumer_secret'])
+        auth.set_access_token(self.twitter_keys['access_token_key'], self.twitter_keys['access_token_secret'])
+
+        self.api = tweepy.API(auth)
+
+        #Extraction of twittwe user data
         while page <= max_pages:
             if last_tweet_id:
                 statuses   =   self.api.user_timeline(screen_name= self.user,
@@ -56,54 +53,28 @@ class TweetMiner(object):
                                                         count=self.result_limit,
                                                         tweet_mode = 'extended',
                                                         include_retweets=True)
-                
             for item in statuses:
-
                 mined = {
-                    # 'tweet_id':        item.id,
-                    # 'name':            item.user.name,
-                    'screen_name':     item.user.screen_name,
-                    # 'retweet_count':   item.retweet_count,
-                    'text':            item.full_text,
-                    # 'mined_at':        datetime.datetime.now(),
-                    'created_at':      item.created_at
-                    # 'favourite_count': item.favorite_count,
-                    # 'hashtags':        item.entities['hashtags'],
-                    # 'status_count':    item.user.statuses_count,
-                    # 'location':        item.place,
-                    # 'source_device':   item.source
+                    'User':     item.user.screen_name,
+                    'Tweets':            item.full_text,
+                    'Date':      item.created_at
                 }
-                
-                # try:
-                    # mined['retweet_text'] = item.retweeted_status.full_text
-                # except:
-                    # mined['retweet_text'] = 'None'
-                # try:
-                    # mined['quote_text'] = item.quoted_status.full_text
-                    # mined['quote_screen_name'] = status.quoted_status.user.screen_name
-                # except:
-                    # mined['quote_text'] = 'None'
-                    # mined['quote_screen_name'] = 'None'
-                
                 last_tweet_id = item.id
                 data.append(mined)
-                
             page += 1
             print(data)
 
-        outfile = 'C:/Users/User/Desktop/FYP/FYP/Social Media/CSV/Users/' + self.user + ".csv"
+        #write into csv
+        outfile = self.path + "\\User" +"\\"+ self.user + ".csv"
         print(type(outfile))
         df = pd.DataFrame(data)
         print(type(df))
         df.to_csv(outfile)
         print('Written!')
-    
-
         return data 
 
 
 
 
-TwitterExtract = TweetMiner()
-TwitterExtract.mine_user_tweets()
-# TwitterExtract.export()
+# TwitterExtract = TweetMiner()
+# TwitterExtract.mine_user_tweets()
