@@ -1,0 +1,1012 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20194.19.1010.1202                               -->
+<workbook source-build='2019.4.0 (20194.19.1010.1202)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts ignorable='true' predowngraded='true' />
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='News_Twitter_Stock_Reddit_Filled' inline='true' name='federated.1htkz0s1wwgbt81gioroh1evszwk' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Tableau_Phase2' name='textscan.176y1hd0i2x05r15objv10ljuseh'>
+            <connection class='textscan' directory='C:/Users/Jurgen/Desktop/FYP/Shared/Tableau Dashboard/Summarised' filename='Tableau_Phase2.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.176y1hd0i2x05r15objv10ljuseh' name='Tableau_Phase2.csv' table='[Tableau_Phase2#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_SG' separator=','>
+            <column datatype='date' name='Date' ordinal='0' />
+            <column datatype='real' name='News_Senti' ordinal='1' />
+            <column datatype='real' name='Volume' ordinal='2' />
+            <column datatype='string' name='Stockname' ordinal='3' />
+            <column datatype='real' name='Open_USD' ordinal='4' />
+            <column datatype='real' name='High_USD' ordinal='5' />
+            <column datatype='real' name='Low_USD' ordinal='6' />
+            <column datatype='real' name='Close_USD' ordinal='7' />
+            <column datatype='real' name='Adj_Close_USD' ordinal='8' />
+            <column datatype='real' name='Twitter_Senti' ordinal='9' />
+            <column datatype='real' name='Reddit_Comment' ordinal='10' />
+            <column datatype='real' name='Reddit_SelfText' ordinal='11' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_SG&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>News_Senti</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[News_Senti]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>News_Senti</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Volume</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Volume]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Volume</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Stockname</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Stockname]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Stockname</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Open_USD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Open_USD]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Open_USD</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>High_USD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[High_USD]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>High_USD</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Low_USD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Low_USD]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Low_USD</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Close_USD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Close_USD]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Close_USD</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Adj_Close_USD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Adj_Close_USD]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Adj_Close_USD</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Twitter_Senti</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Twitter_Senti]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Twitter_Senti</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Reddit_Comment</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Reddit_Comment]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Reddit_Comment</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Reddit_SelfText</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Reddit_SelfText]</local-name>
+            <parent-name>[Tableau_Phase2.csv]</parent-name>
+            <remote-alias>Reddit_SelfText</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='COLOUR' datatype='string' name='[Calculation_1669709577938599939]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='IF SUM([News_Senti]) &lt; 0&#13;&#10;        THEN &quot;NEGATIVE&quot;&#13;&#10;    ELSEIF SUM([News_Senti]) &gt;= 0&#13;&#10;        THEN &quot;POSITIVE&quot;&#13;&#10;END' />
+      </column>
+      <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column-instance column='[Date]' derivation='Day' name='[dy:Date:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Calculation_1669709577938599939]' derivation='User' name='[usr:Calculation_1669709577938599939:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (YEAR(Date),MONTH(Date),DAY(Date))' hidden='true' name='[Action (YEAR(Date),MONTH(Date),DAY(Date))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[yr:Date:ok]' />
+          <groupfilter function='level-members' level='[mn:Date:ok]' />
+          <groupfilter function='level-members' level='[dy:Date:ok]' />
+        </groupfilter>
+      </group>
+      <layout dim-ordering='alphabetic' dim-percentage='0.324365' measure-ordering='alphabetic' measure-percentage='0.675635' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[usr:Calculation_1669709577938599939:nk]' type='palette'>
+            <map to='#59a14f'>
+              <bucket>&quot;POSITIVE&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;NEGATIVE&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Singapore&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Merged Dashboard' type='sheet' worksheet='Stock Daily' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Merged Dashboard' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='News'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='News_Twitter_Stock_Reddit_Filled' name='federated.1htkz0s1wwgbt81gioroh1evszwk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1htkz0s1wwgbt81gioroh1evszwk'>
+            <column caption='COLOUR' datatype='string' name='[Calculation_1669709577938599939]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='IF SUM([News_Senti]) &lt; 0&#13;&#10;        THEN &quot;NEGATIVE&quot;&#13;&#10;    ELSEIF SUM([News_Senti]) &gt;= 0&#13;&#10;        THEN &quot;POSITIVE&quot;&#13;&#10;END' />
+            </column>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[News_Senti]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day' name='[dy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[News_Senti]' derivation='Sum' name='[sum:News_Senti:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1669709577938599939]' derivation='User' name='[usr:Calculation_1669709577938599939:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]'>
+            <groupfilter function='reorder-dimensionality' user:ui-action-filter='[Action1]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='member' level='[mn:Date:ok]' member='5' />
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[yr:Date:ok]' member='2019' />
+                  <groupfilter function='union'>
+                    <groupfilter function='member' level='[dy:Date:ok]' member='2' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='3' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='7' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='8' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='9' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='10' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='13' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='14' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='15' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='16' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='17' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='20' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='21' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='22' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='23' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='24' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='27' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='28' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='29' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='30' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='31' />
+                  </groupfilter>
+                </groupfilter>
+              </groupfilter>
+              <order>
+                <hierarchy name='[yr:Date:ok]' />
+                <hierarchy name='[mn:Date:ok]' />
+                <hierarchy name='[dy:Date:ok]' />
+              </order>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' center='0.0' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:News_Senti:qk]' min='-0.10000000000000001' symmetric='false' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[usr:Calculation_1669709577938599939:nk]' />
+              <text column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:News_Senti:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:News_Senti:qk]</rows>
+        <cols>([federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok] / ([federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok] / [federated.1htkz0s1wwgbt81gioroh1evszwk].[dy:Date:ok]))</cols>
+      </table>
+      <simple-id uuid='{D26FF85C-9C1C-47F9-83B1-6D0594056DEC}' />
+    </worksheet>
+    <worksheet name='Reddit Comments'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='News_Twitter_Stock_Reddit_Filled' name='federated.1htkz0s1wwgbt81gioroh1evszwk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1htkz0s1wwgbt81gioroh1evszwk'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Reddit_Comment]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day' name='[dy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Reddit_Comment]' derivation='Sum' name='[sum:Reddit_Comment:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]'>
+            <groupfilter function='reorder-dimensionality' user:ui-action-filter='[Action1]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='member' level='[mn:Date:ok]' member='5' />
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[yr:Date:ok]' member='2019' />
+                  <groupfilter function='union'>
+                    <groupfilter function='member' level='[dy:Date:ok]' member='2' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='3' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='7' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='8' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='9' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='10' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='13' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='14' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='15' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='16' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='17' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='20' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='21' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='22' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='23' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='24' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='27' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='28' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='29' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='30' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='31' />
+                  </groupfilter>
+                </groupfilter>
+              </groupfilter>
+              <order>
+                <hierarchy name='[yr:Date:ok]' />
+                <hierarchy name='[mn:Date:ok]' />
+                <hierarchy name='[dy:Date:ok]' />
+              </order>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_Comment:qk]' field-type='quantitative' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_Comment:qk]' palette='red_green_diverging_10_0' symmetric='false' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_Comment:qk]' />
+              <text column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_Comment:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_Comment:qk]</rows>
+        <cols>([federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok] / ([federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok] / [federated.1htkz0s1wwgbt81gioroh1evszwk].[dy:Date:ok]))</cols>
+      </table>
+      <simple-id uuid='{6965300D-4E08-4ED5-95F1-B0DB93A08BDE}' />
+    </worksheet>
+    <worksheet name='Reddit SelfText'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='News_Twitter_Stock_Reddit_Filled' name='federated.1htkz0s1wwgbt81gioroh1evszwk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1htkz0s1wwgbt81gioroh1evszwk'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Reddit_SelfText]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day' name='[dy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Reddit_SelfText]' derivation='Sum' name='[sum:Reddit_SelfText:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]'>
+            <groupfilter function='reorder-dimensionality' user:ui-action-filter='[Action1]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='member' level='[mn:Date:ok]' member='5' />
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[yr:Date:ok]' member='2019' />
+                  <groupfilter function='union'>
+                    <groupfilter function='member' level='[dy:Date:ok]' member='2' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='3' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='7' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='8' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='9' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='10' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='13' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='14' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='15' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='16' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='17' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='20' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='21' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='22' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='23' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='24' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='27' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='28' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='29' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='30' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='31' />
+                  </groupfilter>
+                </groupfilter>
+              </groupfilter>
+              <order>
+                <hierarchy name='[yr:Date:ok]' />
+                <hierarchy name='[mn:Date:ok]' />
+                <hierarchy name='[dy:Date:ok]' />
+              </order>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_SelfText:qk]' palette='red_green_diverging_10_0' symmetric='false' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_SelfText:qk]' />
+              <text column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_SelfText:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_SelfText:qk]</rows>
+        <cols>([federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok] / ([federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok] / [federated.1htkz0s1wwgbt81gioroh1evszwk].[dy:Date:ok]))</cols>
+      </table>
+      <simple-id uuid='{85A9316B-7BAC-44DF-89D6-7C57AC0A4882}' />
+    </worksheet>
+    <worksheet name='Stock Daily'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='News_Twitter_Stock_Reddit_Filled' name='federated.1htkz0s1wwgbt81gioroh1evszwk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1htkz0s1wwgbt81gioroh1evszwk'>
+            <column datatype='real' name='[Adj_Close_USD]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Adj_Close_USD]' derivation='Attribute' name='[attr:Adj_Close_USD:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day' name='[dy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]' included-values='in-range'>
+            <min>33.356379529999998</min>
+            <max>43.848824299999997</max>
+          </filter>
+          <slices>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]' field-type='quantitative' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok]' value='19' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]' palette='red_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]' />
+              <text column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]</rows>
+        <cols>([federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok] / ([federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok] / [federated.1htkz0s1wwgbt81gioroh1evszwk].[dy:Date:ok]))</cols>
+      </table>
+      <simple-id uuid='{8BAC1672-AEB2-4254-B845-070179E09272}' />
+    </worksheet>
+    <worksheet name='Stock Month'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='News_Twitter_Stock_Reddit_Filled' name='federated.1htkz0s1wwgbt81gioroh1evszwk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1htkz0s1wwgbt81gioroh1evszwk'>
+            <column datatype='real' name='[Adj_Close_USD]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Adj_Close_USD]' derivation='Avg' name='[avg:Adj_Close_USD:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[avg:Adj_Close_USD:qk]' included-values='in-range'>
+            <min>35.172512019473686</min>
+            <max>42.295379033500005</max>
+          </filter>
+          <filter class='categorical' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok]'>
+            <groupfilter from='1' function='range' level='[mn:Date:ok]' to='12' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok]</column>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[avg:Adj_Close_USD:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1htkz0s1wwgbt81gioroh1evszwk].[avg:Adj_Close_USD:qk]</rows>
+        <cols>([federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok] / [federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok])</cols>
+      </table>
+      <simple-id uuid='{AEB2A3E7-CA9C-4F88-9B0A-14BB83A8466B}' />
+    </worksheet>
+    <worksheet name='Twitter'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='News_Twitter_Stock_Reddit_Filled' name='federated.1htkz0s1wwgbt81gioroh1evszwk' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1htkz0s1wwgbt81gioroh1evszwk'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Twitter_Senti]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day' name='[dy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Twitter_Senti]' derivation='Sum' name='[sum:Twitter_Senti:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]'>
+            <groupfilter function='reorder-dimensionality' user:ui-action-filter='[Action1]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='member' level='[mn:Date:ok]' member='5' />
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[yr:Date:ok]' member='2019' />
+                  <groupfilter function='union'>
+                    <groupfilter function='member' level='[dy:Date:ok]' member='2' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='3' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='7' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='8' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='9' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='10' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='13' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='14' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='15' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='16' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='17' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='20' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='21' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='22' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='23' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='24' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='27' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='28' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='29' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='30' />
+                    <groupfilter function='member' level='[dy:Date:ok]' member='31' />
+                  </groupfilter>
+                </groupfilter>
+              </groupfilter>
+              <order>
+                <hierarchy name='[yr:Date:ok]' />
+                <hierarchy name='[mn:Date:ok]' />
+                <hierarchy name='[dy:Date:ok]' />
+              </order>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1htkz0s1wwgbt81gioroh1evszwk].[Action (YEAR(Date),MONTH(Date),DAY(Date))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Twitter_Senti:qk]' palette='red_green_diverging_10_0' symmetric='false' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Twitter_Senti:qk]' />
+              <text column='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Twitter_Senti:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Twitter_Senti:qk]</rows>
+        <cols>([federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok] / ([federated.1htkz0s1wwgbt81gioroh1evszwk].[mn:Date:ok] / [federated.1htkz0s1wwgbt81gioroh1evszwk].[dy:Date:ok]))</cols>
+      </table>
+      <simple-id uuid='{77F3550D-590D-4983-A1D6-34A63859682C}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Merged Dashboard'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98454' id='29' param='horz' type='layout-flow' w='99166' x='417' y='773'>
+            <zone h='98454' id='26' param='horz' type='layout-flow' w='99166' x='417' y='773'>
+              <zone h='98454' id='7' param='horz' type='layout-flow' w='99166' x='417' y='773'>
+                <zone h='98454' id='5' type='layout-basic' w='99166' x='417' y='773'>
+                  <zone h='40184' id='9' name='Stock Daily' w='99166' x='417' y='773'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='33655' id='24' name='News' w='49581' x='417' y='40957'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='33655' id='27' name='Twitter' w='49585' x='49998' y='40957'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='24615' id='31' name='Reddit Comments' w='49581' x='417' y='74612'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='24615' id='33' name='Reddit SelfText' w='49585' x='49998' y='74612'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1250' minheight='1250' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='35' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='34' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='280' h='40000' id='9' is-fixed='true' name='Stock Daily' w='98400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='260' h='33500' id='24' is-fixed='true' name='News' w='49200' x='800' y='41000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='260' h='33500' id='27' is-fixed='true' name='Twitter' w='49200' x='50000' y='41000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='188' h='24500' id='31' is-fixed='true' name='Reddit Comments' w='49200' x='800' y='74500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='188' h='24500' id='33' is-fixed='true' name='Reddit SelfText' w='49200' x='50000' y='74500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{8B4647F8-0E1B-4524-9E94-F3785F2EB658}' />
+    </dashboard>
+  </dashboards>
+  <windows pres-mode='true' source-height='44'>
+    <window class='dashboard' maximized='true' name='Merged Dashboard'>
+      <viewpoints>
+        <viewpoint name='News'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Reddit Comments'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Reddit SelfText'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Stock Daily'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Twitter'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
+      <simple-id uuid='{F367BA1B-7E73-47C1-BD78-0C2A711B4A1A}' />
+    </window>
+    <window class='worksheet' name='News'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1htkz0s1wwgbt81gioroh1evszwk].[usr:Calculation_1669709577938599939:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{BDD7E615-FF30-4ED9-ADD7-798900CE4485}' />
+    </window>
+    <window class='worksheet' name='Twitter'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Twitter_Senti:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{37722F7D-E76C-41D8-9312-73D86FD2C270}' />
+    </window>
+    <window class='worksheet' name='Reddit Comments'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_Comment:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6B9CB38D-3353-4337-91DC-A1E0EA611D94}' />
+    </window>
+    <window class='worksheet' name='Reddit SelfText'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1htkz0s1wwgbt81gioroh1evszwk].[sum:Reddit_SelfText:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{75B12389-1CBF-4B21-8A77-2D889C60250A}' />
+    </window>
+    <window class='worksheet' name='Stock Month'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1htkz0s1wwgbt81gioroh1evszwk].[yr:Date:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B4192E46-C671-40E7-88B5-FA411F083137}' />
+    </window>
+    <window class='worksheet' name='Stock Daily'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1htkz0s1wwgbt81gioroh1evszwk].[attr:Adj_Close_USD:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7098A675-9483-4D7D-9C85-6C6E56EE9513}' />
+    </window>
+  </windows>
+</workbook>
