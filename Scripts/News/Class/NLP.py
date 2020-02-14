@@ -15,10 +15,7 @@ import matplotlib.pyplot as plt
 import csv
 
 
-#Reading of .csv file
 class class_NLP:
-
-   # filename = input("Please input the path of the CSV file: ") #r"C:\Users\charmaine\Desktop\YEAR3\FYP\FYP\News\Classes\Samsung.csv"
 
    def __inti__(self):
       pass
@@ -78,17 +75,5 @@ class class_NLP:
 
    #Export cleansed content to a csv file
    def export_csv(self, filepath):
-      # df['Cleansed Data'] = self.content
       self.content = pd.DataFrame(self.content)
       self.content.to_csv(filepath, index = False)
-
-
-
-# News_NLP = class_NLP()
-# df = News_NLP.read_file()
-# content = df['Text']
-# News_Tokenizing = News_NLP.tokenize(content)
-# News_RemoveWords = News_NLP.stopwords_removal()
-# News_Lemmatizing = News_NLP.lemmatization()
-# News_NLP.export_csv()
-# News_POStag = News_NLP.nltk_pos_tag()
